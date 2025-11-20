@@ -53,7 +53,7 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:src="@drawable/ic_check_circle"
-                android:tint="#F48FB1" />
+                app:tint="@color/pink"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -134,7 +134,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_location"
-                    android:tint="#F48FB1" />
+                    app:tint="@color/pink" />
 
                 <EditText
                     android:id="@+id/store_address"

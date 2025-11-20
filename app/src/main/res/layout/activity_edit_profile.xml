@@ -78,7 +78,7 @@
                         android:src="@drawable/ic_camera"
                         android:background="@drawable/circle_pink"
                         android:padding="8dp"
-                        android:tint="#FFFFFF" />
+                        app:tint="@color/white" />
                 </RelativeLayout>
 
                 <TextView
@@ -187,7 +187,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/ic_calendar"
-                    android:tint="#9E9E9E" />
+                    app:tint="@color/gray" />
             </LinearLayout>
 
             <TextView
@@ -225,7 +225,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/ic_info"
-                    android:tint="#F48FB1"
+                    app:tint="@color/pink"
                     android:layout_marginEnd="8dp" />
 
                 <TextView
