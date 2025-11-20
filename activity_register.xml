@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- Header: Nút Quay lại (dùng màu tím accent) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="32dp">
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_back_arrow"
+                app:tint="@color/purple_accent"
+                android:contentDescription="Quay lại"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quay lại"
+                android:textColor="@color/purple_accent"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
+
+        <!-- Logo and Title -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_m_pink"
+                android:background="@drawable/rounded_pink_background"
+                android:padding="8dp"
+                android:contentDescription="BeautyShop Logo"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BeautyShop"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/pink_primary"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tạo tài khoản mới để bắt đầu"
+            android:textColor="@color/text_color_secondary"
+            android:layout_marginBottom="32dp"/>
+
+        <!-- 1. Full Name Input -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Họ và tên" android:textColor="@color/text_color_primary" android:layout_marginBottom="4dp"/>
+        <EditText
+            android:id="@+id/et_full_name"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Nhập họ và tên"
+            android:background="@drawable/edittext_border_bottom"
+            android:paddingBottom="8dp"
+            android:inputType="textPersonName"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- 2. Email Input -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Email" android:textColor="@color/text_color_primary" android:layout_marginBottom="4dp"/>
+        <EditText
+            android:id="@+id/et_email_register"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Nhập email của bạn"
+            android:background="@drawable/edittext_border_bottom"
+            android:paddingBottom="8dp"
+            android:inputType="textEmailAddress"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- 3. Phone Input -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Số điện thoại" android:textColor="@color/text_color_primary" android:layout_marginBottom="4dp"/>
+        <EditText
+            android:id="@+id/et_phone"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Nhập số điện thoại"
+            android:background="@drawable/edittext_border_bottom"
+            android:paddingBottom="8dp"
+            android:inputType="phone"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- 4. Password Input (với icon hiện/ẩn) -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mật khẩu" android:textColor="@color/text_color_primary" android:layout_marginBottom="4dp"/>
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16dp">
+            <EditText
+                android:id="@+id/et_password_register"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Nhập mật khẩu"
+                android:background="@drawable/edittext_border_bottom"
+                android:paddingBottom="8dp"
+                android:inputType="textPassword"/>
+            <ImageView
+                android:layout_width="24dp" android:layout_height="24dp" android:layout_alignParentEnd="true" android:layout_centerVertical="true" android:src="@drawable/ic_eye" app:tint="@color/text_color_secondary" android:contentDescription="Hiện mật khẩu"/>
+        </RelativeLayout>
+
+        <!-- 5. Confirm Password Input (với icon hiện/ẩn) -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Xác nhận mật khẩu" android:textColor="@color/text_color_primary" android:layout_marginBottom="4dp"/>
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="32dp">
+            <EditText
+                android:id="@+id/et_confirm_password"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Nhập lại mật khẩu"
+                android:background="@drawable/edittext_border_bottom"
+                android:paddingBottom="8dp"
+                android:inputType="textPassword"/>
+            <ImageView
+                android:layout_width="24dp" android:layout_height="24dp" android:layout_alignParentEnd="true" android:layout_centerVertical="true" android:src="@drawable/ic_eye" app:tint="@color/text_color_secondary" android:contentDescription="Hiện mật khẩu"/>
+        </RelativeLayout>
+
+        <!-- Terms and Conditions -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="32dp">
+            <CheckBox
+                android:id="@+id/cb_terms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tôi đồng ý với "
+                android:textColor="@color/text_color_secondary"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Điều khoản dịch vụ"
+                android:textColor="@color/pink_primary"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" và "
+                android:textColor="@color/text_color_secondary"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chính sách bảo mật"
+                android:textColor="@color/pink_primary"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <!-- Register Button -->
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="Đăng ký"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/button_rounded_pink"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="32dp"/>
+
+        <!-- Login Link -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đã có tài khoản?"
+                android:textColor="@color/text_color_secondary"/>
+            <TextView
+                android:id="@+id/tv_login_link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Đăng nhập ngay"
+                android:textStyle="bold"
+                android:textColor="@color/pink_primary"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

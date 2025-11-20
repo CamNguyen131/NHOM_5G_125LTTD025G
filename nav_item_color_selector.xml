@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Đây là một Color State List (Bộ chọn Màu Trạng thái).
+    Nó định nghĩa màu văn bản (itemTextColor) cho các mục điều hướng
+    dựa trên trạng thái hiện tại của chúng.
+-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- TRẠNG THÁI ĐƯỢC CHỌN (SELECTED/CHECKED) -->
+    <!-- Khi một mục được chọn (android:state_checked="true"), nó sẽ sử dụng màu primary_color (màu chủ đạo). -->
+    <item android:state_checked="true"
+        android:color="@color/pink_primary"
+        />
+
+    <!-- TRẠNG THÁI MẶC ĐỊNH (DEFAULT/UNCHECKED) -->
+    <!-- Đối với tất cả các trạng thái khác (mục chưa được chọn), nó sẽ sử dụng màu secondary_text (màu văn bản phụ). -->
+    <item android:color="@color/text_color_secondary"/>
+</selector>

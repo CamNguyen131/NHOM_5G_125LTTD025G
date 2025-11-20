@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  File: splash_background.xml
+  Mục đích: Định nghĩa background cho màn hình chờ (Splash Screen) của ứng dụng.
+  Sử dụng: Kết hợp nền màu (gradient) và logo ứng dụng (bitmap) thông qua <layer-list>.
+-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Lớp 1: Background - Nền chuyển màu (Gradient) -->
+    <item>
+        <shape android:shape="rectangle">
+            <!--
+              Tạo hiệu ứng chuyển màu (gradient) từ màu tím sang màu hồng.
+              (Giả định các màu này đã được định nghĩa trong res/values/colors.xml)
+            -->
+            <gradient
+                android:angle="270"
+                android:startColor="#673AB7"
+                android:endColor="#FF4081"
+                android:type="linear" />
+        </shape>
+    </item>
+
+    <!-- Lớp 2: Logo - Đặt icon ứng dụng vào giữa màn hình -->
+    <item>
+        <!--
+          android:drawable: Tham chiếu đến icon ứng dụng của bạn (ví dụ: ic_launcher_foreground).
+          android:gravity: Đặt icon vào chính giữa màn hình.
+          android:width/android:height: Kích thước của icon (ví dụ: 108dp cho kích thước chuẩn).
+        -->
+        <bitmap
+            android:drawable="@drawable/ic_launcher_foreground"
+            android:gravity="center"
+            android:width="108dp"
+            android:height="108dp"
+            />
+    </item>
+</layer-list>

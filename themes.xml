@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Kế thừa từ Theme cơ bản của bạn -->
+    <style name="Theme.MaMade" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Đặt các thuộc tính theme chung của ứng dụng tại đây -->
+
+        <!-- Màu Chủ Đạo Của Ứng Dụng -->
+        <item name="colorPrimary">@color/pink_primary</item>
+        <item name="colorPrimaryVariant">@color/purple_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Màu phụ -->
+        <item name="colorSecondary">@color/purple_accent</item>
+        <item name="colorOnSecondary">@color/black</item>
+
+        <!-- Màu Status Bar (Mặc định) -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+
+        <!-- Màu nền chung của cửa sổ (Tùy chọn) -->
+        <item name="android:windowBackground">@color/bg_light_grey</item>
+    </style>
+
+    <!-- ĐỊNH NGHĨA STYLE DÀNH CHO SPLASH SCREEN (Đã sửa lỗi) -->
+    <style name="Theme.MaMade.Splash" parent="Theme.MaMade">
+
+        <!-- Đặt nền cửa sổ là drawable đã tạo -->
+        <item name="android:windowBackground">@drawable/splash_background</item>
+
+        <!-- Ẩn thanh Action Bar và Title Bar -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+
+        <!-- Đặt cửa sổ ở chế độ toàn màn hình -->
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+
+    </style>
+
+    <!-- Style cho màn hình Auth (Login/Register) - Status Bar màu trắng -->
+    <style name="Theme.MaMade.Auth" parent="Theme.MaMade">
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item> <!-- Dùng icon đen trên nền trắng -->
+    </style>
+</resources>

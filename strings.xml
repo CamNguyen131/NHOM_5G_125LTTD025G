@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BeautyShop MaMade</string>
+    <string name="title_activity_home">Trang Chủ</string>
+    <string name="title_activity_login">Đăng Nhập</string>
+
+</resources>
