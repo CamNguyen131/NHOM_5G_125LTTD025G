@@ -13,13 +13,23 @@
         android:theme="@style/Theme.BaitapDemo">
         <activity
             android:name=".MainActivity"
+            android:exported="false" />
+
+        <!-- Đặt ProductListActivity làm màn hình chính (Launcher) -->
+        <activity
+            android:name=".ProductListActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Khai báo các màn hình mới thêm vào -->
+        <activity android:name=".AddProductActivity" />
+        <activity android:name=".MessageListActivity" />
+        <activity android:name=".ChatDetailActivity" />
+
     </application>
 
 </manifest>

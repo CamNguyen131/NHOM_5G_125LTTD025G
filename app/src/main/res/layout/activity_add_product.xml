@@ -1,412 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5"
-    android:fillViewport="true">
+    android:background="#FFF">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="80dp">
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <ImageButton
-            android:id="@+id/btnBack"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@android:drawable/ic_menu_revert"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="wrap_content"
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Thêm sản phẩm mới"
-            android:textSize="18sp"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/btnBack"
-            app:layout_constraintBottom_toBottomOf="@id/btnBack" />
-
-        <TextView
-            android:id="@+id/tvImageLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hình ảnh sản phẩm"
-            android:textSize="14sp"
-            android:textColor="#333333"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnBack" />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cvImageUpload"
-            android:layout_width="0dp"
-            android:layout_height="200dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="8dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="2dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvImageLabel">
-
-            <LinearLayout
+            android:gravity="center_vertical">
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_revert"
+                android:contentDescription="Back"/>
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
+                android:layout_height="wrap_content"
+                android:text="Thêm sản phẩm mới"
                 android:gravity="center"
-                android:background="#FCE4EC">
-
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:src="@android:drawable/ic_menu_upload"
-                    app:tint="#FF69B4" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Tải ảnh lên"
-                    android:textSize="14sp"
-                    android:textColor="#666666"
-                    android:layout_marginTop="8dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="PNG, JPG tối đa 5MB"
-                    android:textSize="12sp"
-                    android:textColor="#999999"
-                    android:layout_marginTop="4dp" />
-
-                <Button
-                    android:id="@+id/btnChooseImage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="36dp"
-                    android:text="Chọn ảnh"
-                    android:textSize="14sp"
-                    android:textColor="#FF69B4"
-                    android:background="@drawable/btn_outlined_pink"
-                    android:layout_marginTop="16dp"
-                    android:paddingStart="24dp"
-                    android:paddingEnd="24dp" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilProductName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="24dp"
-            android:hint="Tên sản phẩm *"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cvImageUpload">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etProductName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="VD: Son Thỏi YSL Rouge Pur Couture"
-                android:textSize="14sp"
-                android:background="@drawable/bg_edittext"
-                android:padding="12dp" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilBrand"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
-            android:hint="Thương hiệu *"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tilProductName">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etBrand"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="VD: YSL, MAC, Dior..."
-                android:textSize="14sp"
-                android:background="@drawable/bg_edittext"
-                android:padding="12dp" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilCategory"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
-            android:hint="Danh mục *"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tilBrand">
-
-            <AutoCompleteTextView
-                android:id="@+id/actvCategory"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Chọn danh mục"
-                android:textSize="14sp"
-                android:background="@drawable/bg_edittext"
-                android:padding="12dp"
-                android:drawableEnd="@android:drawable/arrow_down_float"
-                android:focusable="false" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <LinearLayout
-            android:id="@+id/llPrices"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tilCategory">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilSalePrice"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginEnd="8dp"
-                android:hint="Giá bán *">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etSalePrice"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="500000"
-                    android:textSize="14sp"
-                    android:inputType="number"
-                    android:background="@drawable/bg_edittext"
-                    android:padding="12dp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilOriginalPrice"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="8dp"
-                android:hint="Giá gốc">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etOriginalPrice"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="700000"
-                    android:textSize="14sp"
-                    android:inputType="number"
-                    android:background="@drawable/bg_edittext"
-                    android:padding="12dp" />
-            </com.google.android.material.textfield.TextInputLayout>
+                android:textSize="18sp"
+                android:textStyle="bold"/>
         </LinearLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilDescription"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
-            android:hint="Mô tả sản phẩm *"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/llPrices">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etDescription"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:hint="Mô tả chi tiết về sản phẩm: thành phần, công dụng, cách sử dụng..."
-                android:textSize="14sp"
-                android:gravity="top|start"
-                android:inputType="textMultiLine"
-                android:background="@drawable/bg_edittext"
-                android:padding="12dp" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:id="@+id/tvCharCount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tối thiểu 50 ký tự"
-            android:textSize="12sp"
-            android:textColor="#999999"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tilDescription" />
-
+        <!-- Image Upload Area -->
         <LinearLayout
-            android:id="@+id/llInStock"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="24dp"
-            android:padding="16dp"
-            android:background="@drawable/bg_white_rounded"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvCharCount">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Còn hàng"
-                    android:textSize="16sp"
-                    android:textColor="#000000"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sản phẩm đang sẵn để bán"
-                    android:textSize="12sp"
-                    android:textColor="#666666"
-                    android:layout_marginTop="4dp" />
-            </LinearLayout>
-
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/switchInStock"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="#FFF0F5"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp">
+            <TextView android:text="Tải ảnh lên" android:textColor="#FF80AB" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:layout_gravity="center_vertical" />
+                android:text="Chọn ảnh"
+                android:backgroundTint="#FFF"
+                android:textColor="#000"/>
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/llNewProduct"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="12dp"
-            android:padding="16dp"
-            android:background="@drawable/bg_white_rounded"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/llInStock">
+        <!-- Form Fields -->
+        <TextView android:text="Tên sản phẩm *" android:layout_marginTop="16dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <EditText android:hint="VD: Son Thỏi YSL..." android:layout_width="match_parent" android:layout_height="wrap_content"/>
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+        <TextView android:text="Thương hiệu *" android:layout_marginTop="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <EditText android:hint="VD: YSL, MAC..." android:layout_width="match_parent" android:layout_height="wrap_content"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sản phẩm mới"
-                    android:textSize="16sp"
-                    android:textColor="#000000"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Hiển thị nhãn &quot;Mới&quot;"
-                    android:textSize="12sp"
-                    android:textColor="#666666"
-                    android:layout_marginTop="4dp" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="10dp">
+            <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical">
+                <TextView android:text="Giá bán *" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <EditText android:hint="500000" android:inputType="number" android:layout_width="match_parent" android:layout_height="wrap_content"/>
             </LinearLayout>
-
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/switchNewProduct"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:layout_gravity="center_vertical" />
+            <View android:layout_width="16dp" android:layout_height="1dp"/>
+            <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical">
+                <TextView android:text="Giá gốc" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <EditText android:hint="700000" android:inputType="number" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/llBestSeller"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="12dp"
-            android:padding="16dp"
-            android:background="@drawable/bg_white_rounded"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/llNewProduct">
+        <TextView android:text="Mô tả sản phẩm *" android:layout_marginTop="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <EditText android:hint="Mô tả chi tiết..." android:lines="3" android:gravity="top" android:layout_width="match_parent" android:layout_height="wrap_content"/>
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+        <!-- Switches -->
+        <LinearLayout android:layout_marginTop="20dp" android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:text="Còn hàng" android:layout_weight="1" android:layout_width="0dp" android:layout_height="wrap_content"/>
+            <Switch android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true"/>
+        </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sản phẩm bán chạy"
-                    android:textSize="16sp"
-                    android:textColor="#000000"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Hiển thị nhãn &quot;Best Seller&quot;"
-                    android:textSize="12sp"
-                    android:textColor="#666666"
-                    android:layout_marginTop="4dp" />
-            </LinearLayout>
-
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/switchBestSeller"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:layout_gravity="center_vertical" />
+        <LinearLayout android:layout_marginTop="10dp" android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:text="Sản phẩm mới" android:layout_weight="1" android:layout_width="0dp" android:layout_height="wrap_content"/>
+            <Switch android:layout_width="wrap_content" android:layout_height="wrap_content"/>
         </LinearLayout>
 
         <Button
-            android:id="@+id/btnSaveProduct"
-            android:layout_width="0dp"
-            android:layout_height="56dp"
-            android:text="Ask to edit"
-            android:textSize="16sp"
-            android:textColor="#FFFFFF"
-            android:background="@drawable/btn_rounded_blue"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="32dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/llBestSeller" />
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lưu sản phẩm"
+            android:backgroundTint="#2196F3"
+            android:layout_marginTop="30dp"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </ScrollView>
