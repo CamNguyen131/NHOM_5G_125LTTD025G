@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingVertical="12dp"
+    android:background="@drawable/bg_white_card"
+    android:gravity="center_vertical"
+    android:paddingHorizontal="16dp">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <FrameLayout
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_pink_light"
+            android:layout_marginEnd="16dp">
+            <ImageView
+                android:id="@+id/setting_icon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/moon_icon"
+                android:layout_gravity="center"/>
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/setting_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chế độ tối"
+                android:textColor="#333333"
+                android:textSize="15sp"/>
+            <TextView
+                android:id="@+id/setting_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Giao diện tối giúp giảm mỏi mắt"
+                android:textColor="#888888"
+                android:textSize="12sp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <Switch
+        android:id="@+id/setting_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:thumbTint="#FF6B87"
+        android:trackTint="#FDE7F2"
+        android:checked="false"/>
+</LinearLayout>
