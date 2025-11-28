@@ -22,6 +22,19 @@ public class OrderDetailActivity extends AppCompatActivity {
             }
         });
 
+        // ⭐ THÊM XỬ LÝ CHO FOOTER_LAYOUT (NÚT "Mua lại") ⭐
+        LinearLayout footerLayout = findViewById(R.id.footer_layout);
+        footerLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Điều hướng đến ListOrderActivity
+                Intent intent = new Intent(OrderDetailActivity.this, CheckoutActivity.class);
+                // Có thể thêm cờ FLAG_ACTIVITY_CLEAR_TOP nếu muốn xóa các activity trên stack
+                // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
+
         setupBottomNavigation();
     }
 

@@ -33,36 +33,48 @@ public class ListOrderActivity extends AppCompatActivity {
         LinearLayout tabAccount = findViewById(R.id.tabAccount);
 
         // Tab Tài khoản
-        tabAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ListOrderActivity.this, MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-        });
+        if (tabAccount != null) {
+            tabAccount.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(ListOrderActivity.this, MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
+            });
+        }
 
-        // Tab Đơn hàng (đã ở trang này nên không cần làm gì)
-        tabOrder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Đã ở trang đơn hàng, không cần điều hướng
-            }
-        });
+        // Tab Đơn hàng
+        if (tabOrder != null) {
+            tabOrder.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Đã ở trang đơn hàng, không cần điều hướng
+                }
+            });
+        }
 
-        // Các tab khác
-        tabHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Điều hướng đến trang chủ
-            }
-        });
-
-        tabCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Điều hướng đến giỏ hàng
-            }
-        });
+        // Tab Trang chủ
+        if (tabHome != null) {
+            tabHome.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(ListOrderActivity.this, HomeActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
+            });
+        }
+        //Tab Giỏ hàng
+        if (tabCart != null) {
+            tabCart.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(ListOrderActivity.this, CartActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
+            });
+        }
     }
 }

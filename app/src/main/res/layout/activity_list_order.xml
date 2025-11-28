@@ -233,6 +233,7 @@
 
                 <!-- Button Mua lại -->
                 <LinearLayout
+                    android:id="@+id/btnBuyAgain1"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:background="@drawable/bg_outline_pink"
