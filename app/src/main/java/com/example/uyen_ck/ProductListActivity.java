@@ -28,7 +28,6 @@ public class ProductListActivity extends AppCompatActivity {
         setupProductClick(R.id.product3);
         setupProductClick(R.id.product4);
 
-        // 3. Bottom Navigation Bar - Updated to handle new navigation structure
         setupBottomNavigation();
     }
 

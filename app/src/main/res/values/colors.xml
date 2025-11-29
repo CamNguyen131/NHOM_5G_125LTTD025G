@@ -14,19 +14,19 @@
         <color name="rounded_pink_bg">#F06292</color>
 
     <!-- Màu Chủ Đạo Của Ứng Dụng -->
-        <color name="pink_primary">#FF4081</color> <!-- Màu Hồng Chủ Đạo, dùng cho các nút/icon chính -->
-        <color name="purple_accent">#FF69B4</color> <!-- Màu Hồng Đậm/Tím Nhạt (Accent) -->
-        <color name="purple_dark">#C04890</color> <!-- Màu đậm hơn của purple_accent -->
-        <color name="pink_light">#FFE4E8</color> <!-- Màu hồng rất nhạt, dùng cho các nút nền/nền nhấn -->
+        <color name="pink_primary">#FF4081</color>
+        <color name="purple_accent">#FF69B4</color>
+        <color name="purple_dark">#C04890</color>
+        <color name="pink_light">#FFE4E8</color>
 
         <!-- Màu Nền và Phụ -->
-        <color name="bg_light_grey">#F5F5F5</color> <!-- Màu xám rất nhạt, dùng làm nền cho màn hình -->
-        <color name="divider_color">#E0E0E0</color> <!-- Màu xám nhạt dùng làm đường kẻ ngăn cách (divider) -->
-        <color name="card_background">#FFFFFF</color> <!-- Nền của các card sản phẩm -->
+        <color name="bg_light_grey">#F5F5F5</color>
+        <color name="divider_color">#E0E0E0</color>
+        <color name="card_background">#FFFFFF</color>
 
         <!-- Màu Chữ -->
-        <color name="text_color_primary">#333333</color> <!-- Màu chữ chính (Gần đen) -->
-        <color name="text_color_secondary">#757575</color> <!-- Màu chữ phụ/Mô tả/Placeholder (Xám vừa) -->
+        <color name="text_color_primary">#333333</color>
+        <color name="text_color_secondary">#757575</color>
         <color name="text_color_hint">#AAAAAA</color> <!-- Màu chữ gợi ý (hint) trong EditText -->
         <color name="text_color_link">#1E90FF</color> <!-- Màu chữ cho các liên kết (ví dụ: "Đăng ký ngay") -->
 

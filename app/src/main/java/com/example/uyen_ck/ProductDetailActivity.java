@@ -26,7 +26,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         setupEvents();
         applyOldPriceStrike();
         setupReadMoreToggle();
-        loadDataFromHome(); // Phương thức này sẽ hiển thị tên SP
+        loadDataFromHome();
     }
 
     private void initViews() {

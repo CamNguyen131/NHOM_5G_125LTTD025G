@@ -10,8 +10,6 @@ public class Product {
     private float rating;
     private String imageUrl;
     private boolean isFavorite;
-
-    // Constructor mặc định (cần thiết cho Firebase/JSON deserialization)
     public Product() {
     }
 

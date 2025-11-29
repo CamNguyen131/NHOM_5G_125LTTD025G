@@ -55,12 +55,10 @@ public class VariantBottomSheet extends BottomSheetDialogFragment {
         option3.setOnClickListener(listener);
         option4.setOnClickListener(listener);
 
-        option1.performClick(); // Mặc định chọn option 1 khi mở sheet
-
-        // Nút đóng
+        option1.performClick();
         view.findViewById(R.id.btnClose).setOnClickListener(v -> dismiss());
 
-        // Nút xác nhận
+
         view.findViewById(R.id.btnDone).setOnClickListener(v -> onConfirm());
 
         return view;
@@ -76,7 +74,6 @@ public class VariantBottomSheet extends BottomSheetDialogFragment {
 
         Toast.makeText(requireContext(), "Đã chọn: " + selectedVariant, Toast.LENGTH_SHORT).show();
 
-        // Chuyển sang CheckoutActivity
         Intent intent = new Intent(requireContext(), CheckoutActivity.class);
         intent.putExtra("variant", selectedVariant);
 
@@ -89,6 +86,6 @@ public class VariantBottomSheet extends BottomSheetDialogFragment {
 
         startActivity(intent);
 
-        dismiss(); // Đóng BottomSheet sau khi chuyển màn hình
+        dismiss();
     }
 }
