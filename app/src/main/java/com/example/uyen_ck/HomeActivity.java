@@ -41,28 +41,20 @@ public class HomeActivity extends AppCompatActivity {
             tabHome.setBackgroundResource(R.drawable.gb_pink_light);
         }
     }
-
     private void setupClickListeners() {
         tabHome.setOnClickListener(v -> Toast.makeText(this, "Đã ở Trang chủ", Toast.LENGTH_SHORT).show());
         tabCart.setOnClickListener(v -> startActivityAndFinish(CartActivity.class));
         tabOrder.setOnClickListener(v -> startActivityAndFinish(ListOrderActivity.class));
         tabAccount.setOnClickListener(v -> startActivityAndFinish(MainActivity.class));
-
-        // Header
         findViewById(R.id.etSearch).setOnClickListener(v -> toast("Tìm kiếm"));
         findViewById(R.id.btnNotification).setOnClickListener(v -> toast("Thông báo"));
         findViewById(R.id.btnPromo).setOnClickListener(v -> toast("Flash Sale!"));
-
-        // Danh mục
         int[] categories = {R.id.categoryFaceCare, R.id.categoryMakeup, R.id.categoryHairCare,
                 R.id.categoryMore, R.id.categoryGift, R.id.categorySale, R.id.categoryNew};
         for (int id : categories) {
             findViewById(id).setOnClickListener(v -> toast("Mở danh mục"));
         }
-
         findViewById(R.id.btnViewAllNewProducts).setOnClickListener(v -> toast("Xem tất cả"));
-
-        // Bấm sản phẩm → sang ProductDetailActivity (Đang truyền dữ liệu đúng)
         findViewById(R.id.tvProductName1).setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, ProductDetailActivity.class);
             intent.putExtra("product_id", "SP001");
@@ -71,8 +63,7 @@ public class HomeActivity extends AppCompatActivity {
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         });
     }
-
-
+    //
     private void setTabColor(LinearLayout tab, int color) {
         if (tab == null) return;
         for (int i = 0; i < tab.getChildCount(); i++) {
@@ -84,13 +75,11 @@ public class HomeActivity extends AppCompatActivity {
             }
         }
     }
-
     private void startActivityAndFinish(Class<?> cls) {
         startActivity(new Intent(this, cls));
         finish();
         overridePendingTransition(0, 0);
     }
-
     private void toast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }

@@ -25,14 +25,11 @@ public class ListOrderActivity extends AppCompatActivity {
 
         setupBottomNavigation();
     }
-
     private void setupBottomNavigation() {
         LinearLayout tabHome = findViewById(R.id.tabHome);
         LinearLayout tabCart = findViewById(R.id.tabCart);
         LinearLayout tabOrder = findViewById(R.id.tabOrder);
         LinearLayout tabAccount = findViewById(R.id.tabAccount);
-
-        // Tab Tài khoản
         if (tabAccount != null) {
             tabAccount.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -43,18 +40,13 @@ public class ListOrderActivity extends AppCompatActivity {
                 }
             });
         }
-
-        // Tab Đơn hàng
         if (tabOrder != null) {
             tabOrder.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // Đã ở trang đơn hàng, không cần điều hướng
                 }
             });
         }
-
-        // Tab Trang chủ
         if (tabHome != null) {
             tabHome.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -65,7 +57,6 @@ public class ListOrderActivity extends AppCompatActivity {
                 }
             });
         }
-        //Tab Giỏ hàng
         if (tabCart != null) {
             tabCart.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -8,10 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
-/**
- * Activity xử lý việc Đăng nhập/Đăng ký của người dùng.
- */
 public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "LoginActivity";
@@ -25,12 +21,10 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         Log.d(TAG, "onCreate: LoginActivity đã khởi tạo.");
 
-        // Ánh xạ các thành phần UI
         etUsername = findViewById(R.id.et_email_login);
         etPassword = findViewById(R.id.et_password_login);
         btnLogin = findViewById(R.id.btn_login);
 
-        // Thiết lập sự kiện cho nút Đăng Nhập
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,9 +33,6 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    /**
-     * Xử lý quá trình đăng nhập của người dùng.
-     */
     private void handleLogin() {
         String username = etUsername.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
@@ -51,7 +42,6 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        // TODO: Thay thế logic xác thực giả lập này bằng Firebase Auth, API call, hoặc SQLite
         if (username.equals("admin") && password.equals("123456")) {
             // Xác thực thành công
             Log.i(TAG, "Đăng nhập thành công cho người dùng: " + username);
@@ -59,7 +49,6 @@ public class LoginActivity extends AppCompatActivity {
 
             // Chuyển hướng đến Trang Chủ
             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-            // Xóa Login khỏi stack để người dùng không thể quay lại bằng nút Back
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();

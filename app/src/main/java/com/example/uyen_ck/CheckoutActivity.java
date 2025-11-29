@@ -23,26 +23,16 @@ public class CheckoutActivity extends AppCompatActivity {
         updateTotal();
 
         findViewById(R.id.btnOrder).setOnClickListener(v -> {
-
-            // Thông báo
             Toast.makeText(this, "Đặt hàng thành công! Cảm ơn bạn đã mua hàng", Toast.LENGTH_LONG).show();
-
-            // Xóa giỏ hàng
             CartManager.getInstance().clearCart();
-
-            // Chuyển sang trang ListOrderActivity
             Intent intent = new Intent(CheckoutActivity.this, ListOrderActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
-
-            // Kết thúc trang checkout để không quay lại
             finish();
         });
-
         ImageButton btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> finish());
     }
-
     private void updateTotal() {
         long total = CartManager.getInstance().getTotalPrice();
         String formatted = String.format("%,dđ", total);
