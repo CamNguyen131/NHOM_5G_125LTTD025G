@@ -13,12 +13,10 @@ public class CartManager {
         }
         return instance;
     }
-
     public void addItem(String name, int quantity, long pricePerItem) {
         totalPrice += pricePerItem * quantity;
         itemCount += quantity;
     }
-
     public long getTotalPrice() { return totalPrice; }
     public int getItemCount() { return itemCount; }
 

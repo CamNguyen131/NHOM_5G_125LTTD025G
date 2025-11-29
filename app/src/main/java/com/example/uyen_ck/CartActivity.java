@@ -20,7 +20,7 @@ public class CartActivity extends AppCompatActivity {
     private Button btnCheckout;
 
     private int quantity = 1;
-    private final int productPrice = 850000; // Giá mẫu
+    private final int productPrice = 850000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class CartActivity extends AppCompatActivity {
         initViews();
         setupProductActions();
         setupCheckoutButton();
-        setupBottomNavigationWithHighlight(); // ← ĐÃ THÊM HIGHLIGHT TAB GIỎ HÀNG
+        setupBottomNavigationWithHighlight();
     }
 
     private void initViews() {
@@ -44,14 +44,12 @@ public class CartActivity extends AppCompatActivity {
     }
 
     private void setupProductActions() {
-        // Tăng số lượng
         btnPlus.setOnClickListener(v -> {
             quantity++;
             tvQuantity.setText(String.valueOf(quantity));
             updateCheckoutText();
         });
 
-        // Giảm số lượng
         btnMinus.setOnClickListener(v -> {
             if (quantity > 1) {
                 quantity--;
@@ -60,7 +58,6 @@ public class CartActivity extends AppCompatActivity {
             }
         });
 
-        // Xóa sản phẩm
         btnDelete.setOnClickListener(v -> {
             quantity = 0;
             tvQuantity.setText("0");
@@ -70,13 +67,10 @@ public class CartActivity extends AppCompatActivity {
             Toast.makeText(this, "Đã xóa sản phẩm khỏi giỏ hàng", Toast.LENGTH_SHORT).show();
         });
 
-        // Chọn/bỏ chọn sản phẩm
         cbSelectItem.setOnCheckedChangeListener((buttonView, isChecked) -> {
             cbSelectAll.setChecked(isChecked);
             updateCheckoutText();
         });
-
-        // Chọn tất cả
         cbSelectAll.setOnCheckedChangeListener((buttonView, isChecked) ->
                 cbSelectItem.setChecked(isChecked));
     }
@@ -87,14 +81,10 @@ public class CartActivity extends AppCompatActivity {
                 Toast.makeText(this, "Vui lòng chọn sản phẩm để thanh toán", Toast.LENGTH_SHORT).show();
                 return;
             }
-
-            // CHUYỂN SANG CHECKOUT + truyền dữ liệu (tùy chọn)
             Intent intent = new Intent(CartActivity.this, CheckoutActivity.class);
             intent.putExtra("total_amount", productPrice * quantity);
             intent.putExtra("item_count", quantity);
             startActivity(intent);
-
-            // Hiệu ứng đẹp
             overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
         });
 
@@ -110,8 +100,6 @@ public class CartActivity extends AppCompatActivity {
             btnCheckout.setEnabled(true);
         }
     }
-
-    // ==================== BOTTOM NAVIGATION + HIGHLIGHT TAB GIỎ HÀNG ====================
     private void setupBottomNavigationWithHighlight() {
         LinearLayout tabHome    = findViewById(R.id.tabHome);
         LinearLayout tabCart    = findViewById(R.id.tabCart);
@@ -121,18 +109,14 @@ public class CartActivity extends AppCompatActivity {
         int colorGray = ContextCompat.getColor(this, android.R.color.darker_gray);
         int colorPink = ContextCompat.getColor(this, R.color.pink_primary); // hoặc #FF6B87
 
-        // Reset màu về xám
         setTabColor(tabHome, colorGray);
         setTabColor(tabOrder, colorGray);
         setTabColor(tabAccount, colorGray);
-
-        // Highlight TAB GIỎ HÀNG
         setTabColor(tabCart, colorPink);
         if (tabCart != null) {
             tabCart.setBackgroundResource(R.drawable.gb_pink_light);
         }
 
-        // Click các tab
         if (tabHome != null) tabHome.setOnClickListener(v -> startAndFinish(HomeActivity.class));
         if (tabCart != null) tabCart.setOnClickListener(v -> { /* đang ở đây */ });
         if (tabOrder != null) tabOrder.setOnClickListener(v -> startAndFinish(ListOrderActivity.class));

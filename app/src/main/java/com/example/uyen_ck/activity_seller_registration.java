@@ -8,9 +8,6 @@ public class activity_seller_registration extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Sửa lỗi ở đây: Thay tên layout không tồn tại
-        // bằng tên layout chứa các ID bạn đang tìm kiếm (ví dụ: activity_register_step1)
         setContentView(R.layout.activity_seller_registration);
 
         Button btnContinue = findViewById(R.id.btn_continue);
