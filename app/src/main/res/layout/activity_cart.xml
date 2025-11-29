@@ -240,7 +240,7 @@
                         android:id="@+id/btnApplyCoupon"
                         android:layout_width="wrap_content"
                         android:layout_height="48dp"
-                        android:background="@drawable/bg_button_pink"
+                        android:backgroundTint="#F0228D"
                         android:minWidth="88dp"
                         android:minHeight="48dp"
                         android:paddingHorizontal="24dp"
@@ -337,8 +337,40 @@
             android:layout_width="match_parent"
             android:layout_height="120dp" /> </LinearLayout>
     </ScrollView>
-    <!-- THANH THANH TOÁN --> <LinearLayout android:id="@+id/bottom_action_bar_container" android:layout_width="0dp" android:layout_height="wrap_content" android:orientation="vertical" android:paddingHorizontal="16dp" android:paddingTop="12dp" android:background="@android:color/white" android:elevation="8dp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@id/bottomNav"> <Button android:id="@+id/btnCheckout" android:layout_width="match_parent" android:layout_height="56dp" android:layout_marginBottom="12dp" android:background="@drawable/bg_button_pink" android:text="Thanh toán (1 sản phẩm)" android:textColor="#FFFFFF" android:textSize="18sp" android:textStyle="bold" /> </LinearLayout> <!-- BOTTOM NAV -->
-    <LinearLayout android:id="@+id/bottomNav" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:background="#FFFFFF" android:elevation="16dp" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
+    <!-- THANH THANH TOÁN -->
+    <LinearLayout
+        android:id="@+id/bottom_action_bar_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="12dp"
+
+        android:elevation="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomNav">
+        <Button
+            android:id="@+id/btnCheckout"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="#F0228D"
+            android:text="Thanh toán (1 sản phẩm)"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout> <!-- BOTTOM NAV -->
+    <LinearLayout
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#FFFFFF"
+        android:elevation="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <!-- Tab 1: Trang chủ -->
         <LinearLayout

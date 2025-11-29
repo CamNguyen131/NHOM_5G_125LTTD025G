@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/splash_background_gradient"
+    android:background="@drawable/header_background_gradient"
     tools:context=".SplashActivity">
 
     <!-- Text "Xin chào!" top-left -->

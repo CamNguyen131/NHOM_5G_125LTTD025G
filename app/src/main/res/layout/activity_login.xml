@@ -124,12 +124,12 @@
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="55dp"
+            android:layout_marginBottom="32dp"
+            android:backgroundTint="#F0228D"
             android:text="Đăng nhập"
             android:textColor="#FFFFFF"
-            android:background="@drawable/button_rounded_pink"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="32dp"/>
+            android:textStyle="bold" />
 
         <!-- Separator -->
         <LinearLayout
@@ -164,7 +164,7 @@
                 android:text="Google"
                 android:drawableStart="@drawable/ic_google"
                 android:drawablePadding="8dp"
-                android:background="@drawable/button_rounded_white_border"
+                android:backgroundTint="#F0228D"
                 android:textColor="@color/text_color_primary"
                 android:layout_marginEnd="8dp"/>
 
@@ -175,7 +175,7 @@
                 android:text="Facebook"
                 android:drawableStart="@drawable/ic_facebook"
                 android:drawablePadding="8dp"
-                android:background="@drawable/button_rounded_white_border"
+                android:backgroundTint="#F0228D"
                 android:textColor="@color/text_color_primary"
                 android:layout_marginStart="8dp"/>
         </LinearLayout>

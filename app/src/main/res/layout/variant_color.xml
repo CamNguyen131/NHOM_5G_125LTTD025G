@@ -106,15 +106,15 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginTop="24dp"
-        android:background="@drawable/bg_button_pink"
+        android:backgroundTint="#ED4297"
         android:text="Xác nhận"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="17sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/llOptions"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/llOptions" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

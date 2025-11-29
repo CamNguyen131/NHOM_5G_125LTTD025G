@@ -247,7 +247,7 @@
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:background="@drawable/button_pink_background"
+        android:backgroundTint="#F0228D"
         android:drawableStart="@drawable/ic_save"
         android:drawablePadding="8dp"
         android:drawableTint="#FFFFFF"

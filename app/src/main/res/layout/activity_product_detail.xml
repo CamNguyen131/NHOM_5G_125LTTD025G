@@ -338,12 +338,13 @@
                 android:id="@+id/btnAddCart"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
-                android:layout_weight="1"
                 android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:backgroundTint="#F2DBEA"
                 android:text="Thêm vào giỏ"
+                android:textAllCaps="false"
                 android:textColor="#E91E63"
-                android:textStyle="bold"
-                android:textAllCaps="false"/>
+                android:textStyle="bold" />
         </LinearLayout>
 
         <!-- Hàng 2: BUY NOW -->

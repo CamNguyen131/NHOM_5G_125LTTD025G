@@ -35,4 +35,6 @@
         <color name="flash_sale_gradient_end">#FF8C00</color> <!-- Cam đậm cho Flash Sale -->
         <color name="discount_tag_red">#FF4500</color> <!-- Màu đỏ cho tag giảm giá -->
 
+        <color name="splash_start">#FFE4E8</color>
+        <color name="splash_end">#FF69B4</color>
 </resources>

@@ -13,7 +13,7 @@
         android:layout_height="56dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/bg_button_pink"
+        android:backgroundTint="#F0228D"
         android:text="Đặt hàng"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
@@ -231,13 +231,28 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:paddingTop="12dp">
-                    <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Tổng thanh toán" android:textSize="18sp" android:textStyle="bold"/>
-                    <TextView android:id="@+id/txtTotalAmount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="850.000đ" android:textColor="#E91E63" android:textSize="22sp" android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="Tổng thanh toán"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:id="@+id/txtTotalAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="850.000đ"
+                        android:textColor="#E91E63"
+                        android:textSize="22sp"
+                        android:textStyle="bold"/>
                 </LinearLayout>
             </LinearLayout>
 
             <!-- Khoảng trống cuối để nút Đặt hàng không bị che -->
-            <View android:layout_width="match_parent" android:layout_height="80dp"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="80dp"/>
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

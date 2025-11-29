@@ -127,12 +127,6 @@
                     android:padding="16dp"
                     android:gravity="center_vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Giảm giá"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -156,13 +150,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="32dp"
                         android:layout_marginTop="8dp"
-                        android:background="@drawable/input_background_white"
+
+                        android:backgroundTint="#FDFBFB"
+                        android:paddingHorizontal="20dp"
                         android:text="Mua ngay"
                         android:textAllCaps="false"
                         android:textColor="#FF80AB"
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:paddingHorizontal="20dp" />
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -498,7 +493,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
                         android:id="@+id/tvProductName1"
-                        android:text="Kem Chống Nắng Anthelios UV Mune 400"
+                        android:text="Serum Vitamin C Dưỡng Sáng Da"
                         android:textColor="#000000"
                         android:textSize="13sp"
                         android:textStyle="bold"
@@ -572,7 +567,7 @@
                             android:layout_height="match_parent"
                             android:scaleType="centerCrop"
                             android:background="@drawable/bg_variant_selector"
-                            android:src="@drawable/lo_roche_posay" />
+                            android:src="@drawable/cerave" />
 
                         <TextView
                             android:layout_width="wrap_content"
