@@ -46,22 +46,18 @@ public class MessageListActivity extends AppCompatActivity {
 
         tabOverview.setOnClickListener(v -> {
             setActiveTab(tabOverview);
-            // TODO: Navigate to overview screen
         });
 
         tabProducts.setOnClickListener(v -> {
             setActiveTab(tabProducts);
-            // TODO: Navigate to products screen
         });
 
         tabMessages.setOnClickListener(v -> {
             setActiveTab(tabMessages);
-            // TODO: Navigate to messages screen
         });
 
         tabProfile.setOnClickListener(v -> {
             setActiveTab(tabProfile);
-            // TODO: Navigate to profile screen
         });
     }
 
