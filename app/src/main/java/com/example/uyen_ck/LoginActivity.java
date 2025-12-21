@@ -47,14 +47,12 @@ public class LoginActivity extends AppCompatActivity {
             Log.i(TAG, "Đăng nhập thành công cho người dùng: " + username);
             Toast.makeText(this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
 
-            // Chuyển hướng đến Trang Chủ
             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
 
         } else {
-            // Xác thực thất bại
             Log.w(TAG, "Đăng nhập thất bại: Sai tên đăng nhập hoặc mật khẩu.");
             Toast.makeText(this, "Tên đăng nhập hoặc Mật khẩu không đúng. Vui lòng thử lại.", Toast.LENGTH_LONG).show();
         }

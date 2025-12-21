@@ -9,8 +9,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp">
-
-        <!-- Header -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,8 +27,6 @@
                 android:textSize="18sp"
                 android:textStyle="bold"/>
         </LinearLayout>
-
-        <!-- Image Upload Area -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="200dp"
@@ -46,8 +42,6 @@
                 android:backgroundTint="#FFF"
                 android:textColor="#000"/>
         </LinearLayout>
-
-        <!-- Form Fields -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
