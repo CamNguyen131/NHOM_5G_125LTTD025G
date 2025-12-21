@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFF5F9">
-
     <!-- Header -->
     <ImageButton
         android:id="@+id/btn_back"
@@ -17,7 +16,6 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp" />
-
     <TextView
         android:id="@+id/title"
         android:layout_width="0dp"
@@ -31,7 +29,6 @@
         app:layout_constraintBottom_toBottomOf="@id/btn_back"
         app:layout_constraintStart_toEndOf="@id/btn_back"
         app:layout_constraintEnd_toEndOf="parent" />
-
     <!-- Step Indicator -->
     <LinearLayout
         android:id="@+id/step_indicator"
@@ -48,13 +45,11 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical">
-
             <ImageView
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:src="@drawable/ic_check_circle"
                 app:tint="@color/pink"/>
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -63,20 +58,17 @@
                 android:textSize="12sp"
                 android:layout_marginStart="8dp" />
         </LinearLayout>
-
         <View
             android:layout_width="40dp"
             android:layout_height="2dp"
             android:background="#F48FB1"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp" />
-
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical">
-
             <TextView
                 android:layout_width="32dp"
                 android:layout_height="32dp"
@@ -85,7 +77,6 @@
                 android:textStyle="bold"
                 android:gravity="center"
                 android:background="@drawable/circle_pink" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -106,12 +97,10 @@
         app:layout_constraintBottom_toTopOf="@id/btn_back_bottom"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
             <!-- Địa chỉ cửa hàng -->
             <TextView
                 android:layout_width="wrap_content"
@@ -120,7 +109,6 @@
                 android:textColor="#8B4F5D"
                 android:textSize="14sp"
                 android:textStyle="bold" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -129,13 +117,11 @@
                 android:background="@drawable/input_background_white"
                 android:padding="12dp"
                 android:layout_marginTop="8dp">
-
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_location"
                     app:tint="@color/pink" />
-
                 <EditText
                     android:id="@+id/store_address"
                     android:layout_width="0dp"
@@ -147,7 +133,6 @@
                     android:background="@null"
                     android:layout_marginStart="12dp" />
             </LinearLayout>
-
             <!-- Mô tả cửa hàng -->
             <TextView
                 android:layout_width="wrap_content"
@@ -157,7 +142,6 @@
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:layout_marginTop="20dp" />
-
             <EditText
                 android:id="@+id/store_description"
                 android:layout_width="match_parent"
@@ -171,7 +155,6 @@
                 android:layout_marginTop="8dp"
                 android:inputType="textMultiLine"
                 android:maxLength="50" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -179,7 +162,6 @@
                 android:textColor="#9E9E9E"
                 android:textSize="12sp"
                 android:layout_marginTop="4dp" />
-
             <!-- Điều khoản người bán -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -188,13 +170,11 @@
                 app:cardCornerRadius="12dp"
                 app:cardBackgroundColor="#FFFEF0"
                 app:cardElevation="0dp">
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="16dp">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -202,7 +182,6 @@
                         android:textColor="#8B6914"
                         android:textSize="16sp"
                         android:textStyle="bold" />
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -210,7 +189,6 @@
                         android:textColor="#8B6914"
                         android:textSize="13sp"
                         android:layout_marginTop="8dp" />
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -218,7 +196,6 @@
                         android:textColor="#8B6914"
                         android:textSize="13sp"
                         android:layout_marginTop="4dp" />
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -226,7 +203,6 @@
                         android:textColor="#8B6914"
                         android:textSize="13sp"
                         android:layout_marginTop="4dp" />
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -236,17 +212,15 @@
                         android:layout_marginTop="4dp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
         </LinearLayout>
     </ScrollView>
-
     <!-- Bottom Buttons -->
     <Button
         android:id="@+id/btn_back_bottom"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:text="Quay lại"
-        android:textColor="#F48FB1"
+        android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
         android:background="@drawable/button_outline_pink"
@@ -256,7 +230,6 @@
         app:layout_constraintBottom_toTopOf="@id/btn_complete"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
     <Button
         android:id="@+id/btn_complete"
         android:layout_width="match_parent"
@@ -272,5 +245,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

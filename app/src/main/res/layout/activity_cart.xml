@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFAFAFA">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottom_action_bar_container"> <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Giỏ hàng (1 sản phẩm)"
+            android:textColor="#000"
+            android:textSize="19sp"
+            android:textStyle="bold" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/cbSelectAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Chọn tất cả (1/1)"
+                android:textColor="#666666"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="3dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <CheckBox
+                        android:id="@+id/cbSelectItem"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:checked="true" />
+
+                    <ImageView
+                        android:id="@+id/imgProduct"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="3dp"
+                        android:layout_toEndOf="@id/cbSelectItem"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/lo_roche_posay"
+                        app:srcCompat="@drawable/lo_roche_posay" />
+
+                    <LinearLayout
+                        android:id="@+id/layoutProductInfo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="12dp"
+                        android:layout_toStartOf="@+id/btnDelete"
+                        android:layout_toEndOf="@id/imgProduct"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="La Roche-Posay"
+                            android:textColor="#666"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Serum Vitamin C Dưỡng Sáng Da"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="850.000đ"
+                            android:textColor="#E91E63"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <ImageButton
+                        android:id="@+id/btnDelete"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="4dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@android:drawable/ic_menu_delete"
+                        android:contentDescription="Xóa sản phẩm khỏi giỏ hàng"/>
+                    <!-- Số lượng -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/layoutProductInfo"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <FrameLayout
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center">
+
+                            <ImageButton
+                                android:id="@+id/btnMinus"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/badge_pink"
+                                android:padding="3dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/ic_minus"
+                                android:contentDescription="Giảm số lượng"/>
+                        </FrameLayout>
+
+                        <TextView
+                            android:id="@+id/tvQuantity"
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="0dp"
+                            android:gravity="center"
+                            android:text="1"
+                            android:textColor="#000000"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <FrameLayout
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center">
+
+                            <ImageButton
+                                android:id="@+id/btnPlus"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/badge_pink"
+                                android:padding="3dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/ic_plus"
+                                android:contentDescription="Tăng số lượng"/>
+                        </FrameLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="3dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mã giảm giá"
+                    android:textColor="#E91E63"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/button_outline_pink"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:id="@+id/txtFreeshipCode"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="FREESHIP30 - Miễn phí vận chuyển"
+                        android:textColor="#E91E63" />
+
+                    <Button
+                        android:id="@+id/btnApplyCoupon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:background="@drawable/badge_pink"
+                        android:minWidth="88dp"
+                        android:minHeight="48dp"
+                        android:paddingHorizontal="24dp"
+                        android:text="Dùng"
+                        android:textAllCaps="false"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="Tạm tính (1 sản phẩm)"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/txtTamTinh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="850.000đ"
+                        android:textColor="#000"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="Phí vận chuyển"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/txtPhiVanChuyen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Miễn phí"
+                        android:textColor="#4CAF50"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Phí vận chuyển cho đơn hàng trên 500.000đ"
+                    android:textColor="#4CAF50"
+                    android:textSize="13sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <Space android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tổng cộng"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtTongTien"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="850.000đ"
+                        android:textColor="#E91E63"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="120dp" /> </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/bottom_action_bar_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="12dp"
+        android:background="@android:color/white"
+        android:elevation="8dp"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation_view" app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/btnCheckout"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/badge_pink"
+            android:text="Thanh toán (1 sản phẩm)"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        app:menu="@menu/bottom_nav_menu"
+        app:itemIconTint="@color/nav_item_color_selector"
+        app:itemTextColor="@color/nav_item_color_selector"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

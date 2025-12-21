@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="160dp"
+    android:viewportWidth="120"
+    android:viewportHeight="160">
+
+    <!-- Nền màu hồng nhạt -->
+    <path
+        android:fillColor="#FFF0F5"
+        android:pathData="M0,0h120v160H0z"/>
+
+    <!-- Overlay hồng nhẹ -->
+    <path
+        android:fillColor="#1AFF69B4"
+        android:pathData="M0,40h120v120H0z"/>
+
+    <!-- Viền bo tròn thay bằng rectangle rút gọn (Vector không hỗ trợ arc đầy đủ) -->
+    <path
+        android:strokeColor="#FF1493"
+        android:strokeWidth="4"
+        android:fillColor="@android:color/transparent"
+        android:pathData="M8,8h104v144h-104z"/>
+
+    <!-- Thân son -->
+    <path
+        android:fillColor="#FF1493"
+        android:pathData="M55,30h10v40h-10z"/>
+    <path
+        android:fillColor="#E91E63"
+        android:pathData="M58,72h4v8h-4z"/>
+
+    <!-- Đầu son -->
+    <path
+        android:fillColor="#FF69B4"
+        android:pathData="M52,25h16v5h-16z"/>
+
+    <!-- Nắp son -->
+    <path
+        android:fillColor="#C71585"
+        android:pathData="M55,18h10v4h-10z"/>
+
+    <!-- Decorative curve -->
+    <path
+        android:fillColor="#FFB6C1"
+        android:pathData="M20,100h80v30h-80z"/>
+
+    <!-- Text style icon “MAM ADE” -->
+    <path
+        android:fillColor="#FF1493"
+        android:pathData="M25,135h10l5,5l-5,5h-10l5,-5z"/>
+    <path
+        android:fillColor="#FF1493"
+        android:pathData="M45,135h10l5,5l-5,5h-10l5,-5z"/>
+    <path
+        android:fillColor="#FF1493"
+        android:pathData="M65,135h10l5,5l-5,5h-10l5,-5z"/>
+
+    <!-- Viền trang trí dưới -->
+    <path
+        android:fillColor="#FFD7E7"
+        android:pathData="M10,148h100v4h-100z"/>
+
+</vector>
