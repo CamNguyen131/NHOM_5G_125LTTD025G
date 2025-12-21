@@ -24,7 +24,7 @@
     <Button
         android:id="@+id/btnAdd"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginEnd="16dp"
         android:backgroundTint="#FF80AB"
         android:elevation="10dp"
@@ -82,9 +82,9 @@
         android:paddingHorizontal="16dp"
         app:layout_constraintTop_toBottomOf="@id/layoutStats">
 
-        <Button android:text="Tất cả" android:backgroundTint="#FF80AB" android:layout_width="wrap_content" android:layout_height="40dp" android:layout_marginEnd="8dp"/>
-        <Button android:text="Còn hàng" android:backgroundTint="#FFFFFF" android:textColor="#000" android:layout_width="wrap_content" android:layout_height="40dp" android:layout_marginEnd="8dp"/>
-        <Button android:text="Hết hàng" android:backgroundTint="#FFFFFF" android:textColor="#000" android:layout_width="wrap_content" android:layout_height="40dp"/>
+        <Button android:text="Tất cả" android:backgroundTint="#FF80AB" android:layout_width="wrap_content" android:layout_height="48dp" android:layout_marginEnd="8dp"/>
+        <Button android:text="Còn hàng" android:backgroundTint="#FFFFFF" android:textColor="#000" android:layout_width="wrap_content" android:layout_height="48dp" android:layout_marginEnd="8dp"/>
+        <Button android:text="Hết hàng" android:backgroundTint="#FFFFFF" android:textColor="#000" android:layout_width="wrap_content" android:layout_height="48dp"/>
     </LinearLayout>
 
     <!-- 5. DANH SÁCH SẢN PHẨM -->
@@ -389,19 +389,131 @@
         android:background="#FFF"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent">
-        <TextView android:text="Tổng quan" android:layout_weight="1" android:gravity="center" android:layout_width="0dp" android:layout_height="match_parent"/>
-        <TextView android:text="Sản phẩm" android:textColor="#FF80AB" android:textStyle="bold" android:layout_weight="1" android:gravity="center" android:layout_width="0dp" android:layout_height="match_parent"/>
-        <TextView
-            android:id="@+id/navMessage"
-            android:text="Tin nhắn"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:clickable="true"
-            android:focusable="true"
-            android:background="?attr/selectableItemBackground"/>
-        <TextView android:text="Cá nhân" android:layout_weight="1" android:gravity="center" android:layout_width="0dp" android:layout_height="match_parent"/>
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/bottom_nav_bar"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:background="#FFFFFF"
+            android:elevation="8dp"
+            android:weightSum="4">
 
+            <!-- Tab Tổng quan -->
+            <LinearLayout
+                android:id="@+id/tab_overview"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:id="@+id/ic_overview"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_overview"
+                    app:tint="#9E9E9E"/>
+
+                <TextView
+                    android:id="@+id/tv_overview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tổng quan"
+                    android:textSize="11sp"
+                    android:textColor="#9E9E9E"
+                    android:layout_marginTop="2dp"/>
+            </LinearLayout>
+
+            <!-- Tab Sản phẩm -->
+            <LinearLayout
+                android:id="@+id/tab_products"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:id="@+id/ic_products"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_products"
+                    app:tint="#9E9E9E"/>
+
+                <TextView
+                    android:id="@+id/tv_products"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sản phẩm"
+                    android:textSize="11sp"
+                    android:textColor="#9E9E9E"
+                    android:layout_marginTop="2dp"/>
+            </LinearLayout>
+
+            <!-- Tab Tin nhắn (đang chọn) -->
+            <LinearLayout
+                android:id="@+id/tab_messages"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="@drawable/bg_tab_selected">
+
+                <ImageView
+                    android:id="@+id/ic_messages"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_messages"
+                    app:tint="#E91E63"/>
+
+                <TextView
+                    android:id="@+id/tv_messages"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tin nhắn"
+                    android:textSize="11sp"
+                    android:textColor="#E91E63"
+                    android:layout_marginTop="2dp"/>
+            </LinearLayout>
+
+            <!-- Tab Cá nhân -->
+            <LinearLayout
+                android:id="@+id/tab_profile"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:id="@+id/ic_profile"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_profile"
+                    app:tint="#9E9E9E"/>
+
+                <TextView
+                    android:id="@+id/tv_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cá nhân"
+                    android:textSize="11sp"
+                    android:textColor="#9E9E9E"
+                    android:layout_marginTop="2dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

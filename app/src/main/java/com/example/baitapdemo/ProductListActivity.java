@@ -3,6 +3,7 @@ package com.example.baitapdemo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -21,26 +22,47 @@ public class ProductListActivity extends AppCompatActivity {
             btnAdd.setOnClickListener(v -> startActivity(new Intent(this, AddProductActivity.class)));
         }
 
-        // 2. Nút Tin nhắn
-        TextView navMessage = findViewById(R.id.navMessage);
-        if (navMessage != null) {
-            navMessage.setOnClickListener(v -> startActivity(new Intent(this, MessageListActivity.class)));
-        }
-
-        // 3. Click vào từng sản phẩm
+        // 2. Click vào từng sản phẩm
         setupProductClick(R.id.product1);
         setupProductClick(R.id.product2);
         setupProductClick(R.id.product3);
         setupProductClick(R.id.product4);
+
+        // 3. Bottom Navigation Bar - Updated to handle new navigation structure
+        setupBottomNavigation();
     }
 
     private void setupProductClick(int id) {
         LinearLayout product = findViewById(id);
         if (product != null) {
             product.setOnClickListener(v -> {
-                // Chuyển sang trang AddProductActivity để sửa (demo)
                 startActivity(new Intent(this, AddProductActivity.class));
             });
+        }
+    }
+
+    private void setupBottomNavigation() {
+        LinearLayout tabOverview = findViewById(R.id.tab_overview);
+        LinearLayout tabProducts = findViewById(R.id.tab_products);
+        LinearLayout tabMessages = findViewById(R.id.tab_messages);
+        LinearLayout tabProfile = findViewById(R.id.tab_profile);
+
+        if (tabOverview != null) {
+            tabOverview.setOnClickListener(v -> startActivity(new Intent(this, HomeActivity.class)));
+        }
+
+        if (tabProducts != null) {
+            tabProducts.setOnClickListener(v -> {
+                // Already on ProductListActivity, no action needed
+            });
+        }
+
+        if (tabMessages != null) {
+            tabMessages.setOnClickListener(v -> startActivity(new Intent(this, MessageListActivity.class)));
+        }
+
+        if (tabProfile != null) {
+            tabProfile.setOnClickListener(v -> startActivity(new Intent(this, MainActivity.class)));
         }
     }
 }

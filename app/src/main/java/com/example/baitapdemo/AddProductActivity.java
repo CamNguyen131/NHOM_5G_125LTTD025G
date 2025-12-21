@@ -1,6 +1,4 @@
 package com.example.baitapdemo;
-
-
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.Toast;

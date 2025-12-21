@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#FFF">
 
-    <!-- Header -->
+    <!-- Header (giữ nguyên như cũ) -->
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -16,12 +16,15 @@
         android:background="#FFF"
         android:elevation="2dp">
 
-        <!-- Nút Quay lại -->
         <LinearLayout
             android:id="@+id/btnBackChat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
+            android:minHeight="48dp"
+            android:minWidth="48dp"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="6dp"
             android:clickable="true"
             android:focusable="true"
             android:background="?attr/selectableItemBackground">
@@ -41,7 +44,6 @@
                 android:layout_height="wrap_content"/>
         </LinearLayout>
 
-        <!-- Avatar -->
         <TextView
             android:layout_width="40dp"
             android:layout_height="40dp"
@@ -53,7 +55,6 @@
             android:textSize="18sp"
             android:layout_marginStart="16dp"/>
 
-        <!-- Tên và Trạng thái -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -79,16 +80,144 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!-- Input Area (Bottom) -->
+    <!-- BOTTOM NAVIGATION THỦ CÔNG -->
+    <LinearLayout
+        android:id="@+id/bottom_nav_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="#FFFFFF"
+        android:elevation="8dp"
+        android:weightSum="4">
+
+        <!-- Tab Tổng quan -->
+        <LinearLayout
+            android:id="@+id/tab_overview"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground">
+
+            <ImageView
+                android:id="@+id/ic_overview"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_overview"
+                app:tint="#9E9E9E"/>
+
+            <TextView
+                android:id="@+id/tv_overview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tổng quan"
+                android:textSize="11sp"
+                android:textColor="#9E9E9E"
+                android:layout_marginTop="2dp"/>
+        </LinearLayout>
+
+        <!-- Tab Sản phẩm -->
+        <LinearLayout
+            android:id="@+id/tab_products"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground">
+
+            <ImageView
+                android:id="@+id/ic_products"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_products"
+                app:tint="#9E9E9E"/>
+
+            <TextView
+                android:id="@+id/tv_products"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sản phẩm"
+                android:textSize="11sp"
+                android:textColor="#9E9E9E"
+                android:layout_marginTop="2dp"/>
+        </LinearLayout>
+
+        <!-- Tab Tin nhắn (đang chọn) -->
+        <LinearLayout
+            android:id="@+id/tab_messages"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/bg_tab_selected">
+
+            <ImageView
+                android:id="@+id/ic_messages"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_messages"
+                app:tint="#E91E63"/>
+
+            <TextView
+                android:id="@+id/tv_messages"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tin nhắn"
+                android:textSize="11sp"
+                android:textColor="#E91E63"
+                android:layout_marginTop="2dp"/>
+        </LinearLayout>
+
+        <!-- Tab Cá nhân -->
+        <LinearLayout
+            android:id="@+id/tab_profile"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground">
+
+            <ImageView
+                android:id="@+id/ic_profile"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_profile"
+                app:tint="#9E9E9E"/>
+
+            <TextView
+                android:id="@+id/tv_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cá nhân"
+                android:textSize="11sp"
+                android:textColor="#9E9E9E"
+                android:layout_marginTop="2dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Input Area -->
     <LinearLayout
         android:id="@+id/inputArea"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@id/bottom_nav_bar"
         android:padding="16dp"
         android:background="#FFF"
         android:gravity="center_vertical"
-        android:elevation="8dp">
+        android:elevation="4dp">
 
         <EditText
             android:id="@+id/etMessage"
@@ -110,7 +239,7 @@
             android:layout_marginStart="12dp"/>
     </LinearLayout>
 
-    <!-- Thay RecyclerView bằng ScrollView + LinearLayout -->
+    <!-- Chat ScrollView -->
     <ScrollView
         android:id="@+id/scrollViewChat"
         android:layout_width="match_parent"

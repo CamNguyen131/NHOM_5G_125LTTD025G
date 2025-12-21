@@ -1,12 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#6200EE</color>
-    <color name="primary_pink">#F8BBD0</color>
-    <color name="text_pink">#E91E63</color>
-    <color name="bg_pink_light">#FFF0F5</color>
-    <color name="green_stock">#4CAF50</color>
-    <color name="gray_text">#757575</color>
-    <color name="yellow_star">#FFD700</color>
-    <color name="white">#FFFFFF</color>
-    <color name="black">#000000</color>
+    <color name="pink_primary">#FF69B4</color>
+    <color name="divider_color">#DDDDDD</color>
+    <color name="orange_secondary">#FFA500</color>
+    <color name="header_start">#FF7EB3</color>
+    <color name="header_end">#FF4F81</color>
+    <color name="bg_light_grey">#F2F2F2</color>
+    <color name="pink_light">#FFBBD4</color>
+    <color name="rounded_pink_bg">#FFE4EC</color>
+    <color name="splash_start">#FB7BA2</color>
+    <color name="splash_end">#FCE043</color>
+    <color name="text_color_secondary">#888888</color>
 </resources>
