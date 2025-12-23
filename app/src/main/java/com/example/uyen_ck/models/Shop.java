@@ -5,7 +5,7 @@ public class Shop {
     private String shopName; //
     private String shopPhone; //
     private double rating;
-    private String status; // "active", "pending", "locked"
+    private String status;
 
     public Shop() {}
 

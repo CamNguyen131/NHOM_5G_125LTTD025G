@@ -64,13 +64,10 @@ public class Product {
 
     public double getRating() { return rating; }
     public void setRating(double rating) { this.rating = rating; }
-
     public String getSellerId() { return sellerId; }
     public void setSellerId(String sellerId) { this.sellerId = sellerId; }
-
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
-
     public int getStock() { return stock; }
     public void setStock(int stock) { this.stock = stock; }
 

@@ -5,6 +5,5 @@ public class Message {
     private String content;
     private long timestamp;
     private String type;
-
     public Message() {}
 }

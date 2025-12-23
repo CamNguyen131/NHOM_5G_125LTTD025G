@@ -13,8 +13,6 @@ public class Order {
     private List<Map<String, Object>> items;
 
     public Order() {}
-
-    // Bổ sung các hàm này để sửa lỗi :92 đến :108 trong hình 6
     public String getOrderId() { return orderId; }
     public void setOrderId(String orderId) { this.orderId = orderId; }
 
@@ -29,7 +27,6 @@ public class Order {
 
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
-
     public long getCreatedAt() { return createdAt; }
     public void setCreatedAt(long createdAt) { this.createdAt = createdAt; }
 

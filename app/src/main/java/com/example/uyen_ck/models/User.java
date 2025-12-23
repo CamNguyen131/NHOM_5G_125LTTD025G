@@ -10,10 +10,9 @@ public class User {
     private String phoneNumber;
     private String role; // "buyer" hoặc "seller"
     private String avatarUrl;
-    private Map<String, Integer> stats; // orderCount, reviewCount, favoriteCount
+    private Map<String, Integer> stats;
     private List<Map<String, Object>> addresses;
     private long createdAt;
-
     public User() {} // Bắt buộc cho Firestore
 
     // Getters và Setters
