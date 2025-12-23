@@ -32,4 +32,5 @@ public class User {
     public void setAddresses(List<Map<String, Object>> addresses) { this.addresses = addresses; }
     public long getCreatedAt() { return createdAt; }
     public void setCreatedAt(long createdAt) { this.createdAt = createdAt; }
+    
 }

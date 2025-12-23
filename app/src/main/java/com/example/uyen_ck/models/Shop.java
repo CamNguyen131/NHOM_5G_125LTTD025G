@@ -5,7 +5,6 @@ public class Shop {
     private String shopPhone;
     private double rating;
     private String status;
-
     public Shop() {}
 
     public String getOwnerId() { return ownerId; }

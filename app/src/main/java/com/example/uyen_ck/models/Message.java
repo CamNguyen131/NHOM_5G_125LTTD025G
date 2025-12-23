@@ -5,4 +5,5 @@ public class Message {
     private long timestamp;
     private String type;
     public Message() {}
+
 }

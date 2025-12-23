@@ -72,4 +72,5 @@ public class Product {
     public void setStock(int stock) { this.stock = stock; }
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
+
 }

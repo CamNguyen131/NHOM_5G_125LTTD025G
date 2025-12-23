@@ -6,4 +6,5 @@ public class Chat {
     private String lastMessage;
     private long lastTimestamp;
     public Chat() {}
+
 }
