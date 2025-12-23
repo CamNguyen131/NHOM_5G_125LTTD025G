@@ -1,14 +1,13 @@
 package com.example.uyen_ck;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast; // Thêm import cho Toast nếu dùng
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,18 +16,59 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Xử lý click vào cài đặt
+        // --- 1. Xử lý các hàng TÀI KHOẢN & HỖ TRỢ ---
+        setupAccountRows();
+
+        // --- 2. Xử lý nút ĐĂNG XUẤT ---
+        setupLogoutButton();
+
+        // --- 3. Xử lý Bottom Navigation ---
+        setupBottomNavigation();
+    }
+
+    // Khối xử lý các hàng chức năng trong ScrollView
+    private void setupAccountRows() {
+        // Thông tin cá nhân
+        LinearLayout rowInfo = findViewById(R.id.rowInfo);
+        if (rowInfo != null) {
+            rowInfo.setOnClickListener(v -> {
+                //Intent intent = new Intent(MainActivity.this, PersonalInfoActivity.class);
+                //startActivity(intent);
+                Toast.makeText(MainActivity.this, "Chuyển đến Thông tin cá nhân", Toast.LENGTH_SHORT).show();
+            });
+        }
+
+        // Đăng ký bán hàng (btnSell) -> Chuyển đến ActivitySellerRegistration.class
+        LinearLayout btnSell = findViewById(R.id.btnSell);
+        if (btnSell != null) {
+            btnSell.setOnClickListener(v -> {
+                Intent intent = new Intent(MainActivity.this, activity_seller_registration.class);
+                startActivity(intent);
+            });
+        }
+
+        // Cài đặt (rowSetting) -> Chuyển đến SettingActivity.class
         LinearLayout rowSetting = findViewById(R.id.rowSetting);
-        rowSetting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        if (rowSetting != null) {
+            rowSetting.setOnClickListener(v -> {
                 Intent intent = new Intent(MainActivity.this, SettingActivity.class);
                 startActivity(intent);
-            }
-        });
+            });
+        }
+    }
 
-        // Xử lý bottom navigation
-        setupBottomNavigation();
+    private void setupLogoutButton() {
+        Button btnLogout = findViewById(R.id.btnLogout);
+        if (btnLogout != null) {
+            btnLogout.setOnClickListener(v -> {
+                // Xử lý logic đăng xuất (ví dụ: xóa token, chuyển về LoginActivity)
+                // Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                // startActivity(intent);
+                // finish();
+                Toast.makeText(MainActivity.this, "Đăng xuất thành công", Toast.LENGTH_SHORT).show();
+            });
+        }
     }
 
     private void setupBottomNavigation() {
@@ -37,40 +77,38 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout tabOrder = findViewById(R.id.tabOrder);
         LinearLayout tabAccount = findViewById(R.id.tabAccount);
 
-        // Tab Đơn hàng
-        tabOrder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        // Tab Trang chủ -> Chuyển đến HomeActivity.class
+        if (tabHome != null) {
+            tabHome.setOnClickListener(v -> {
+                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                startActivity(intent);
+                finish(); // Đóng Activity hiện tại nếu muốn Home là màn hình chính
+            });
+        }
+
+        // Tab Giỏ hàng -> Chuyển đến CartActivity.class
+        if (tabCart != null) {
+            tabCart.setOnClickListener(v -> {
+                Intent intent = new Intent(MainActivity.this, CartActivity.class);
+                startActivity(intent);
+                finish();
+            });
+        }
+
+        // Tab Đơn hàng -> Chuyển đến ListOrderActivity.class
+        if (tabOrder != null) {
+            tabOrder.setOnClickListener(v -> {
                 Intent intent = new Intent(MainActivity.this, ListOrderActivity.class);
                 startActivity(intent);
-            }
-        });
+                finish();
+            });
+        }
 
         // Tab Tài khoản (đã ở trang này nên không cần làm gì)
-        tabAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Đã ở trang tài khoản, không cần điều hướng
-            }
-        });
-
-        // Các tab khác có thể thêm tương tự
-        tabHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Điều hướng đến trang chủ
-                // Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-                // startActivity(intent);
-            }
-        });
-
-        tabCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Điều hướng đến giỏ hàng
-                // Intent intent = new Intent(MainActivity.this, CartActivity.class);
-                // startActivity(intent);
-            }
-        });
+        if (tabAccount != null) {
+            tabAccount.setOnClickListener(v -> {
+                // Không làm gì, đã ở MainActivity
+            });
+        }
     }
 }
