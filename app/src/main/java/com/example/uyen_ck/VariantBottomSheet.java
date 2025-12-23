@@ -78,11 +78,6 @@ public class VariantBottomSheet extends BottomSheetDialogFragment {
         intent.putExtra("variant", selectedVariant);
 
         // Gửi thêm dữ liệu sản phẩm nếu cần
-        if (getArguments() != null) {
-            intent.putExtra("productName", getArguments().getString("productName"));
-            intent.putExtra("quantity", getArguments().getInt("quantity"));
-            intent.putExtra("price", getArguments().getLong("price"));
-        }
 
         startActivity(intent);
 

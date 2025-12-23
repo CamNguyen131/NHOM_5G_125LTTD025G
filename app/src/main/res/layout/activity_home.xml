@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,17 +9,19 @@
     <!-- ===================== SCROLL CONTENT ===================== -->
     <ScrollView
         android:id="@+id/scrollView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:fillViewport="true"
-        android:layout_above="@id/bottomNav">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNav"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
             android:id="@+id/mainContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
 
             <!-- ===================== HEADER ===================== -->
             <LinearLayout
@@ -110,7 +112,6 @@
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
 
-
             <!-- ===================== BANNER ===================== -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -126,7 +127,6 @@
                     android:background="@drawable/bg_promo_gradient"
                     android:padding="16dp"
                     android:gravity="center_vertical">
-
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -150,7 +150,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="32dp"
                         android:layout_marginTop="8dp"
-
                         android:backgroundTint="#FDFBFB"
                         android:paddingHorizontal="20dp"
                         android:text="Mua ngay"
@@ -160,7 +159,6 @@
                         android:textStyle="bold" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
 
             <!-- ===================== DANH MỤC ===================== -->
             <LinearLayout
@@ -184,6 +182,7 @@
                     android:orientation="horizontal"
                     android:layout_marginTop="16dp">
 
+                    <!-- Các category items giữ nguyên -->
                     <LinearLayout
                         android:id="@+id/categoryFaceCare"
                         android:layout_width="0dp"
@@ -401,7 +400,6 @@
                 </LinearLayout>
             </LinearLayout>
 
-
             <!-- ===================== HÀNG MỚI VỀ ===================== -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -430,125 +428,126 @@
                     android:padding="8dp" />
             </LinearLayout>
 
-
             <!-- ===================== PRODUCT 1 ===================== -->
-
             <androidx.cardview.widget.CardView
                 android:id="@+id/productCard1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="2dp">
-
-            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="12dp">
-
-                <RelativeLayout
-                    android:layout_width="80dp"
-                    android:layout_height="80dp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:background="@drawable/bg_variant_selector"
-                        android:src="@drawable/lo_roche_posay" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="4dp"
-                        android:background="#FF80AB"
-                        android:paddingHorizontal="6dp"
-                        android:paddingVertical="2dp"
-                        android:text="-25%"
-                        android:textColor="#FFFFFF"
-                        android:textSize="10sp"
-                        android:textStyle="bold" />
-                </RelativeLayout>
+                android:layout_marginTop="12dp"
+                android:layout_marginHorizontal="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp">
 
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginStart="12dp"
-                    android:gravity="center_vertical">
+                    android:orientation="horizontal"
+                    android:padding="12dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="La Roche-Posay"
-                        android:textColor="#999999"
-                        android:textSize="11sp"
-                        android:maxLines="1"
-                        android:ellipsize="end" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
-                        android:id="@+id/tvProductName1"
-                        android:text="Serum Vitamin C Dưỡng Sáng Da"
-                        android:textColor="#000000"
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:maxLines="2"
-                        android:ellipsize="end" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:layout_marginTop="4dp">
+                    <RelativeLayout
+                        android:layout_width="80dp"
+                        android:layout_height="80dp">
 
                         <ImageView
-                            android:layout_width="12dp"
-                            android:layout_height="12dp"
-                            android:src="@drawable/ic_star"
-                            app:tint="#FF9800" />
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:background="@drawable/bg_variant_selector"
+                            android:src="@drawable/lo_roche_posay" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
-                            android:text="4.9"
+                            android:layout_margin="4dp"
+                            android:background="#FF80AB"
+                            android:paddingHorizontal="6dp"
+                            android:paddingVertical="2dp"
+                            android:text="-25%"
+                            android:textColor="#FFFFFF"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginStart="12dp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="La Roche-Posay"
+                            android:textColor="#999999"
+                            android:textSize="11sp"
+                            android:maxLines="1"
+                            android:ellipsize="end" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:id="@+id/tvProductName1"
+                            android:text="Serum Vitamin C Dưỡng Sáng Da"
                             android:textColor="#000000"
-                            android:textSize="12sp" />
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:maxLines="2"
+                            android:ellipsize="end" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginTop="4dp">
+
+                            <ImageView
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:src="@drawable/ic_star"
+                                app:tint="#FF9800" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:text="4.9"
+                                android:textColor="#000000"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="450.000đ"
+                            android:textColor="#FF80AB"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="450.000đ"
-                        android:textColor="#FF80AB"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                    <ImageButton
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@android:drawable/ic_menu_save"
+                        app:tint="#CCCCCC"
+                        android:contentDescription="Yêu thích" />
                 </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-                <ImageButton
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_gravity="center_vertical"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:src="@android:drawable/ic_menu_save"
-                    app:tint="#CCCCCC"
-                    android:contentDescription="Yêu thích" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-            <!-- ===================== PRODUCT 2 — FIXED ===================== -->
+            <!-- ===================== PRODUCT 2 ===================== -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/productCard2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="2dp">
 
@@ -653,13 +652,14 @@
         </LinearLayout>
     </ScrollView>
 
-
     <!-- ===================== BOTTOM NAVIGATION ===================== -->
     <LinearLayout
         android:id="@+id/bottomNav"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:background="#FFFFFF"
         android:elevation="16dp"
         android:orientation="horizontal"
@@ -770,4 +770,4 @@
         </LinearLayout>
     </LinearLayout>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

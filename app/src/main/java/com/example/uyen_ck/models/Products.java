@@ -1,6 +1,6 @@
 package com.example.uyen_ck.models;
 
-public class Product {
+public class Products {
     private String productId;
     private String name;
     private String brand;
@@ -16,12 +16,12 @@ public class Product {
     private String status;
 
     // Constructor mặc định cho Firestore
-    public Product() {}
+    public Products() {}
 
     // Constructor đầy đủ tham số
-    public Product(String productId, String name, String brand, double salePrice, double originalPrice,
-                   int discountPercentage, String categoryId, String imageUrl, double rating,
-                   String sellerId, String description, int stock, String status) {
+    public Products(String productId, String name, String brand, double salePrice, double originalPrice,
+                    int discountPercentage, String categoryId, String imageUrl, double rating,
+                    String sellerId, String description, int stock, String status) {
         this.productId = productId;
         this.name = name;
         this.brand = brand;

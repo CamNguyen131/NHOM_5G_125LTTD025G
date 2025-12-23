@@ -115,6 +115,7 @@
                     android:background="@drawable/bg_variant_selector"
                     android:hint="Số nhà, đường, phường/xã..."
                     android:padding="12dp"
+                    android:paddingLeft="5dp"
                     android:inputType="textPostalAddress" />
 
                 <!-- Ghi chú -->
@@ -138,12 +139,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:paddingLeft="50dp"
                 android:background="@android:color/white">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Phương thức thanh toán"
+                    android:paddingLeft="5dp"
                     android:textSize="17sp"
                     android:textStyle="bold"
                     android:textColor="#E91E63"
@@ -158,6 +161,7 @@
                     android:checked="true"
                     android:buttonTint="#E91E63"
                     android:padding="16dp"
+                    android:paddingLeft="5dp"
                     android:text="Thanh toán khi nhận hàng (COD)"
                     android:textSize="16sp" />
 
@@ -170,6 +174,7 @@
                     android:layout_height="wrap_content"
                     android:buttonTint="#E91E63"
                     android:padding="16dp"
+                    android:paddingLeft="5dp"
                     android:text="Thẻ tín dụng / Thẻ ghi nợ"
                     android:textSize="16sp" />
 
@@ -182,6 +187,7 @@
                     android:layout_height="wrap_content"
                     android:buttonTint="#E91E63"
                     android:padding="16dp"
+                    android:paddingLeft="10dp"
                     android:text="Chuyển khoản ngân hàng / Ví điện tử"
                     android:textSize="16sp" />
             </LinearLayout>

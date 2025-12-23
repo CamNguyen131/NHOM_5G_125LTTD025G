@@ -34,7 +34,7 @@ public class CheckoutActivity extends AppCompatActivity {
         btnBack.setOnClickListener(v -> finish());
     }
     private void updateTotal() {
-        long total = CartManager.getInstance().getTotalPrice();
+        long total = 850;
         String formatted = String.format("%,dđ", total);
         tvSubtotal.setText(formatted);
         tvTotal.setText(formatted);
