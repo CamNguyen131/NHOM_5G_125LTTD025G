@@ -1,9 +1,8 @@
 package com.example.uyen_ck.models;
-
 public class Shop {
     private String ownerId;
-    private String shopName; //
-    private String shopPhone; //
+    private String shopName;
+    private String shopPhone;
     private double rating;
     private String status;
 

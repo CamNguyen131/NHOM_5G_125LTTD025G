@@ -70,7 +70,6 @@ public class Product {
     public void setDescription(String description) { this.description = description; }
     public int getStock() { return stock; }
     public void setStock(int stock) { this.stock = stock; }
-
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
 }

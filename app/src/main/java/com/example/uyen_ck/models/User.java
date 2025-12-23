@@ -13,9 +13,7 @@ public class User {
     private Map<String, Integer> stats;
     private List<Map<String, Object>> addresses;
     private long createdAt;
-    public User() {} // Bắt buộc cho Firestore
-
-    // Getters và Setters
+    public User() {}
     public String getUid() { return uid; }
     public void setUid(String uid) { this.uid = uid; }
     public String getDisplayName() { return displayName; }

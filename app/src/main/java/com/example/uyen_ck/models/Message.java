@@ -1,5 +1,4 @@
 package com.example.uyen_ck.models;
-
 public class Message {
     private String senderId;
     private String content;
