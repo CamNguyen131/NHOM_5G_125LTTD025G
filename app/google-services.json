@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "571754089828",
+    "project_id": "mypham-c9d1e",
+    "storage_bucket": "mypham-c9d1e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:571754089828:android:4afe20d443767da5b1fe71",
+        "android_client_info": {
+          "package_name": "com.example.uyen_ck"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDYaGd0oO1lq3wUmJucFbCT7VmnKZbX_c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
