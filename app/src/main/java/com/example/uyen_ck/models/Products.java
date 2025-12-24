@@ -3,6 +3,7 @@ package com.example.uyen_ck.models;
 public class Products {
 
     private String productId;
+
     private String name;
     private String brand;
 
@@ -45,7 +46,7 @@ public class Products {
         this.stock = stock;
         this.status = status;
     }
-
+    @com.google.firebase.firestore.Exclude
     public String getProductId() { return productId; }
     public void setProductId(String productId) { this.productId = productId; }
 
@@ -84,4 +85,5 @@ public class Products {
 
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
+
 }
