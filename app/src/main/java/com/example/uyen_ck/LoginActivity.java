@@ -55,12 +55,19 @@ public class LoginActivity extends AppCompatActivity {
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-                        String uid = mAuth.getCurrentUser().getUid(); // Lấy UID sau khi đăng nhập thành công
-                        fetchUserData(uid); // Gọi hàm lấy dữ liệu người dùng
+                        String uid = mAuth.getCurrentUser().getUid();
+                        fetchUserData(uid);
                     } else {
-                        Toast.makeText(LoginActivity.this, "Lỗi: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                        Exception e = task.getException();
+                        Log.e(TAG, "Login failed", e);
+                        Toast.makeText(
+                                LoginActivity.this,
+                                "Đăng nhập thất bại: " + e.getMessage(),
+                                Toast.LENGTH_LONG
+                        ).show();
                     }
                 });
+
     }
 
     // Hàm lấy dữ liệu User và Addresses từ Firestore

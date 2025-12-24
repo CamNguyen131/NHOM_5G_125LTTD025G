@@ -1,5 +1,6 @@
 package com.example.uyen_ck;
-
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import android.os.Bundle;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +12,9 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import java.util.ArrayList;
 import java.util.List;
+import com.example.uyen_ck.adapters.CategoryAdapter;
+import com.example.uyen_ck.adapters.ProductAdapter;
+
 
 public class HomeActivity extends AppCompatActivity {
     private RecyclerView rvCategories, rvProducts;
@@ -25,27 +29,45 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         db = FirebaseFirestore.getInstance();
+
         rvCategories = findViewById(R.id.rvCategories);
         rvProducts = findViewById(R.id.rvProducts);
         tvUserName = findViewById(R.id.tvUserName);
         tvProductTitle = findViewById(R.id.tvProductTitle);
 
+        // ✅ FIX CRASH: LayoutManager
+        rvCategories.setLayoutManager(
+                new androidx.recyclerview.widget.LinearLayoutManager(
+                        this,
+                        androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL,
+                        false
+                )
+        );
+
+        rvProducts.setLayoutManager(
+                new androidx.recyclerview.widget.GridLayoutManager(this, 2)
+        );
+
         loadCategories();
-        loadProducts(null); // Load tất cả lúc khởi đầu
+        loadProducts(null);
     }
 
     private void loadCategories() {
         db.collection("categories").get().addOnSuccessListener(snapshots -> {
             categoryList.clear();
             categoryList.add(new Category("all", "Tất cả", ""));
+
             for (QueryDocumentSnapshot doc : snapshots) {
                 Category cat = doc.toObject(Category.class);
                 cat.setCategoryId(doc.getId());
                 categoryList.add(cat);
             }
-            // Khởi tạo CategoryAdapter và gán vào rvCategories tại đây
+
+            CategoryAdapter adapter = new CategoryAdapter(categoryList);
+            rvCategories.setAdapter(adapter);
         });
     }
+
 
     public void loadProducts(String catId) {
         Query query = db.collection("products");
@@ -58,12 +80,16 @@ public class HomeActivity extends AppCompatActivity {
 
         query.get().addOnSuccessListener(snapshots -> {
             productList.clear();
+
             for (QueryDocumentSnapshot doc : snapshots) {
                 Products p = doc.toObject(Products.class);
                 p.setProductId(doc.getId());
                 productList.add(p);
             }
-            // Khởi tạo/Cập nhật ProductAdapter và gán vào rvProducts tại đây
+
+            ProductAdapter productAdapter = new ProductAdapter(productList);
+            rvProducts.setAdapter(productAdapter);
         });
+
     }
 }
