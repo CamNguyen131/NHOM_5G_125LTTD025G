@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "127037299070",
+    "project_id": "gappmypham",
+    "storage_bucket": "gappmypham.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:127037299070:android:d51cc0c48343e033a6fb2f",
+        "android_client_info": {
+          "package_name": "com.example.activity"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmxcDFLdAF1npcUFM6rkvIRJ6rMxN62ys"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
