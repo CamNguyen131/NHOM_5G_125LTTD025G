@@ -1,86 +1,69 @@
 package com.example.uyen_ck;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
+import com.example.uyen_ck.models.Category;
+import com.example.uyen_ck.models.Products;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
-
-    private LinearLayout tabHome, tabCart, tabOrder, tabAccount;
+    private RecyclerView rvCategories, rvProducts;
+    private TextView tvUserName, tvProductTitle;
+    private FirebaseFirestore db;
+    private List<Products> productList = new ArrayList<>();
+    private List<Category> categoryList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        initBottomNavigation();
-        setupClickListeners();
+        db = FirebaseFirestore.getInstance();
+        rvCategories = findViewById(R.id.rvCategories);
+        rvProducts = findViewById(R.id.rvProducts);
+        tvUserName = findViewById(R.id.tvUserName);
+        tvProductTitle = findViewById(R.id.tvProductTitle);
+
+        loadCategories();
+        loadProducts(null); // Load tất cả lúc khởi đầu
     }
 
-    private void initBottomNavigation() {
-        tabHome    = findViewById(R.id.tabHome);
-        tabCart    = findViewById(R.id.tabCart);
-        tabOrder   = findViewById(R.id.tabOrder);
-        tabAccount = findViewById(R.id.tabAccount);
-
-        int colorPink = ContextCompat.getColor(this, R.color.pink_primary);
-        int colorGray = ContextCompat.getColor(this, android.R.color.darker_gray);
-
-        setTabColor(tabHome, colorPink);
-        setTabColor(tabCart, colorGray);
-        setTabColor(tabOrder, colorGray);
-        setTabColor(tabAccount, colorGray);
-
-        if (tabHome != null) {
-            tabHome.setBackgroundResource(R.drawable.gb_pink_light);
-        }
-    }
-    private void setupClickListeners() {
-        tabHome.setOnClickListener(v -> Toast.makeText(this, "Đã ở Trang chủ", Toast.LENGTH_SHORT).show());
-        tabCart.setOnClickListener(v -> startActivityAndFinish(CartActivity.class));
-        tabOrder.setOnClickListener(v -> startActivityAndFinish(ListOrderActivity.class));
-        tabAccount.setOnClickListener(v -> startActivityAndFinish(MainActivity.class));
-        findViewById(R.id.etSearch).setOnClickListener(v -> toast("Tìm kiếm"));
-        findViewById(R.id.btnNotification).setOnClickListener(v -> toast("Thông báo"));
-        findViewById(R.id.btnPromo).setOnClickListener(v -> toast("Flash Sale!"));
-        int[] categories = {R.id.categoryFaceCare, R.id.categoryMakeup, R.id.categoryHairCare,
-                R.id.categoryMore, R.id.categoryGift, R.id.categorySale, R.id.categoryNew};
-        for (int id : categories) {
-            findViewById(id).setOnClickListener(v -> toast("Mở danh mục"));
-        }
-        findViewById(R.id.btnViewAllNewProducts).setOnClickListener(v -> toast("Xem tất cả"));
-        findViewById(R.id.tvProductName1).setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, ProductDetailActivity.class);
-            intent.putExtra("product_id", "SP001");
-            intent.putExtra("product_name", "Kem Chống Nắng Anthelios UV Mune 400");
-            startActivity(intent);
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+    private void loadCategories() {
+        db.collection("categories").get().addOnSuccessListener(snapshots -> {
+            categoryList.clear();
+            categoryList.add(new Category("all", "Tất cả", ""));
+            for (QueryDocumentSnapshot doc : snapshots) {
+                Category cat = doc.toObject(Category.class);
+                cat.setCategoryId(doc.getId());
+                categoryList.add(cat);
+            }
+            // Khởi tạo CategoryAdapter và gán vào rvCategories tại đây
         });
     }
-    //
-    private void setTabColor(LinearLayout tab, int color) {
-        if (tab == null) return;
-        for (int i = 0; i < tab.getChildCount(); i++) {
-            View child = tab.getChildAt(i);
-            if (child instanceof ImageView) {
-                ((ImageView) child).setColorFilter(color);
-            } else if (child instanceof TextView) {
-                ((TextView) child).setTextColor(color);
-            }
+
+    public void loadProducts(String catId) {
+        Query query = db.collection("products");
+        if (catId != null && !catId.equals("all")) {
+            query = query.whereEqualTo("categoryId", catId);
+            tvProductTitle.setText("Kết quả lọc...");
+        } else {
+            tvProductTitle.setText("Tất cả sản phẩm");
         }
-    }
-    private void startActivityAndFinish(Class<?> cls) {
-        startActivity(new Intent(this, cls));
-        finish();
-        overridePendingTransition(0, 0);
-    }
-    private void toast(String msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+
+        query.get().addOnSuccessListener(snapshots -> {
+            productList.clear();
+            for (QueryDocumentSnapshot doc : snapshots) {
+                Products p = doc.toObject(Products.class);
+                p.setProductId(doc.getId());
+                productList.add(p);
+            }
+            // Khởi tạo/Cập nhật ProductAdapter và gán vào rvProducts tại đây
+        });
     }
 }

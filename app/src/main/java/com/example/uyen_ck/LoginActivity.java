@@ -8,49 +8,42 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.uyen_ck.models.User; // Import model User
+// 1. Thêm thư viện Firebase Auth
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore; // Thêm thư viện Firestore
 
 public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "LoginActivity";
-    private EditText etUsername;
+    private EditText etUsername; // Đây sẽ là Email
     private EditText etPassword;
     private Button btnLogin;
-    private TextView tvRegisterLink;  // THÊM DÒNG NÀY
 
+    // 2. Khai báo FirebaseAuth
     private FirebaseAuth mAuth;
-    private FirebaseFirestore db; // Khai báo Firestore
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        // 3. Khởi tạo Firebase Auth
         mAuth = FirebaseAuth.getInstance();
-        db = FirebaseFirestore.getInstance(); // Khởi tạo Firestore
+
+        Log.d(TAG, "onCreate: LoginActivity đã khởi tạo.");
 
         etUsername = findViewById(R.id.et_email_login);
         etPassword = findViewById(R.id.et_password_login);
         btnLogin = findViewById(R.id.btn_login);
-        tvRegisterLink = findViewById(R.id.tv_register_link);  // THÊM DÒNG NÀY
 
-        btnLogin.setOnClickListener(v -> handleLogin());
-
-        // THÊM PHẦN NÀY - Xử lý sự kiện nhấn vào "Đăng ký ngay"
-        tvRegisterLink.setOnClickListener(new View.OnClickListener() {
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
-                startActivity(intent);
+                handleLogin();
             }
         });
     }
@@ -64,45 +57,27 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
+        // 4. Sử dụng Firebase để đăng nhập
         mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, task -> {
-                    if (task.isSuccessful()) {
-                        String uid = mAuth.getCurrentUser().getUid(); // Lấy UID sau khi đăng nhập thành công
-                        fetchUserData(uid); // Gọi hàm lấy dữ liệu người dùng
-                    } else {
-                        Toast.makeText(LoginActivity.this, "Lỗi: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                });
-    }
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Xác thực thành công
+                            Log.i(TAG, "Đăng nhập thành công với Firebase: " + email);
+                            Toast.makeText(LoginActivity.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
 
-    // Hàm lấy dữ liệu User và Addresses từ Firestore
-    private void fetchUserData(String uid) {
-        db.collection("users").document(uid).get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                            // Map dữ liệu Firestore vào model User
-                            User user = document.toObject(User.class);
-                            if (user != null) {
-                                Log.d(TAG, "User Data: " + user.getDisplayName());
-                                // Bạn có thể lưu thông tin User vào Session/Global variable tại đây
-
-                                Toast.makeText(LoginActivity.this, "Chào mừng " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
-
-                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(intent);
-                                finish();
-                            }
-                        } else {
-                            Log.d(TAG, "Không tìm thấy dữ liệu người dùng trong Firestore.");
-                            // Chuyển hướng nếu không có profile nhưng đã đăng nhập Auth thành công
-                            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                            // Chuyển hướng đến Trang Chủ
+                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
                             finish();
+                        } else {
+                            // Nếu đăng nhập thất bại, thông báo lỗi từ Firebase (ví dụ: sai mật khẩu, sai định dạng email)
+                            Log.w(TAG, "Đăng nhập thất bại", task.getException());
+                            Toast.makeText(LoginActivity.this, "Lỗi: " + task.getException().getMessage(),
+                                    Toast.LENGTH_LONG).show();
                         }
-                    } else {
-                        Log.e(TAG, "Lỗi lấy Firestore: ", task.getException());
                     }
                 });
     }
