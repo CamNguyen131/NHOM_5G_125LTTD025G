@@ -10,6 +10,14 @@ public class Category {
 
     public Category() {}
 
+    // THÊM: Constructor có tham số để tạo item "Tất cả" hoặc khởi tạo nhanh
+    public Category(String categoryId, String name, String imageUrl) {
+        this.categoryId = categoryId;
+        this.name = name;
+        this.imageUrl = imageUrl;
+        this.active = true;
+    }
+
     public String getCategoryId() {
         return categoryId;
     }
