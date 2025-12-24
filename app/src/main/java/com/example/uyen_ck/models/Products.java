@@ -6,13 +6,13 @@ public class Products {
     private String brand;
     private double salePrice;
     private double originalPrice;
-    private int discountPercentage;
+    private double discountPercentage;
     private String categoryId;
     private String imageUrl;
     private double rating;
     private String sellerId;
     private String description;
-    private int stock;
+    private double stock;
     private String status;
 
     // Constructor mặc định cho Firestore
@@ -53,7 +53,7 @@ public class Products {
     public double getOriginalPrice() { return originalPrice; }
     public void setOriginalPrice(double originalPrice) { this.originalPrice = originalPrice; }
 
-    public int getDiscountPercentage() { return discountPercentage; }
+    public double getDiscountPercentage() { return discountPercentage; }
     public void setDiscountPercentage(int discountPercentage) { this.discountPercentage = discountPercentage; }
 
     public String getCategoryId() { return categoryId; }
@@ -68,7 +68,7 @@ public class Products {
     public void setSellerId(String sellerId) { this.sellerId = sellerId; }
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
-    public int getStock() { return stock; }
+    public double getStock() { return stock; }
     public void setStock(int stock) { this.stock = stock; }
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
