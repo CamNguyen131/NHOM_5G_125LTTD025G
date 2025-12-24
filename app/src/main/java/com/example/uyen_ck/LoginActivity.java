@@ -94,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
                         } else {
                             Log.d(TAG, "Không tìm thấy dữ liệu người dùng trong Firestore.");
                             // Chuyển hướng nếu không có profile nhưng đã đăng nhập Auth thành công
-                            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                            startActivity(new Intent(LoginActivity.this, ProductDetailActivity.class));
                             finish();
                         }
                     } else {

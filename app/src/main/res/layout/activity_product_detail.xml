@@ -71,9 +71,9 @@
                     android:id="@+id/imgProductLarge"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:contentDescription="Ảnh sản phẩm"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/lo_roche_posay"
-                    android:contentDescription="Ảnh sản phẩm" />
+                    android:src="@drawable/lo_roche_posay" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -164,6 +164,7 @@
                     android:layout_marginTop="12dp">
 
                     <TextView
+                        android:id="@+id/tvProductPrice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="850.000đ"
