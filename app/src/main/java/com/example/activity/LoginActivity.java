@@ -13,7 +13,6 @@ import android.widget.Toast;
  * Activity xử lý việc Đăng nhập/Đăng ký của người dùng.
  */
 public class LoginActivity extends AppCompatActivity {
-
     private static final String TAG = "LoginActivity";
     private EditText etUsername;
     private EditText etPassword;
