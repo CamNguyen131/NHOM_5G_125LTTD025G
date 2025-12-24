@@ -37,12 +37,10 @@ public class Products {
         this.stock = stock;
         this.status = status;
     }
-<<<<<<< HEAD
     @com.google.firebase.firestore.Exclude
-=======
+
 
     // --- BẮT BUỘC PHẢI CÓ GETTER VÀ SETTER ---
->>>>>>> 4c5779cca5b35e6c58556f8d4488ceade2ea26fc
     public String getProductId() { return productId; }
     public void setProductId(String productId) { this.productId = productId; }
 
@@ -78,8 +76,5 @@ public class Products {
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 4c5779cca5b35e6c58556f8d4488ceade2ea26fc
+

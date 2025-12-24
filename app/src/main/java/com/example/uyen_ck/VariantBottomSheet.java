@@ -70,6 +70,7 @@ public class VariantBottomSheet extends BottomSheetDialogFragment {
         return view;
     }
 
+    // Trong VariantBottomSheet.java
     private void onConfirm() {
         if (selectedView == null) {
             Toast.makeText(requireContext(), "Vui lòng chọn phân loại", Toast.LENGTH_SHORT).show();
@@ -77,27 +78,28 @@ public class VariantBottomSheet extends BottomSheetDialogFragment {
         }
 
         String selectedVariant = selectedView.getText().toString();
+        Bundle args = getArguments();
 
-        // Cập nhật vào CartManager
-        if (getArguments() != null) {
-            String name = getArguments().getString("productName");
-            int quantity = getArguments().getInt("quantity");
-            long price = getArguments().getLong("price");
+        if (args != null) {
+            String name = args.getString("productName");
+            int qty = args.getInt("quantity");
+            long pricePerItem = args.getLong("price");
+            String actionType = args.getString("actionType");
 
-            CartManager.getInstance().addItem(name, quantity, price);
-            Toast.makeText(requireContext(), "Đã thêm " + name + " (" + selectedVariant + ") vào giỏ hàng", Toast.LENGTH_SHORT).show();
+            if ("buy_now".equals(actionType)) {
+                Intent intent = new Intent(requireContext(), CheckoutActivity.class);
+                intent.putExtra("productName", name);
+                intent.putExtra("variant", selectedVariant);
+                intent.putExtra("quantity", qty);
+                intent.putExtra("price", pricePerItem);
+                startActivity(intent);
+            } else {
+                CartManager.getInstance().addItem(name, qty, pricePerItem);
+                Toast.makeText(requireContext(), "Đã thêm vào giỏ hàng", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(requireContext(), CartActivity.class);
+                startActivity(intent);
+            }
+            dismiss();
         }
-
-        // Chuyển sang màn hình Thanh toán (Checkout)
-        Intent intent = new Intent(requireContext(), CheckoutActivity.class);
-        intent.putExtra("variant", selectedVariant);
-        if (getArguments() != null) {
-            intent.putExtra("productName", getArguments().getString("productName"));
-            intent.putExtra("quantity", getArguments().getInt("quantity"));
-            intent.putExtra("price", getArguments().getLong("price"));
-        }
-
-        startActivity(intent);
-        dismiss();
     }
 }

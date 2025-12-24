@@ -76,6 +76,7 @@ public class ProductDetailActivity extends AppCompatActivity {
             }
         });
 
+        // Sự kiện Thêm vào giỏ (actionType = "add_to_cart")
         btnAddCart.setOnClickListener(v -> {
             if (currentProduct != null) {
                 VariantBottomSheet variantSheet = VariantBottomSheet.newInstance(
@@ -87,10 +88,35 @@ public class ProductDetailActivity extends AppCompatActivity {
                 variantSheet.show(getSupportFragmentManager(), "VariantBottomSheet");
             }
         });
+
+        // Trong hàm setupEvents() của ProductDetailActivity.java
+        btnBuyNow.setOnClickListener(v -> {
+            if (currentProduct != null) {
+                VariantBottomSheet variantSheet = VariantBottomSheet.newInstance(
+                        currentProduct.getName(),
+                        quantity, // Số lượng hiện tại trên UI
+                        (long) currentProduct.getSalePrice(),
+                        "buy_now" // Chỉ định hành động là mua ngay
+                );
+                variantSheet.show(getSupportFragmentManager(), "VariantBottomSheet");
+            }
+        });
     }
 
-    // Trong ProductDetailActivity.java
-    // Trong ProductDetailActivity.java
+    // Hàm dùng chung để mở BottomSheet chọn màu/size
+    private void openVariantSheet(String actionType) {
+        if (currentProduct != null) {
+            VariantBottomSheet variantSheet = VariantBottomSheet.newInstance(
+                    currentProduct.getName(),
+                    quantity,
+                    (long) currentProduct.getSalePrice(),
+                    actionType // Truyền "add_to_cart" hoặc "buy_now"
+            );
+            variantSheet.show(getSupportFragmentManager(), "VariantBottomSheet");
+        }
+    }
+
+
     private void loadProductDetail(String id) {
         // Truy vấn vào collection "products" với Document ID nhận được
         db.collection("products").document(id).get()
