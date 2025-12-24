@@ -78,14 +78,16 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tvOrderCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="12"
+                        android:text="0"
                         android:textColor="#FF6B87"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/labelOrder"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Đơn hàng"
@@ -101,17 +103,19 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tvProductCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="8"
+                        android:text="0"
                         android:textColor="#FF6B87"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/labelProduct"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Đánh giá"
+                        android:text="sản phẩm"
                         android:textColor="#888888"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -124,17 +128,19 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tvTotalAmount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="24"
+                        android:text="0"
                         android:textColor="#FF6B87"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/labelAmount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Yêu thích"
+                        android:text="Tổng chi"
                         android:textColor="#888888"
                         android:textSize="14sp" />
                 </LinearLayout>
