@@ -1,95 +1,58 @@
 package com.example.uyen_ck;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.GridLayoutManager;
+
 import android.os.Bundle;
-import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.uyen_ck.models.Category;
+
+import com.example.uyen_ck.adapters.ProductAdapter;
 import com.example.uyen_ck.models.Products;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+
 import java.util.ArrayList;
 import java.util.List;
-import com.example.uyen_ck.adapters.CategoryAdapter;
-import com.example.uyen_ck.adapters.ProductAdapter;
-
 
 public class HomeActivity extends AppCompatActivity {
-    private RecyclerView rvCategories, rvProducts;
-    private TextView tvUserName, tvProductTitle;
+
+    private RecyclerView rvProducts;
     private FirebaseFirestore db;
     private List<Products> productList = new ArrayList<>();
-    private List<Category> categoryList = new ArrayList<>();
+    private ProductAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        rvProducts = findViewById(R.id.rvProducts);
+        rvProducts.setLayoutManager(new GridLayoutManager(this, 2));
+
         db = FirebaseFirestore.getInstance();
 
-        rvCategories = findViewById(R.id.rvCategories);
-        rvProducts = findViewById(R.id.rvProducts);
-        tvUserName = findViewById(R.id.tvUserName);
-        tvProductTitle = findViewById(R.id.tvProductTitle);
+        adapter = new ProductAdapter(this, productList);
+        rvProducts.setAdapter(adapter);
 
-        // ✅ FIX CRASH: LayoutManager
-        rvCategories.setLayoutManager(
-                new androidx.recyclerview.widget.LinearLayoutManager(
-                        this,
-                        androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL,
-                        false
-                )
-        );
-
-        rvProducts.setLayoutManager(
-                new androidx.recyclerview.widget.GridLayoutManager(this, 2)
-        );
-
-        loadCategories();
-        loadProducts(null);
+        loadProducts();
     }
 
-    private void loadCategories() {
-        db.collection("categories").get().addOnSuccessListener(snapshots -> {
-            categoryList.clear();
-            categoryList.add(new Category("all", "Tất cả", ""));
+    private void loadProducts() {
+        db.collection("products").get()
+                .addOnSuccessListener(snapshots -> {
+                    productList.clear();
 
-            for (QueryDocumentSnapshot doc : snapshots) {
-                Category cat = doc.toObject(Category.class);
-                cat.setCategoryId(doc.getId());
-                categoryList.add(cat);
-            }
+                    for (QueryDocumentSnapshot doc : snapshots) {
+                        try {
+                            Products p = doc.toObject(Products.class);
+                            p.setProductId(doc.getId());
+                            productList.add(p);
+                        } catch (Exception e) {
+                            e.printStackTrace(); // nếu data bẩn → bỏ qua
+                        }
+                    }
 
-            CategoryAdapter adapter = new CategoryAdapter(categoryList);
-            rvCategories.setAdapter(adapter);
-        });
-    }
-
-
-    public void loadProducts(String catId) {
-        Query query = db.collection("products");
-        if (catId != null && !catId.equals("all")) {
-            query = query.whereEqualTo("categoryId", catId);
-            tvProductTitle.setText("Kết quả lọc...");
-        } else {
-            tvProductTitle.setText("Tất cả sản phẩm");
-        }
-
-        query.get().addOnSuccessListener(snapshots -> {
-            productList.clear();
-
-            for (QueryDocumentSnapshot doc : snapshots) {
-                Products p = doc.toObject(Products.class);
-                p.setProductId(doc.getId());
-                productList.add(p);
-            }
-
-            ProductAdapter productAdapter = new ProductAdapter(productList);
-            rvProducts.setAdapter(productAdapter);
-        });
-
+                    adapter.notifyDataSetChanged();
+                });
     }
 }

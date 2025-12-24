@@ -1,27 +1,36 @@
 package com.example.uyen_ck.models;
 
 public class Products {
+
     private String productId;
     private String name;
     private String brand;
+
     private double salePrice;
     private double originalPrice;
+
     private int discountPercentage;
     private String categoryId;
-    private String imageUrl;
+
+    private String imageUrl;   // CHƯA CÓ ẢNH → ""
+
     private double rating;
     private String sellerId;
     private String description;
+
     private int stock;
     private String status;
 
-    // Constructor mặc định cho Firestore
+    // 🔴 BẮT BUỘC cho Firestore
     public Products() {}
 
-    // Constructor đầy đủ tham số
-    public Products(String productId, String name, String brand, double salePrice, double originalPrice,
-                    int discountPercentage, String categoryId, String imageUrl, double rating,
-                    String sellerId, String description, int stock, String status) {
+    public Products(String productId, String name, String brand,
+                    double salePrice, double originalPrice,
+                    int discountPercentage, String categoryId,
+                    String imageUrl, double rating,
+                    String sellerId, String description,
+                    int stock, String status) {
+
         this.productId = productId;
         this.name = name;
         this.brand = brand;
@@ -37,7 +46,6 @@ public class Products {
         this.status = status;
     }
 
-    // --- BẮT BUỘC PHẢI CÓ GETTER VÀ SETTER ---
     public String getProductId() { return productId; }
     public void setProductId(String productId) { this.productId = productId; }
 
@@ -64,13 +72,16 @@ public class Products {
 
     public double getRating() { return rating; }
     public void setRating(double rating) { this.rating = rating; }
+
     public String getSellerId() { return sellerId; }
     public void setSellerId(String sellerId) { this.sellerId = sellerId; }
+
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
+
     public int getStock() { return stock; }
     public void setStock(int stock) { this.stock = stock; }
+
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
-
 }
