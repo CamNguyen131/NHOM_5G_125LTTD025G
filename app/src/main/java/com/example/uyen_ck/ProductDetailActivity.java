@@ -1,88 +1,119 @@
 package com.example.uyen_ck;
 
+import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import com.bumptech.glide.Glide;
-import com.example.uyen_ck.models.Products;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 public class ProductDetailActivity extends AppCompatActivity {
 
-    private ImageView ivProductImage;
-    private TextView tvProductName, tvProductPrice, tvDescription;
-    private ImageButton btnBack;
-    private FirebaseFirestore db;
-    private String productId;
+    private TextView tvQuantity, tvOldPrice, tvProductDescription, btnReadMore;
+    private TextView tvProductName;
+    private Button btnMinus, btnPlus, btnAddCart, btnBuyNow;
+    private ImageButton btnBack, btnHeart, btnChat;
+    private int quantity = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_detail);
 
-        // 1. Ánh xạ View
-        ivProductImage = findViewById(R.id.ivProductImage);
-        tvProductName = findViewById(R.id.tvProductName);
-        tvProductPrice = findViewById(R.id.tvProductPrice);
-        tvDescription = findViewById(R.id.tvDescription);
-        btnBack = findViewById(R.id.btnBack);
-
-        // 2. Khởi tạo Firebase Firestore
-        db = FirebaseFirestore.getInstance();
-
-        // 3. Nhận productId được gửi từ HomeActivity/ProductListActivity
-        productId = getIntent().getStringExtra("product_id");
-
-        if (productId != null) {
-            loadProductDetail(productId);
-        } else {
-            Toast.makeText(this, "Lỗi: Không tìm thấy ID sản phẩm!", Toast.LENGTH_SHORT).show();
-            finish();
-        }
-
-        // Nút quay lại màn hình trước
-        btnBack.setOnClickListener(v -> finish());
+        initViews();
+        setupEvents();
+        applyOldPriceStrike();
+        setupReadMoreToggle();
+        loadDataFromHome();
     }
 
-    private void loadProductDetail(String id) {
-        // Truy vấn Firestore vào collection "products" theo document ID
-        db.collection("products").document(id).get()
-                .addOnSuccessListener(documentSnapshot -> {
-                    if (documentSnapshot.exists()) {
-                        // Chuyển đổi dữ liệu từ Firestore sang Object Products
-                        Products product = documentSnapshot.toObject(Products.class);
-                        if (product != null) {
-                            displayData(product);
-                        }
-                    } else {
-                        Toast.makeText(this, "Sản phẩm không tồn tại!", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .addOnFailureListener(e -> {
-                    Toast.makeText(this, "Lỗi tải dữ liệu: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                });
+    private void initViews() {
+        // Các view có thật trong layout của bạn
+        tvQuantity = findViewById(R.id.tvQuantity);
+        tvOldPrice = findViewById(R.id.tvOldPrice);
+        tvProductDescription = findViewById(R.id.tvProductDescription);
+        btnReadMore = findViewById(R.id.btnReadMore);
+
+        tvProductName = findViewById(R.id.tvProductName); // <--- ĐÃ THÊM: Tìm TextView tên sản phẩm
+
+        btnAddCart = findViewById(R.id.btnAddCart);
+        btnBuyNow  = findViewById(R.id.btnBuyNow);
+
+        btnBack  = findViewById(R.id.btnBack);
+        btnHeart = findViewById(R.id.btnHeart);
+        btnChat  = findViewById(R.id.btnChat);
+
+        // Số lượng ban đầu
+        if (tvQuantity != null) tvQuantity.setText("1");
     }
 
-    private void displayData(Products product) {
-        tvProductName.setText(product.getName());
-        // Định dạng giá tiền (Ví dụ: 450000 -> 450.000đ)
-        tvProductPrice.setText(String.format("%,.0fđ", product.getOriginalPrice()));
+    private void setupEvents() {
+        // Back
+        if (btnBack != null) btnBack.setOnClickListener(v -> finish());
 
-        // Kiểm tra nếu có mô tả thì hiển thị, không thì để mặc định
-        if (product.getDescription() != null && !product.getDescription().isEmpty()) {
-            tvDescription.setText(product.getDescription());
+        // Yêu thích
+        if (btnHeart != null) btnHeart.setOnClickListener(v ->
+                Toast.makeText(this, "Đã thêm vào danh sách yêu thích", Toast.LENGTH_SHORT).show());
+
+        // Chat
+        if (btnChat != null) btnChat.setOnClickListener(v ->
+                Toast.makeText(this, "Mở trò chuyện với shop...", Toast.LENGTH_SHORT).show());
+
+        // Giảm số lượng
+        if (btnMinus != null) btnMinus.setOnClickListener(v -> {
+            if (quantity > 1) {
+                quantity--;
+                tvQuantity.setText(String.valueOf(quantity));
+            }
+        });
+
+        // Tăng số lượng
+        if (btnPlus != null) btnPlus.setOnClickListener(v -> {
+            quantity++;
+            tvQuantity.setText(String.valueOf(quantity));
+        });
+
+        // Thêm vào giỏ
+        if (btnAddCart != null) btnAddCart.setOnClickListener(v ->
+                Toast.makeText(this, "Đã thêm " + quantity + " sản phẩm vào giỏ hàng!", Toast.LENGTH_LONG).show());
+
+        // Mua ngay
+        if (btnBuyNow != null) btnBuyNow.setOnClickListener(v -> {
+            Toast.makeText(this, "Chuyển tới thanh toán " + quantity + " sản phẩm...", Toast.LENGTH_LONG).show();
+            // Sau này chuyển sang CheckoutActivity
+        });
+    }
+
+    // Gạch ngang giá cũ
+    private void applyOldPriceStrike() {
+        if (tvOldPrice != null) {
+            tvOldPrice.setPaintFlags(tvOldPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         }
+    }
 
-        // Sử dụng Glide để tải ảnh từ URL lưu trên Firebase
-        if (product.getImageUrl() != null && !product.getImageUrl().isEmpty()) {
-            Glide.with(this)
-                    .load(product.getImageUrl())
-                    .placeholder(R.drawable.placeholder_product)
-                    .error(R.drawable.lo_roche_posay) // Ảnh lỗi mặc định
-                    .into(ivProductImage);
+    // Xem thêm / Thu gọn mô tả
+    private void setupReadMoreToggle() {
+        if (btnReadMore == null || tvProductDescription == null) return;
+
+        btnReadMore.setOnClickListener(v -> {
+            if (tvProductDescription.getMaxLines() == 3) {
+                tvProductDescription.setMaxLines(100);
+                btnReadMore.setText("Thu gọn");
+            } else {
+                tvProductDescription.setMaxLines(3);
+                btnReadMore.setText("Xem thêm");
+            }
+        });
+    }
+
+    // <--- PHƯƠNG THỨC ĐÃ SỬA: Gán tên sản phẩm nhận được từ Intent
+    private void loadDataFromHome() {
+        String productName = getIntent().getStringExtra("product_name");
+
+        if (productName != null && !productName.isEmpty() && tvProductName != null) {
+            tvProductName.setText(productName);
         }
     }
 }
