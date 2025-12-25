@@ -10,6 +10,7 @@ import com.example.uyen_ck.models.CartDetail;
 import java.util.List;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
+
     private List<CartDetail> list;
     private OnCartUpdateListener listener;
 
@@ -25,32 +26,32 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_cart, parent, false);
+        View v = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_cart, parent, false);
         return new ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder h, int position) {
         CartDetail item = list.get(position);
-        holder.tvName.setText(item.getProductName());
-        holder.tvPrice.setText(String.format("%,.0fđ", item.getPrice()));
-        holder.tvQty.setText(String.valueOf(item.getQuantity()));
-        holder.tvBrand.setText(item.getVariant());
 
-        Glide.with(holder.itemView.getContext())
+        h.tvName.setText(item.getProductName());
+        h.tvPrice.setText(String.format("%,.0fđ", item.getPrice()));
+        h.tvQty.setText(String.valueOf(item.getQuantity()));
+        h.tvBrand.setText(item.getVariant());
+
+        Glide.with(h.itemView.getContext())
                 .load(item.getProductImage())
                 .placeholder(R.drawable.lo_roche_posay)
-                .into(holder.imgProduct);
+                .into(h.imgProduct);
 
-        // Sự kiện Tăng số lượng
-        holder.btnPlus.setOnClickListener(v -> {
+        h.btnPlus.setOnClickListener(v -> {
             item.setQuantity(item.getQuantity() + 1);
             listener.onUpdate(list);
             notifyItemChanged(position);
         });
 
-        // Sự kiện Giảm số lượng
-        holder.btnMinus.setOnClickListener(v -> {
+        h.btnMinus.setOnClickListener(v -> {
             if (item.getQuantity() > 1) {
                 item.setQuantity(item.getQuantity() - 1);
                 listener.onUpdate(list);
@@ -58,8 +59,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
             }
         });
 
-        // Sự kiện Xóa sản phẩm
-        holder.btnDelete.setOnClickListener(v -> {
+        h.btnDelete.setOnClickListener(v -> {
             list.remove(position);
             listener.onUpdate(list);
             notifyDataSetChanged();
@@ -67,14 +67,16 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     }
 
     @Override
-    public int getItemCount() { return list.size(); }
+    public int getItemCount() {
+        return list.size();
+    }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgProduct;
         TextView tvName, tvPrice, tvQty, tvBrand;
         ImageButton btnPlus, btnMinus, btnDelete;
 
-        public ViewHolder(@NonNull View v) {
+        ViewHolder(View v) {
             super(v);
             imgProduct = v.findViewById(R.id.imgProduct);
             tvName = v.findViewById(R.id.tvProductName);

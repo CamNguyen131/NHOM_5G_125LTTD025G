@@ -1,23 +1,35 @@
 package com.example.uyen_ck;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.bumptech.glide.Glide;
 import com.example.uyen_ck.models.Products;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ProductDetailActivity extends AppCompatActivity {
 
     private ImageView imgProductLarge;
-    private TextView tvProductName, tvProductPrice, tvOldPrice, tvProductDescription, tvQuantity;
-    private ImageButton btnBack, btnMinus, btnPlus, btnChat, btnHeart;
+    private TextView tvProductName, tvProductPrice, tvOldPrice,
+            tvProductDescription, tvQuantity;
+    private ImageButton btnBack, btnMinus, btnPlus;
     private Button btnAddCart, btnBuyNow;
+
     private FirebaseFirestore db;
     private String productId;
     private Products currentProduct;
@@ -29,22 +41,21 @@ public class ProductDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_product_detail);
 
         initViews();
+        setupEvents();
+
         db = FirebaseFirestore.getInstance();
 
-        // Lấy productId từ Intent - Đảm bảo bên gửi dùng đúng key "product_id"
         productId = getIntent().getStringExtra("product_id");
-        Log.d("DEBUG_DETAIL", "Received Product ID: " + productId);
-        Log.d("DEBUG_ID", "ID nhan duoc: " + productId);
-        if (productId != null && !productId.isEmpty()) {
-            loadProductDetail(productId);
-        } else {
-            Toast.makeText(this, "Lỗi: Không nhận được ID sản phẩm!", Toast.LENGTH_SHORT).show();
+        if (productId == null || productId.isEmpty()) {
+            Toast.makeText(this, "Không nhận được ID sản phẩm", Toast.LENGTH_SHORT).show();
             finish();
+            return;
         }
 
-        setupEvents();
+        loadProductDetail();
     }
 
+    // ================= INIT VIEW =================
     private void initViews() {
         imgProductLarge = findViewById(R.id.imgProductLarge);
         tvProductName = findViewById(R.id.tvProductName);
@@ -52,16 +63,17 @@ public class ProductDetailActivity extends AppCompatActivity {
         tvOldPrice = findViewById(R.id.tvOldPrice);
         tvProductDescription = findViewById(R.id.tvProductDescription);
         tvQuantity = findViewById(R.id.tvQuantity);
+
         btnBack = findViewById(R.id.btnBack);
         btnMinus = findViewById(R.id.btnMinus);
         btnPlus = findViewById(R.id.btnPlus);
-        btnChat = findViewById(R.id.btnChat);
-        btnHeart = findViewById(R.id.btnHeart);
         btnAddCart = findViewById(R.id.btnAddCart);
         btnBuyNow = findViewById(R.id.btnBuyNow);
     }
 
+    // ================= EVENTS =================
     private void setupEvents() {
+
         btnBack.setOnClickListener(v -> finish());
 
         btnPlus.setOnClickListener(v -> {
@@ -76,85 +88,105 @@ public class ProductDetailActivity extends AppCompatActivity {
             }
         });
 
-        // Sự kiện Thêm vào giỏ (actionType = "add_to_cart")
-        btnAddCart.setOnClickListener(v -> {
-            if (currentProduct != null) {
-                VariantBottomSheet variantSheet = VariantBottomSheet.newInstance(
-                        currentProduct.getName(),
-                        quantity,
-                        (long) currentProduct.getSalePrice(),
-                        "add_to_cart"
-                );
-                variantSheet.show(getSupportFragmentManager(), "VariantBottomSheet");
-            }
-        });
+        btnAddCart.setOnClickListener(v -> openVariantSheet("add_to_cart"));
 
-        // Trong hàm setupEvents() của ProductDetailActivity.java
-        btnBuyNow.setOnClickListener(v -> {
-            if (currentProduct != null) {
-                VariantBottomSheet variantSheet = VariantBottomSheet.newInstance(
-                        currentProduct.getName(),
-                        quantity, // Số lượng hiện tại trên UI
-                        (long) currentProduct.getSalePrice(),
-                        "buy_now" // Chỉ định hành động là mua ngay
-                );
-                variantSheet.show(getSupportFragmentManager(), "VariantBottomSheet");
-            }
-        });
+        btnBuyNow.setOnClickListener(v -> openVariantSheet("buy_now"));
     }
 
-    // Hàm dùng chung để mở BottomSheet chọn màu/size
+    // ================= LOAD PRODUCT =================
+    private void loadProductDetail() {
+        db.collection("products")
+                .document(productId)
+                .get()
+                .addOnSuccessListener(this::handleProductResult)
+                .addOnFailureListener(e ->
+                        Toast.makeText(this, "Lỗi tải sản phẩm", Toast.LENGTH_SHORT).show()
+                );
+    }
+
+    private void handleProductResult(DocumentSnapshot doc) {
+        if (!doc.exists()) {
+            Toast.makeText(this, "Sản phẩm không tồn tại", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
+
+        currentProduct = doc.toObject(Products.class);
+        if (currentProduct == null) return;
+
+        currentProduct.setProductId(doc.getId());
+        displayData();
+    }
+
+    // ================= DISPLAY =================
+    private void displayData() {
+        tvProductName.setText(currentProduct.getName());
+        tvProductPrice.setText(String.format("%,.0fđ", currentProduct.getSalePrice()));
+        tvOldPrice.setText(String.format("%,.0fđ", currentProduct.getOriginalPrice()));
+        tvProductDescription.setText(currentProduct.getDescription());
+
+        Glide.with(this)
+                .load(currentProduct.getImageUrl())
+                .placeholder(R.drawable.lo_roche_posay)
+                .error(R.drawable.lo_roche_posay)
+                .into(imgProductLarge);
+    }
+
+    // ================= VARIANT =================
     private void openVariantSheet(String actionType) {
-        if (currentProduct != null) {
-            VariantBottomSheet variantSheet = VariantBottomSheet.newInstance(
-                    currentProduct.getName(),
-                    quantity,
-                    (long) currentProduct.getSalePrice(),
-                    actionType // Truyền "add_to_cart" hoặc "buy_now"
-            );
-            variantSheet.show(getSupportFragmentManager(), "VariantBottomSheet");
-        }
+        VariantBottomSheet sheet = VariantBottomSheet.newInstance(
+                currentProduct,
+                quantity,
+                actionType
+        );
+        sheet.show(getSupportFragmentManager(), "VariantBottomSheet");
     }
-    private void loadProductDetail(String id) {
-        // Truy vấn vào collection "products" với Document ID nhận được
-        db.collection("products").document(id).get()
-                .addOnSuccessListener(documentSnapshot -> {
-                    if (documentSnapshot.exists()) {
-                        // Chuyển đổi dữ liệu từ Firestore sang Object Products
-                        currentProduct = documentSnapshot.toObject(Products.class);
-                        if (currentProduct != null) {
-                            currentProduct.setProductId(documentSnapshot.getId());
-                            displayData(currentProduct);
-                        }
+
+    // ================= ADD TO CART (được gọi từ BottomSheet) =================
+    public void addToCart(Products product, int quantity, String variant) {
+
+        String userId = FirebaseAuth.getInstance().getCurrentUser() != null
+                ? FirebaseAuth.getInstance().getCurrentUser().getUid()
+                : "user_03";
+
+        String cartId = "cart_user_" + userId;
+
+        Map<String, Object> item = new HashMap<>();
+        item.put("productId", product.getProductId());
+        item.put("productName", product.getName());
+        item.put("productImage", product.getImageUrl());
+        item.put("variant", variant);
+        item.put("quantity", quantity);
+        item.put("price", product.getSalePrice());
+
+        db.collection("carts")
+                .document(cartId)
+                .get()
+                .addOnSuccessListener(doc -> {
+                    if (doc.exists()) {
+                        db.collection("carts")
+                                .document(cartId)
+                                .update(
+                                        "items", FieldValue.arrayUnion(item),
+                                        "updatedAt", System.currentTimeMillis()
+                                );
                     } else {
-                        Log.e("FIRESTORE", "Sản phẩm không tồn tại với ID: " + id);
-                        Toast.makeText(this, "Không tìm thấy thông tin sản phẩm!", Toast.LENGTH_SHORT).show();
+                        List<Map<String, Object>> items = new ArrayList<>();
+                        items.add(item);
+
+                        Map<String, Object> cart = new HashMap<>();
+                        cart.put("cartId", cartId);
+                        cart.put("userId", userId);
+                        cart.put("items", items);
+                        cart.put("updatedAt", System.currentTimeMillis());
+
+                        db.collection("carts")
+                                .document(cartId)
+                                .set(cart);
                     }
-                })
-                .addOnFailureListener(e -> {
-                    Toast.makeText(this, "Lỗi kết nối: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+
+                    Toast.makeText(this, "Đã thêm vào giỏ hàng", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(this, CartActivity.class));
                 });
-    }
-
-    private void displayData(Products product) {
-        // Đổ dữ liệu vào giao diện đã ánh xạ trong initViews()
-        tvProductName.setText(product.getName());
-
-        // Định dạng giá tiền (Ví dụ: 850000 -> 850.000đ)
-        tvProductPrice.setText(String.format("%,.0fđ", product.getSalePrice()));
-        tvOldPrice.setText(String.format("%,.0fđ", product.getOriginalPrice()));
-
-        // Hiển thị mô tả sản phẩm
-        if (product.getDescription() != null && !product.getDescription().isEmpty()) {
-            tvProductDescription.setText(product.getDescription());
-        }
-
-        // Sử dụng Glide để tải ảnh sản phẩm từ URL
-        if (product.getImageUrl() != null && !product.getImageUrl().isEmpty()) {
-            Glide.with(this)
-                    .load(product.getImageUrl())
-                    .error(R.drawable.lo_roche_posay)
-                    .into(imgProductLarge);
-        }
     }
 }
