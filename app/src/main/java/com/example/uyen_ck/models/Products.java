@@ -2,6 +2,7 @@ package com.example.uyen_ck.models;
 
 public class Products {
     private String productId;
+
     private String name;
     private String brand;
     private double salePrice;
@@ -36,6 +37,8 @@ public class Products {
         this.stock = stock;
         this.status = status;
     }
+    @com.google.firebase.firestore.Exclude
+
 
     // --- BẮT BUỘC PHẢI CÓ GETTER VÀ SETTER ---
     public String getProductId() { return productId; }
@@ -74,3 +77,4 @@ public class Products {
     public void setStatus(String status) { this.status = status; }
 
 }
+

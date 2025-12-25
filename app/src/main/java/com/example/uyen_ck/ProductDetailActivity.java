@@ -76,6 +76,10 @@ public class ProductDetailActivity extends AppCompatActivity {
             }
         });
 
+<<<<<<< HEAD
+=======
+        // Sự kiện Thêm vào giỏ (actionType = "add_to_cart")
+>>>>>>> 30f886b63bc06a8fa90592de5becf9936ec3a308
         btnAddCart.setOnClickListener(v -> {
             if (currentProduct != null) {
                 VariantBottomSheet variantSheet = VariantBottomSheet.newInstance(
@@ -85,10 +89,27 @@ public class ProductDetailActivity extends AppCompatActivity {
                         "add_to_cart"
                 );
                 variantSheet.show(getSupportFragmentManager(), "VariantBottomSheet");
+<<<<<<< HEAD
+=======
+            }
+        });
+
+        // Trong hàm setupEvents() của ProductDetailActivity.java
+        btnBuyNow.setOnClickListener(v -> {
+            if (currentProduct != null) {
+                VariantBottomSheet variantSheet = VariantBottomSheet.newInstance(
+                        currentProduct.getName(),
+                        quantity, // Số lượng hiện tại trên UI
+                        (long) currentProduct.getSalePrice(),
+                        "buy_now" // Chỉ định hành động là mua ngay
+                );
+                variantSheet.show(getSupportFragmentManager(), "VariantBottomSheet");
+>>>>>>> 30f886b63bc06a8fa90592de5becf9936ec3a308
             }
         });
     }
 
+<<<<<<< HEAD
     // Trong ProductDetailActivity.java
     private void loadProductDetail(String id) {
         // Lưu ý: "products" phải viết thường nếu trong Firestore bạn đặt tên collection là chữ thường
@@ -119,6 +140,62 @@ public class ProductDetailActivity extends AppCompatActivity {
             Glide.with(this)
                     .load(product.getImageUrl())
                     .placeholder(R.drawable.lo_roche_posay)
+=======
+    // Hàm dùng chung để mở BottomSheet chọn màu/size
+    private void openVariantSheet(String actionType) {
+        if (currentProduct != null) {
+            VariantBottomSheet variantSheet = VariantBottomSheet.newInstance(
+                    currentProduct.getName(),
+                    quantity,
+                    (long) currentProduct.getSalePrice(),
+                    actionType // Truyền "add_to_cart" hoặc "buy_now"
+            );
+            variantSheet.show(getSupportFragmentManager(), "VariantBottomSheet");
+        }
+    }
+
+
+    private void loadProductDetail(String id) {
+        // Truy vấn vào collection "products" với Document ID nhận được
+        db.collection("products").document(id).get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        // Chuyển đổi dữ liệu từ Firestore sang Object Products
+                        currentProduct = documentSnapshot.toObject(Products.class);
+                        if (currentProduct != null) {
+                            currentProduct.setProductId(documentSnapshot.getId());
+                            displayData(currentProduct);
+                        }
+                    } else {
+                        Log.e("FIRESTORE", "Sản phẩm không tồn tại với ID: " + id);
+                        Toast.makeText(this, "Không tìm thấy thông tin sản phẩm!", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "Lỗi kết nối: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
+    }
+
+    private void displayData(Products product) {
+        // Đổ dữ liệu vào giao diện đã ánh xạ trong initViews()
+        tvProductName.setText(product.getName());
+
+        // Định dạng giá tiền (Ví dụ: 850000 -> 850.000đ)
+        tvProductPrice.setText(String.format("%,.0fđ", product.getSalePrice()));
+        tvOldPrice.setText(String.format("%,.0fđ", product.getOriginalPrice()));
+
+        // Hiển thị mô tả sản phẩm
+        if (product.getDescription() != null && !product.getDescription().isEmpty()) {
+            tvProductDescription.setText(product.getDescription());
+        }
+
+        // Sử dụng Glide để tải ảnh sản phẩm từ URL
+        if (product.getImageUrl() != null && !product.getImageUrl().isEmpty()) {
+            Glide.with(this)
+                    .load(product.getImageUrl())
+                    .placeholder(R.drawable.lo_roche_posay) // Ảnh tạm trong khi chờ tải
+                    .error(R.drawable.lo_roche_posay)      // Ảnh khi lỗi tải
+>>>>>>> 30f886b63bc06a8fa90592de5becf9936ec3a308
                     .into(imgProductLarge);
         }
     }

@@ -70,6 +70,7 @@ public class VariantBottomSheet extends BottomSheetDialogFragment {
         return view;
     }
 
+    // Trong VariantBottomSheet.java
     private void onConfirm() {
         if (selectedView == null) {
             Toast.makeText(requireContext(), "Vui lòng chọn phân loại", Toast.LENGTH_SHORT).show();
@@ -77,7 +78,9 @@ public class VariantBottomSheet extends BottomSheetDialogFragment {
         }
 
         String selectedVariant = selectedView.getText().toString();
+        Bundle args = getArguments();
 
+<<<<<<< HEAD
         // Cập nhật vào CartManager
         if (getArguments() != null) {
             String name = getArguments().getString("productName");
@@ -99,5 +102,28 @@ public class VariantBottomSheet extends BottomSheetDialogFragment {
 
         startActivity(intent);
         dismiss();
+=======
+        if (args != null) {
+            String name = args.getString("productName");
+            int qty = args.getInt("quantity");
+            long pricePerItem = args.getLong("price");
+            String actionType = args.getString("actionType");
+
+            if ("buy_now".equals(actionType)) {
+                Intent intent = new Intent(requireContext(), CheckoutActivity.class);
+                intent.putExtra("productName", name);
+                intent.putExtra("variant", selectedVariant);
+                intent.putExtra("quantity", qty);
+                intent.putExtra("price", pricePerItem);
+                startActivity(intent);
+            } else {
+                CartManager.getInstance().addItem(name, qty, pricePerItem);
+                Toast.makeText(requireContext(), "Đã thêm vào giỏ hàng", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(requireContext(), CartActivity.class);
+                startActivity(intent);
+            }
+            dismiss();
+        }
+>>>>>>> 30f886b63bc06a8fa90592de5becf9936ec3a308
     }
 }
