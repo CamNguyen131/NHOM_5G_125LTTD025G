@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <!-- Header -->
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:elevation="4dp"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/avatar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/bg_circle_red"
+            android:contentDescription="Avatar"
+            android:padding="10dp"
+            android:src="@drawable/ic_store" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="12dp"
+            android:layout_toEndOf="@id/avatar"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/shopName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="La Roche-Posay Official"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đang hoạt động"
+                android:textColor="#999999"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/closeButton"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="Close"
+            android:src="@drawable/close" />
+    </RelativeLayout>
+
+    <!-- Product Banner -->
+    <LinearLayout
+        android:id="@+id/productBanner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header"
+        android:background="#FCE4EC"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sản phẩm đang xem:"
+            android:textColor="#666666"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Serum Vitamin C Dưỡng Sáng Da"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Chat Messages -->
+    <ScrollView
+        android:id="@+id/chatScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/inputLayout"
+        android:layout_below="@id/productBanner"
+        android:padding="16dp">
+
+        <!-- CHỈ 1 CON DUY NHẤT -->
+        <LinearLayout
+            android:id="@+id/messageContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Review Card -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="⭐⭐⭐⭐⭐ Đánh giá sản phẩm"
+                    android:textColor="#F9A825"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Sản phẩm rất tốt, em đã dùng 2 tuần và thấy da sáng lên."
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="2 ngày trước"
+                    android:textColor="#999999"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+    <!-- Input Layout -->
+    <LinearLayout
+        android:id="@+id/inputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF"
+        android:elevation="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <EditText
+            android:id="@+id/messageInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:layout_weight="1"
+            android:background="@drawable/input_background"
+            android:hint="Nhập tin nhắn..."
+            android:inputType="textMultiLine"
+            android:maxLines="4"
+            android:gravity="top|start"
+            android:padding="12dp"
+            android:textColor="#000000"
+            android:textColorHint="#999999"
+            android:textSize="14sp"/>
+
+        <ImageView
+            android:id="@+id/sendButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:contentDescription="Send"
+            android:padding="10dp"
+            android:src="@drawable/send" />
+    </LinearLayout>
+
+</RelativeLayout>

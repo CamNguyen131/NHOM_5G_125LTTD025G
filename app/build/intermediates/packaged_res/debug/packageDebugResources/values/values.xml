@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_light_grey">#F5F5F5</color>
+    <color name="black">#FF000000</color>
+    <color name="card_background">#FFFFFF</color>
+    <color name="discount_tag_red">#FF4500</color>
+    <color name="divider_color">#E0E0E0</color>
+    <color name="flash_sale_gradient_end">#FF8C00</color>
+    <color name="flash_sale_gradient_start">#FFD700</color>
+    <color name="header_end">#FF3D00</color>
+    <color name="header_start">#FF6A00</color>
+    <color name="orange_secondary">#FFA500</color>
+    <color name="pink_light">#FFE4E8</color>
+    <color name="pink_primary">#FF4081</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="purple_accent">#FF69B4</color>
+    <color name="purple_dark">#C04890</color>
+    <color name="rounded_pink_bg">#F06292</color>
+    <color name="splash_end">#FF69B4</color>
+    <color name="splash_start">#FFE4E8</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="text_color_hint">#AAAAAA</color>
+    <color name="text_color_link">#1E90FF</color>
+    <color name="text_color_primary">#333333</color>
+    <color name="text_color_secondary">#757575</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">BeautyShop MaMade</string>
+    <string name="gcm_defaultSenderId" translatable="false">571754089828</string>
+    <string name="google_api_key" translatable="false">AIzaSyDDYaGd0oO1lq3wUmJucFbCT7VmnKZbX_c</string>
+    <string name="google_app_id" translatable="false">1:571754089828:android:4afe20d443767da5b1fe71</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDDYaGd0oO1lq3wUmJucFbCT7VmnKZbX_c</string>
+    <string name="google_storage_bucket" translatable="false">mypham-c9d1e.firebasestorage.app</string>
+    <string name="project_id" translatable="false">mypham-c9d1e</string>
+    <string name="title_activity_home">Trang Chủ</string>
+    <string name="title_activity_login">Đăng Nhập</string>
+    <style name="Base.Theme.Uyen_ck" parent="Theme.Material3.DayNight.NoActionBar"/>
+    <style name="Theme.MaMade" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/pink_primary</item>
+        <item name="colorPrimaryVariant">@color/purple_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/purple_accent</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:windowBackground">@color/bg_light_grey</item>
+    </style>
+    <style name="Theme.MaMade.Auth" parent="Theme.MaMade">
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+    <style name="Theme.Uyen_ck" parent="Base.Theme.Uyen_ck"/>
+    <style name="Theme.Uyen_ck.Splash" parent="Theme.MaMade">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+</resources>

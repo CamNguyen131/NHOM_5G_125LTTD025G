@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="gcm_defaultSenderId" translatable="false">571754089828</string>
+    <string name="google_api_key" translatable="false">AIzaSyDDYaGd0oO1lq3wUmJucFbCT7VmnKZbX_c</string>
+    <string name="google_app_id" translatable="false">1:571754089828:android:4afe20d443767da5b1fe71</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDDYaGd0oO1lq3wUmJucFbCT7VmnKZbX_c</string>
+    <string name="google_storage_bucket" translatable="false">mypham-c9d1e.firebasestorage.app</string>
+    <string name="project_id" translatable="false">mypham-c9d1e</string>
+</resources>
