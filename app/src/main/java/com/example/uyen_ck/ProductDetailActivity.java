@@ -115,8 +115,6 @@ public class ProductDetailActivity extends AppCompatActivity {
             variantSheet.show(getSupportFragmentManager(), "VariantBottomSheet");
         }
     }
-
-
     private void loadProductDetail(String id) {
         // Truy vấn vào collection "products" với Document ID nhận được
         db.collection("products").document(id).get()
@@ -155,8 +153,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         if (product.getImageUrl() != null && !product.getImageUrl().isEmpty()) {
             Glide.with(this)
                     .load(product.getImageUrl())
-                    .placeholder(R.drawable.lo_roche_posay) // Ảnh tạm trong khi chờ tải
-                    .error(R.drawable.lo_roche_posay)      // Ảnh khi lỗi tải
+                    .error(R.drawable.lo_roche_posay)
                     .into(imgProductLarge);
         }
     }
