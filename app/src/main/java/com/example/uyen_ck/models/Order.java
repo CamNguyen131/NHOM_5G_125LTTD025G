@@ -1,18 +1,31 @@
 package com.example.uyen_ck.models;
 
+import com.google.firebase.firestore.Exclude;
 import java.util.List;
 
 public class Order {
     private String orderId;
     private String orderCode;
     private String buyerId;
+
+    // --- Các trường bổ sung ---
+    private String buyerName;      // Tên người nhận
+    private String deliveryAddress; // Địa chỉ giao hàng
+    private String phoneNumber;     // Số điện thoại
+    private String note;            // Ghi chú đơn hàng
+    // -------------------------
+
     private double totalAmount;
     private String status;
     private long createdAt;
     private List<OrderDetails> items;
 
-    public Order() {}
+    public Order() {
+        this.createdAt = System.currentTimeMillis();
+        this.status = "Pending";
+    }
 
+    @Exclude
     public String getOrderId() {
         return orderId;
     }
@@ -35,6 +48,38 @@ public class Order {
 
     public void setBuyerId(String buyerId) {
         this.buyerId = buyerId;
+    }
+
+    public String getBuyerName() {
+        return buyerName;
+    }
+
+    public void setBuyerName(String buyerName) {
+        this.buyerName = buyerName;
+    }
+
+    public String getDeliveryAddress() {
+        return deliveryAddress;
+    }
+
+    public void setDeliveryAddress(String deliveryAddress) {
+        this.deliveryAddress = deliveryAddress;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 
     public double getTotalAmount() {
