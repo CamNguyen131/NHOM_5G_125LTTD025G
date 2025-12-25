@@ -45,7 +45,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:src="@drawable/ic_m_pink"
-                android:background="@drawable/bg_white_card"
+                android:background="@drawable/rounded_pink_background"
                 android:padding="8dp"
                 android:contentDescription="BeautyShop Logo"/>
             <TextView

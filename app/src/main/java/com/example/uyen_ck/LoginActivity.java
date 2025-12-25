@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.uyen_ck.models.User; // Import model User
@@ -29,29 +28,18 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseFirestore db; // Khai báo Firestore
 
-    private TextView tvRegisterLink;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // Khởi tạo các view
+        mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance(); // Khởi tạo Firestore
+
         etUsername = findViewById(R.id.et_email_login);
         etPassword = findViewById(R.id.et_password_login);
         btnLogin = findViewById(R.id.btn_login);
-        tvRegisterLink = findViewById(R.id.tv_register_link); // Ánh xạ text "Đăng ký ngay"
 
-        mAuth = FirebaseAuth.getInstance();
-        db = FirebaseFirestore.getInstance();
-
-        // 1. Nhấn vào "Đăng ký ngay"
-        tvRegisterLink.setOnClickListener(v -> {
-            Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
-            startActivity(intent);
-        });
-
-        // 2. Xử lý đăng nhập
         btnLogin.setOnClickListener(v -> handleLogin());
     }
 
@@ -60,35 +48,50 @@ public class LoginActivity extends AppCompatActivity {
         String password = etPassword.getText().toString().trim();
 
         if (email.isEmpty() || password.isEmpty()) {
-            Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Vui lòng nhập đầy đủ Email và Mật khẩu.", Toast.LENGTH_LONG).show();
             return;
         }
 
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-                        checkUserRole(mAuth.getCurrentUser().getUid());
+                        String uid = mAuth.getCurrentUser().getUid(); // Lấy UID sau khi đăng nhập thành công
+                        fetchUserData(uid); // Gọi hàm lấy dữ liệu người dùng
                     } else {
-                        Toast.makeText(LoginActivity.this, "Sai tài khoản hoặc mật khẩu", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Lỗi: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
     }
 
-    private void checkUserRole(String uid) {
-        db.collection("users").document(uid).get().addOnSuccessListener(documentSnapshot -> {
-            if (documentSnapshot.exists()) {
-                String role = documentSnapshot.getString("role");
-                if ("buyer".equals(role)) {
-                    // Đúng role người mua -> Vào trang chủ
-                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                    startActivity(intent);
-                    finish();
-                } else {
-                    // Nếu là admin hoặc seller (tùy nhu cầu phân quyền của bạn)
-                    Toast.makeText(this, "Tài khoản không có quyền truy cập người mua", Toast.LENGTH_SHORT).show();
-                    mAuth.signOut();
-                }
-            }
-        });
+    // Hàm lấy dữ liệu User và Addresses từ Firestore
+    private void fetchUserData(String uid) {
+        db.collection("users").document(uid).get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            // Map dữ liệu Firestore vào model User
+                            User user = document.toObject(User.class);
+                            if (user != null) {
+                                Log.d(TAG, "User Data: " + user.getDisplayName());
+                                // Bạn có thể lưu thông tin User vào Session/Global variable tại đây
+
+                                Toast.makeText(LoginActivity.this, "Chào mừng " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
+
+                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
+                                finish();
+                            }
+                        } else {
+                            Log.d(TAG, "Không tìm thấy dữ liệu người dùng trong Firestore.");
+                            // Chuyển hướng nếu không có profile nhưng đã đăng nhập Auth thành công
+                            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                            finish();
+                        }
+                    } else {
+                        Log.e(TAG, "Lỗi lấy Firestore: ", task.getException());
+                    }
+                });
     }
 }
