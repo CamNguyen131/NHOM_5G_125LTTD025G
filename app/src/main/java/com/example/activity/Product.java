@@ -1,97 +1,37 @@
-package com.example.activity;
-/**
- * Lớp mô hình (Model) đại diện cho một sản phẩm trong cửa hàng.
- */
+
+package com.example.uyen_ck;
+
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 public class Product {
-    private String id;
-    private String name;
-    private String description;
-    private double price;
-    private float rating;
-    private String imageUrl;
-    private boolean isFavorite;
+    private String name, brand, imageUrl, status;
+    private Object salePrice; // Dùng Object để nhận cả String/Number từ Firebase
 
-    // Constructor mặc định (cần thiết cho Firebase/JSON deserialization)
-    public Product() {
+    public Product() {}
+
+    // Hàm lấy giá an toàn để hiển thị lên TextView
+    public double getSafePrice() {
+        try {
+            if (salePrice instanceof Number) return ((Number) salePrice).doubleValue();
+            if (salePrice instanceof String) return Double.parseDouble((String) salePrice);
+        } catch (Exception e) { return 0.0; }
+        return 0.0;
     }
 
-    // Constructor đầy đủ
-    public Product(String id, String name, String description, double price, float rating, String imageUrl, boolean isFavorite) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.rating = rating;
-        this.imageUrl = imageUrl;
-        this.isFavorite = isFavorite;
-    }
-
-    // --- Getters ---
-
-    public String getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public float getRating() {
-        return rating;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public boolean isFavorite() {
-        return isFavorite;
-    }
-
-    // --- Setters ---
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public void setRating(float rating) {
-        this.rating = rating;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public void setFavorite(boolean favorite) {
-        isFavorite = favorite;
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                '}';
-    }
+    // Đủ Getter/Setter cho các trường: name, brand, imageUrl, status, salePrice
+    public void setSalePrice(Object salePrice) { this.salePrice = salePrice; }
+    public String getName() { return name; }
+    public String getBrand() { return brand; }
+    public String getImageUrl() { return imageUrl; }
 }
