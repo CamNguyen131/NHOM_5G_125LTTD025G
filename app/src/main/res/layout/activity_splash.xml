@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/header_background_gradient"
+    tools:context=".SplashActivity">
+
+    <!-- Text "Xin chào!" top-left -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Xin chào!"
+        android:textColor="#FFFFFF"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <!-- Logo/Icon -->
+    <ImageView
+        android:id="@+id/iv_logo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rounded_white_background"
+        android:padding="12dp"
+        android:src="@drawable/ic_m"
+        android:contentDescription="Logo Mamade"
+        app:layout_constraintBottom_toTopOf="@id/tv_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MaMade"
+        android:textColor="#FFFFFF"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/tv_subtitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Subtitle -->
+    <TextView
+        android:id="@+id/tv_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MỸ PHẨM CHÍNH HÃNG"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:layout_marginBottom="120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

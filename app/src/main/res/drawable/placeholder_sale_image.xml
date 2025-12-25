@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <!--
+    Chỉ định hình dạng là hình chữ nhật.
+    Các giá trị khác có thể là "oval" (hình bầu dục) hoặc "line" (đường kẻ).
+    -->
+
+    <!--
+    Thuộc tính <solid> định nghĩa màu nền bên trong của hình dạng.
+    @color/bg_light_grey thường là một màu xám nhạt (#F5F5F5) để tạo cảm giác placeholder.
+    -->
+    <solid android:color="@color/bg_light_grey" />
+
+    <!--
+    Thuộc tính <corners> định nghĩa các góc được bo tròn.
+    radius="8dp" bo tròn cả bốn góc với bán kính 8dp.
+    Bạn có thể dùng các thuộc tính chi tiết hơn như topLeftRadius, topRightRadius, v.v.
+    -->
+    <corners android:radius="8dp" />
+
+    <!--
+    Thuộc tính <stroke> định nghĩa đường viền bao quanh hình dạng.
+    - android:width="1dp": Độ dày của viền là 1dp.
+    - android:color="@color/pink_light": Màu viền là màu hồng nhạt, giúp khung placeholder
+      hòa hợp với các thiết kế bán hàng (sale) hoặc khuyến mãi.
+    -->
+    <stroke
+        android:width="1dp"
+        android:color="@color/pink_light" />
+
+</shape>

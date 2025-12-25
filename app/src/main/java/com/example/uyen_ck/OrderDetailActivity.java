@@ -14,11 +14,21 @@ public class OrderDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_order_detail);
 
         // Xử lý nút back (mũi tên)
-        ImageView backButton = findViewById(R.id.back_button); // Cần thêm id cho ImageView back
+        ImageView backButton = findViewById(R.id.back_button);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish(); // Quay lại activity trước đó (ListOrderActivity)
+                finish();
+            }
+        });
+
+        LinearLayout footerLayout = findViewById(R.id.footer_layout);
+        footerLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Điều hướng đến ListOrderActivity
+                Intent intent = new Intent(OrderDetailActivity.this, CheckoutActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -51,18 +61,15 @@ public class OrderDetailActivity extends AppCompatActivity {
             }
         });
 
-        // Các tab khác
         tabHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Điều hướng đến trang chủ
             }
         });
 
         tabCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Điều hướng đến giỏ hàng
             }
         });
     }
