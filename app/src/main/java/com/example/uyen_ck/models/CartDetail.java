@@ -1,6 +1,6 @@
 package com.example.uyen_ck.models;
-
-public class CartDetail {
+import java.io.Serializable;
+public class CartDetail implements Serializable {
     private String productId;
     private String productName;
     private String productImage;
@@ -8,7 +8,6 @@ public class CartDetail {
     private int quantity;
     private double price;
 
-<<<<<<< HEAD
     public CartDetail() {} // Bắt buộc cho Firestore
 
     public CartDetail(String productId, String productName, String productImage, String variant, int quantity, double price) {
@@ -38,25 +37,3 @@ public class CartDetail {
         return price * quantity;
     }
 }
-=======
-    // BẮT BUỘC cho Firebase
-    public CartDetail() {}
-
-    public double getSubTotal() {
-        return price * quantity;
-    }
-
-    // Getters
-    public String getProductId() { return productId; }
-    public String getProductName() { return productName; }
-    public String getProductImage() { return productImage; }
-    public String getVariant() { return variant; }
-    public int getQuantity() { return quantity; }
-    public double getPrice() { return price; }
-
-    // Setters
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-}
->>>>>>> dafe6fcdc786aed43ce3e370a79299ea3ab289a5

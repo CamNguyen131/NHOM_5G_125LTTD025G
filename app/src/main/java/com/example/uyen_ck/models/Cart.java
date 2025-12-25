@@ -8,10 +8,41 @@ public class Cart {
     private long updatedAt;
     private List<CartDetail> items;
 
-    public Cart() {}
+    // Constructor rỗng (Bắt buộc cho Firebase)
+    public Cart() {
+    }
 
-    public String getCartId() { return cartId; }
-    public String getUserId() { return userId; }
-    public long getUpdatedAt() { return updatedAt; }
-    public List<CartDetail> getItems() { return items; }
+    // --- CÁC HÀM GETTER & SETTER (BẮT BUỘC PHẢI CÓ) ---
+
+    public String getCartId() {
+        return cartId;
+    }
+
+    public void setCartId(String cartId) { // Đây là hàm đang bị thiếu
+        this.cartId = cartId;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) { // Đây là hàm đang bị thiếu
+        this.userId = userId;
+    }
+
+    public long getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(long updatedAt) { // Đây là hàm đang bị thiếu
+        this.updatedAt = updatedAt;
+    }
+
+    public List<CartDetail> getItems() {
+        return items;
+    }
+
+    public void setItems(List<CartDetail> items) { // Đây là hàm đang bị thiếu
+        this.items = items;
+    }
 }
