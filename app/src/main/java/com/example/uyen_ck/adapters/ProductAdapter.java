@@ -45,14 +45,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         // Hiển thị tên và giá sản phẩm
         holder.tvName.setText(p.getName());
         holder.tvPrice.setText(String.format("%,.0f đ", p.getSalePrice()));
-<<<<<<< HEAD
-        holder.imgProduct.setImageResource(R.drawable.img_placeholder);
 
-        // Xử lý sự kiện click để chuyển sang trang chi tiết
-        holder.itemView.setOnClickListener(v -> {
-            android.content.Intent intent = new android.content.Intent(context, com.example.uyen_ck.ProductDetailActivity.class);
-            // Gửi "product_id" - KEY này phải khớp với getIntent().getStringExtra("product_id") ở ProductDetailActivity
-=======
 
         // Sử dụng Glide để tải hình ảnh từ URL
         if (p.getImageUrl() != null && !p.getImageUrl().isEmpty()) {
@@ -69,7 +62,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, ProductDetailActivity.class);
             // "product_id" phải khớp với Key nhận dữ liệu tại ProductDetailActivity
->>>>>>> 30f886b63bc06a8fa90592de5becf9936ec3a308
+
             intent.putExtra("product_id", p.getProductId());
             context.startActivity(intent);
         });
