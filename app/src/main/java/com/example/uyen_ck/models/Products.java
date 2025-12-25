@@ -13,12 +13,17 @@ public class Products implements Serializable {
     private boolean isFavorite;
 
 
-    public String getProductId() {
-        return productId;
-    }
-
+    public String getProductId() {return productId;}
     public void setProductId(String productId) {
         this.productId = productId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public double getSalePrice() {

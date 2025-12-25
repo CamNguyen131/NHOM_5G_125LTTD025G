@@ -28,6 +28,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         void onUpdate(List<CartDetail> newList);
     }
 
+    // Constructor đã được dọn dẹp
     public CartAdapter(List<CartDetail> list, OnCartUpdateListener listener) {
         this.list = list;
         this.listener = listener;
@@ -36,33 +37,28 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-<<<<<<< HEAD
-        // Ánh xạ đúng layout item_cart.xml bạn cung cấp (dùng CardView)
+        // Ánh xạ đúng layout item_cart.xml
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_cart, parent, false);
-=======
-        View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_cart, parent, false);
->>>>>>> dafe6fcdc786aed43ce3e370a79299ea3ab289a5
         return new ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder h, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         CartDetail item = list.get(position);
 
-<<<<<<< HEAD
+        // Đổ dữ liệu vào view
         holder.tvName.setText(item.getProductName());
         holder.tvBrand.setText(item.getVariant() != null ? item.getVariant() : "Mặc định");
         holder.tvQty.setText(String.valueOf(item.getQuantity()));
 
-        // Format giá tiền (Ví dụ: 100.000đ)
+        // Định dạng tiền tệ (Ví dụ: 100,000đ)
         DecimalFormat formatter = new DecimalFormat("###,###,###");
         holder.tvPrice.setText(formatter.format(item.getPrice()) + "đ");
 
-        // Load ảnh
+        // Tải ảnh sản phẩm
         Glide.with(holder.itemView.getContext())
                 .load(item.getProductImage())
-                .placeholder(R.drawable.lo_roche_posay) // Ảnh mặc định nếu lỗi
+                .placeholder(R.drawable.lo_roche_posay)
                 .error(R.drawable.lo_roche_posay)
                 .into(holder.imgProduct);
 
@@ -70,58 +66,35 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
         // 1. Tăng số lượng
         holder.btnPlus.setOnClickListener(v -> {
-=======
-        h.tvName.setText(item.getProductName());
-        h.tvPrice.setText(String.format("%,.0fđ", item.getPrice()));
-        h.tvQty.setText(String.valueOf(item.getQuantity()));
-        h.tvBrand.setText(item.getVariant());
-
-        Glide.with(h.itemView.getContext())
-                .load(item.getProductImage())
-                .placeholder(R.drawable.lo_roche_posay)
-                .into(h.imgProduct);
-
-        h.btnPlus.setOnClickListener(v -> {
->>>>>>> dafe6fcdc786aed43ce3e370a79299ea3ab289a5
             item.setQuantity(item.getQuantity() + 1);
             holder.tvQty.setText(String.valueOf(item.getQuantity()));
-            // Gửi danh sách mới về Activity để cập nhật Firestore & tính tổng tiền
-            listener.onUpdate(list);
+            if (listener != null) listener.onUpdate(list);
         });
 
-<<<<<<< HEAD
         // 2. Giảm số lượng
         holder.btnMinus.setOnClickListener(v -> {
-=======
-        h.btnMinus.setOnClickListener(v -> {
->>>>>>> dafe6fcdc786aed43ce3e370a79299ea3ab289a5
             if (item.getQuantity() > 1) {
                 item.setQuantity(item.getQuantity() - 1);
                 holder.tvQty.setText(String.valueOf(item.getQuantity()));
-                listener.onUpdate(list);
+                if (listener != null) listener.onUpdate(list);
             }
         });
 
-<<<<<<< HEAD
         // 3. Xóa sản phẩm
         holder.btnDelete.setOnClickListener(v -> {
-=======
-        h.btnDelete.setOnClickListener(v -> {
->>>>>>> dafe6fcdc786aed43ce3e370a79299ea3ab289a5
-            list.remove(position);
-            notifyItemRemoved(position);
-            notifyItemRangeChanged(position, list.size());
-            listener.onUpdate(list);
+            int currentPosition = holder.getAdapterPosition();
+            if (currentPosition != RecyclerView.NO_POSITION) {
+                list.remove(currentPosition);
+                notifyItemRemoved(currentPosition);
+                notifyItemRangeChanged(currentPosition, list.size());
+                if (listener != null) listener.onUpdate(list);
+            }
         });
     }
 
     @Override
     public int getItemCount() {
-<<<<<<< HEAD
-        return list != null ? list.size() : 0;
-=======
-        return list.size();
->>>>>>> dafe6fcdc786aed43ce3e370a79299ea3ab289a5
+        return (list != null) ? list.size() : 0;
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -132,13 +105,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
         ViewHolder(View v) {
             super(v);
-            // Ánh xạ ID theo file item_cart.xml bạn cung cấp
             imgProduct = v.findViewById(R.id.imgProduct);
             tvName = v.findViewById(R.id.tvProductName);
             tvPrice = v.findViewById(R.id.tvProductPrice);
             tvQty = v.findViewById(R.id.tvQuantity);
             tvBrand = v.findViewById(R.id.tvBrandName);
-
             btnPlus = v.findViewById(R.id.btnPlus);
             btnMinus = v.findViewById(R.id.btnMinus);
             btnDelete = v.findViewById(R.id.btnDelete);

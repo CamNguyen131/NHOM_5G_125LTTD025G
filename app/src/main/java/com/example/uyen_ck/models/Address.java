@@ -1,5 +1,7 @@
 package com.example.uyen_ck.models;
 
+import com.google.firebase.firestore.PropertyName;
+
 public class Address {
     private String addressId;
     private String receiverName;
@@ -40,11 +42,11 @@ public class Address {
     public void setAddressLine(String addressLine) {
         this.addressLine = addressLine;
     }
-
+    @PropertyName("default")
     public boolean isDefault() {
         return isDefault;
     }
-
+    @PropertyName("default")
     public void setDefault(boolean aDefault) {
         isDefault = aDefault;
     }

@@ -1,6 +1,8 @@
 package com.example.uyen_ck.models;
 
-public class CartDetail {
+import java.io.Serializable;
+
+public class CartDetail implements Serializable {
     private String productId;
     private String productName;
     private String productImage;
@@ -8,9 +10,11 @@ public class CartDetail {
     private int quantity;
     private double price;
 
-<<<<<<< HEAD
-    public CartDetail() {} // Bắt buộc cho Firestore
+    // 1. Constructor mặc định (BẮT BUỘC cho Firebase Firestore)
+    public CartDetail() {
+    }
 
+    // 2. Constructor có tham số để khởi tạo nhanh
     public CartDetail(String productId, String productName, String productImage, String variant, int quantity, double price) {
         this.productId = productId;
         this.productName = productName;
@@ -20,43 +24,58 @@ public class CartDetail {
         this.price = price;
     }
 
-    // Getter & Setter
-    public String getProductId() { return productId; }
-    public void setProductId(String productId) { this.productId = productId; }
-    public String getProductName() { return productName; }
-    public void setProductName(String productName) { this.productName = productName; }
-    public String getProductImage() { return productImage; }
-    public void setProductImage(String productImage) { this.productImage = productImage; }
-    public String getVariant() { return variant; }
-    public void setVariant(String variant) { this.variant = variant; }
-    public int getQuantity() { return quantity; }
-    public void setQuantity(int quantity) { this.quantity = quantity; }
-    public double getPrice() { return price; }
-    public void setPrice(double price) { this.price = price; }
-
-    public double getSubTotal() {
-        return price * quantity;
-    }
-}
-=======
-    // BẮT BUỘC cho Firebase
-    public CartDetail() {}
-
+    // 3. Phương thức tính tổng tiền của một món hàng (Giá * Số lượng)
     public double getSubTotal() {
         return price * quantity;
     }
 
-    // Getters
-    public String getProductId() { return productId; }
-    public String getProductName() { return productName; }
-    public String getProductImage() { return productImage; }
-    public String getVariant() { return variant; }
-    public int getQuantity() { return quantity; }
-    public double getPrice() { return price; }
+    // --- Getter & Setter ---
 
-    // Setters
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public String getProductImage() {
+        return productImage;
+    }
+
+    public void setProductImage(String productImage) {
+        this.productImage = productImage;
+    }
+
+    public String getVariant() {
+        return variant;
+    }
+
+    public void setVariant(String variant) {
+        this.variant = variant;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
 }
->>>>>>> dafe6fcdc786aed43ce3e370a79299ea3ab289a5
