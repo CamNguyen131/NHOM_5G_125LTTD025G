@@ -8,8 +8,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
+import androidx.fragment.app.FragmentManager;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.example.uyen_ck.models.Products;
 
 public class VariantBottomSheet extends BottomSheetDialogFragment {
     private static final String TAG = "VariantBottomSheet";

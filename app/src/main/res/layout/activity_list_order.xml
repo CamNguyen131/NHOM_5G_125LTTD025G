@@ -36,6 +36,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="#FFFFFF"
         android:elevation="16dp"
+<<<<<<< HEAD
         android:orientation="horizontal"
         android:paddingVertical="8dp">
 
@@ -59,9 +60,7 @@
             <TextView android:text="Tài khoản" android:textSize="10sp" android:textColor="#888888" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
         </LinearLayout>
     </LinearLayout>
-
-
-
+=======
         app:layout_constraintBottom_toBottomOf="parent">
         <LinearLayout android:id="@+id/tabHome" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center" android:padding="8dp" android:clickable="true">
             <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/home_icon" app:tint="#FF80AB" />
@@ -84,4 +83,6 @@
         </LinearLayout>
     </LinearLayout>
 
+
+>>>>>>> 75b0294a3835db6059f8dde7d6bf134330f0c9ce
 </androidx.constraintlayout.widget.ConstraintLayout>
