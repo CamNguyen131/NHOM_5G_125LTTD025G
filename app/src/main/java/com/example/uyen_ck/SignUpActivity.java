@@ -138,38 +138,27 @@ public class SignUpActivity extends AppCompatActivity {
 
     // Trong file SignUpActivity.java
 
+    // Trong file SignUpActivity.java
     private void saveUserToFirestore(String uid, String fullname, String email, String phone, String address) {
-        // Tạo Map dữ liệu người dùng
         Map<String, Object> user = new HashMap<>();
         user.put("uid", uid);
         user.put("displayName", fullname);
         user.put("email", email);
         user.put("phone", phone);
         user.put("address", address);
-        user.put("role", "customer"); // Xác định vai trò là khách hàng
+
+        // THAY ĐỔI TẠI ĐÂY: Thiết lập mặc định là buyer
+        user.put("role", "buyer");
+
         user.put("createdAt", System.currentTimeMillis());
 
-        // Lưu vào Firestore collection "users"
         db.collection("users").document(uid)
                 .set(user)
                 .addOnSuccessListener(aVoid -> {
-                    Log.d(TAG, "User data saved successfully");
-                    Toast.makeText(SignUpActivity.this,
-                            "Đăng ký thành công! Chào mừng " + fullname,
-                            Toast.LENGTH_SHORT).show();
-
-                    // Chuyển đến màn hình chính (HomeActivity)
+                    Toast.makeText(SignUpActivity.this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
-                    // Xóa stack để không quay lại được trang đăng ký khi bấm Back
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                     finish();
-                })
-                .addOnFailureListener(e -> {
-                    Log.e(TAG, "Error saving user data", e);
-                    Toast.makeText(SignUpActivity.this,
-                            "Lỗi lưu thông tin: " + e.getMessage(),
-                            Toast.LENGTH_LONG).show();
                 });
     }
 }

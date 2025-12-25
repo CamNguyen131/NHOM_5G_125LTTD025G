@@ -46,38 +46,78 @@ public class EditProfileActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.btn_back);
     }
 
+    // Trong loadProfileData
     private void loadProfileData(String userId) {
         db.collection("users").document(userId).get()
                 .addOnSuccessListener(documentSnapshot -> {
                     if (documentSnapshot.exists()) {
-                        // SỬA LỖI: Chỉ gán, không dùng từ khóa 'User' ở đầu
+                        // Firebase tự mapping mảng 'addresses' vào List<Address> trong model User
                         currentUser = documentSnapshot.toObject(User.class);
+
                         if (currentUser != null) {
                             etFullName.setText(currentUser.getDisplayName());
+                            etPhone.setText(currentUser.getPhoneNumber());
 
-                            List<Address> addresses = currentUser.getAddresses();
-                            if (addresses != null && !addresses.isEmpty()) {
-                                Address activeAddr = addresses.get(0);
-                                for (Address a : addresses) {
-                                    if (a.isDefault()) { activeAddr = a; break; }
+                            // Lấy email trực tiếp từ Firestore (do model User của bạn không có field email)
+                            String email = documentSnapshot.getString("email");
+                            etEmail.setText(email);
+
+                            // XỬ LÝ ADDRESS TỪ LIST
+                            List<Address> addressList = currentUser.getAddresses();
+                            if (addressList != null && !addressList.isEmpty()) {
+                                Address displayAddr = addressList.get(0); // Mặc định lấy cái đầu tiên
+
+                                for (Address addr : addressList) {
+                                    if (addr.isDefault()) { // Tìm địa chỉ có default = true
+                                        displayAddr = addr;
+                                        break;
+                                    }
                                 }
-                                etPhone.setText(activeAddr.getPhone());
-                                etAddress.setText(activeAddr.getAddressLine());
+                                // Đổ dữ liệu vào EditText
+                                etAddress.setText(displayAddr.getAddressLine());
                             }
+
                             if (currentUser.getAvatarUrl() != null) {
                                 Glide.with(this).load(currentUser.getAvatarUrl()).into(ivAvatar);
                             }
                         }
                     }
-                });
+                })
+                .addOnFailureListener(e -> Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
     private void saveProfileData(String userId) {
         if (currentUser == null) return;
-        currentUser.setDisplayName(etFullName.getText().toString().trim());
-        // Cập nhật địa chỉ mặc định trong list
-        db.collection("users").document(userId).set(currentUser)
-                .addOnSuccessListener(aVoid -> Toast.makeText(this, "Lưu thành công!", Toast.LENGTH_SHORT).show())
-                .addOnFailureListener(e -> Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+
+        String newName = etFullName.getText().toString().trim();
+        String newAddressLine = etAddress.getText().toString().trim();
+
+        // 1. Cập nhật thông tin cơ bản
+        currentUser.setDisplayName(newName);
+
+        // 2. Cập nhật vào List addresses (không tách riêng)
+        List<Address> list = currentUser.getAddresses();
+        if (list != null && !list.isEmpty()) {
+            boolean updated = false;
+            for (Address addr : list) {
+                if (addr.isDefault()) {
+                    addr.setAddressLine(newAddressLine);
+                    updated = true;
+                    break;
+                }
+            }
+            // Nếu không có cái nào default, cập nhật vào cái đầu tiên
+            if (!updated) {
+                list.get(0).setAddressLine(newAddressLine);
+            }
+        }
+
+        // 3. Lưu toàn bộ Object currentUser (bao gồm cả mảng addresses đã sửa)
+        db.collection("users").document(userId)
+                .set(currentUser)
+                .addOnSuccessListener(aVoid -> Toast.makeText(this, "Cập nhật thành công!", Toast.LENGTH_SHORT).show())
+                .addOnFailureListener(e -> Toast.makeText(this, "Lỗi khi lưu: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
+    // Trong saveProfileData
+
 }

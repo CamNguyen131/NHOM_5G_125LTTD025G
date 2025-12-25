@@ -19,7 +19,6 @@ import java.text.DecimalFormat;
 import java.util.List;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
-
     private List<CartDetail> list;
     private OnCartUpdateListener listener;
 
@@ -28,7 +27,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         void onUpdate(List<CartDetail> newList);
     }
 
-    // Constructor đã được dọn dẹp
     public CartAdapter(List<CartDetail> list, OnCartUpdateListener listener) {
         this.list = list;
         this.listener = listener;
@@ -37,7 +35,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // Ánh xạ đúng layout item_cart.xml
+        // Ánh xạ đúng layout item_cart.xml bạn cung cấp (dùng CardView)
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_cart, parent, false);
         return new ViewHolder(v);
     }
@@ -46,19 +44,18 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         CartDetail item = list.get(position);
 
-        // Đổ dữ liệu vào view
         holder.tvName.setText(item.getProductName());
         holder.tvBrand.setText(item.getVariant() != null ? item.getVariant() : "Mặc định");
         holder.tvQty.setText(String.valueOf(item.getQuantity()));
 
-        // Định dạng tiền tệ (Ví dụ: 100,000đ)
+        // Format giá tiền (Ví dụ: 100.000đ)
         DecimalFormat formatter = new DecimalFormat("###,###,###");
         holder.tvPrice.setText(formatter.format(item.getPrice()) + "đ");
 
-        // Tải ảnh sản phẩm
+        // Load ảnh
         Glide.with(holder.itemView.getContext())
                 .load(item.getProductImage())
-                .placeholder(R.drawable.lo_roche_posay)
+                .placeholder(R.drawable.lo_roche_posay) // Ảnh mặc định nếu lỗi
                 .error(R.drawable.lo_roche_posay)
                 .into(holder.imgProduct);
 
@@ -68,7 +65,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         holder.btnPlus.setOnClickListener(v -> {
             item.setQuantity(item.getQuantity() + 1);
             holder.tvQty.setText(String.valueOf(item.getQuantity()));
-            if (listener != null) listener.onUpdate(list);
+            // Gửi danh sách mới về Activity để cập nhật Firestore & tính tổng tiền
+            listener.onUpdate(list);
         });
 
         // 2. Giảm số lượng
@@ -76,40 +74,39 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
             if (item.getQuantity() > 1) {
                 item.setQuantity(item.getQuantity() - 1);
                 holder.tvQty.setText(String.valueOf(item.getQuantity()));
-                if (listener != null) listener.onUpdate(list);
+                listener.onUpdate(list);
             }
         });
 
         // 3. Xóa sản phẩm
         holder.btnDelete.setOnClickListener(v -> {
-            int currentPosition = holder.getAdapterPosition();
-            if (currentPosition != RecyclerView.NO_POSITION) {
-                list.remove(currentPosition);
-                notifyItemRemoved(currentPosition);
-                notifyItemRangeChanged(currentPosition, list.size());
-                if (listener != null) listener.onUpdate(list);
-            }
+            list.remove(position);
+            notifyItemRemoved(position);
+            notifyItemRangeChanged(position, list.size());
+            listener.onUpdate(list);
         });
     }
 
     @Override
     public int getItemCount() {
-        return (list != null) ? list.size() : 0;
+        return list != null ? list.size() : 0;
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgProduct;
         TextView tvName, tvPrice, tvQty, tvBrand;
         ImageButton btnPlus, btnMinus, btnDelete;
         CheckBox cbSelectItem;
 
-        ViewHolder(View v) {
+        public ViewHolder(@NonNull View v) {
             super(v);
+            // Ánh xạ ID theo file item_cart.xml bạn cung cấp
             imgProduct = v.findViewById(R.id.imgProduct);
             tvName = v.findViewById(R.id.tvProductName);
             tvPrice = v.findViewById(R.id.tvProductPrice);
             tvQty = v.findViewById(R.id.tvQuantity);
             tvBrand = v.findViewById(R.id.tvBrandName);
+
             btnPlus = v.findViewById(R.id.btnPlus);
             btnMinus = v.findViewById(R.id.btnMinus);
             btnDelete = v.findViewById(R.id.btnDelete);

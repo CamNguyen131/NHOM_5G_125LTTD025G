@@ -7,7 +7,7 @@ public class User {
     private String displayName;
     private String phoneNumber;
     private String avatarUrl;
-    private List<Address> addresses;
+    public List<Address> addresses;
     private long createdAt;
 
     public User() {}
@@ -59,4 +59,6 @@ public class User {
     public void setCreatedAt(long createdAt) {
         this.createdAt = createdAt;
     }
+
+
 }

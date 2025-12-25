@@ -22,14 +22,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
-
     private RecyclerView rvProducts, rvCategories;
     private FirebaseFirestore db;
     private List<Products> productList = new ArrayList<>();
     private ProductAdapter adapter;
     private List<Category> categoryList = new ArrayList<>();
     private CategoryAdapter categoryAdapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

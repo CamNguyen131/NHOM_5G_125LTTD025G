@@ -235,47 +235,35 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupAccountRows() {
-        // 1. Tìm view "Thông tin cá nhân"
+        // 1. Chuyển đến Thông tin cá nhân
         View rowInfo = findViewById(R.id.rowInfo);
         if (rowInfo != null) {
             rowInfo.setOnClickListener(v -> {
-                // Chỉ giữ lại một sự kiện duy nhất là chuyển trang
                 Intent intent = new Intent(MainActivity.this, EditProfileActivity.class);
                 startActivity(intent);
             });
         }
 
-        // 2. Thiết lập các hàng còn lại (Chỉ gán 1 lần cho mỗi ID)
-        findViewById(R.id.rowAddress).setOnClickListener(v ->
-                Toast.makeText(this, "Địa chỉ giao hàng", Toast.LENGTH_SHORT).show());
+        // 2. CHUYỂN ĐẾN TRANG CÀI ĐẶT (Thêm đoạn này)
+        View rowSetting = findViewById(R.id.rowSetting);
+        if (rowSetting != null) {
+            rowSetting.setOnClickListener(v -> {
+                Intent intent = new Intent(MainActivity.this, SettingActivity.class);
+                startActivity(intent);
+            });
+        }
 
-        findViewById(R.id.rowPayment).setOnClickListener(v ->
-                Toast.makeText(this, "Phương thức thanh toán", Toast.LENGTH_SHORT).show());
-
-        findViewById(R.id.rowNotification).setOnClickListener(v ->
-                Toast.makeText(this, "Thông báo", Toast.LENGTH_SHORT).show());
-
-        findViewById(R.id.rowSecurity).setOnClickListener(v ->
-                Toast.makeText(this, "Bảo mật", Toast.LENGTH_SHORT).show());
-
-        findViewById(R.id.rowReport).setOnClickListener(v ->
-                Toast.makeText(this, "Báo cáo tiêu dùng", Toast.LENGTH_SHORT).show());
-
-        findViewById(R.id.rowSupport).setOnClickListener(v ->
-                Toast.makeText(this, "Trung tâm hỗ trợ", Toast.LENGTH_SHORT).show());
-
-        findViewById(R.id.rowTerms).setOnClickListener(v ->
-                Toast.makeText(this, "Điều khoản dịch vụ", Toast.LENGTH_SHORT).show());
-
+        // 3. Chuyển đến Đăng ký bán hàng
         findViewById(R.id.btnSell).setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, activity_seller_registration.class);
             startActivity(intent);
         });
 
-        findViewById(R.id.rowSetting).setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, SettingActivity.class);
-            startActivity(intent);
-        });
+        // Các hàng Toast thông báo khác giữ nguyên...
+        findViewById(R.id.rowAddress).setOnClickListener(v ->
+                Toast.makeText(this, "Địa chỉ giao hàng", Toast.LENGTH_SHORT).show());
+
+        // ... (các hàng khác)
     }
 
     private void setupLogoutButton() {

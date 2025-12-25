@@ -18,6 +18,7 @@ public class VariantBottomSheet extends BottomSheetDialogFragment {
 
     private TextView selectedView = null;
 
+    // Khởi tạo instance với dữ liệu sản phẩm
     public static VariantBottomSheet newInstance(String productName, int quantity, long price, String actionType) {
         VariantBottomSheet sheet = new VariantBottomSheet();
         Bundle args = new Bundle();
@@ -32,6 +33,7 @@ public class VariantBottomSheet extends BottomSheetDialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        // Sử dụng layout variant_color.xml đã có trong res
         View view = inflater.inflate(R.layout.variant_color, container, false);
 
         TextView option1 = view.findViewById(R.id.option1);
@@ -41,10 +43,12 @@ public class VariantBottomSheet extends BottomSheetDialogFragment {
 
         View.OnClickListener listener = v -> {
             if (selectedView != null) {
+                // Trả lại background mặc định khi bỏ chọn
                 selectedView.setBackgroundResource(R.drawable.bg_variant_selector);
                 selectedView.setTextColor(Color.BLACK);
             }
 
+            // Đổi màu khi được chọn
             ((TextView) v).setBackgroundResource(R.drawable.bg_button_pink);
             ((TextView) v).setTextColor(Color.WHITE);
             selectedView = (TextView) v;
@@ -55,15 +59,18 @@ public class VariantBottomSheet extends BottomSheetDialogFragment {
         option3.setOnClickListener(listener);
         option4.setOnClickListener(listener);
 
+        // Mặc định chọn option đầu tiên
         option1.performClick();
+
         view.findViewById(R.id.btnClose).setOnClickListener(v -> dismiss());
 
-
+        // Nút xác nhận
         view.findViewById(R.id.btnDone).setOnClickListener(v -> onConfirm());
 
         return view;
     }
 
+    // Trong VariantBottomSheet.java
     private void onConfirm() {
         if (selectedView == null) {
             Toast.makeText(requireContext(), "Vui lòng chọn phân loại", Toast.LENGTH_SHORT).show();
@@ -71,21 +78,28 @@ public class VariantBottomSheet extends BottomSheetDialogFragment {
         }
 
         String selectedVariant = selectedView.getText().toString();
+        Bundle args = getArguments();
 
-        Toast.makeText(requireContext(), "Đã chọn: " + selectedVariant, Toast.LENGTH_SHORT).show();
+        if (args != null) {
+            String name = args.getString("productName");
+            int qty = args.getInt("quantity");
+            long pricePerItem = args.getLong("price");
+            String actionType = args.getString("actionType");
 
-        Intent intent = new Intent(requireContext(), CheckoutActivity.class);
-        intent.putExtra("variant", selectedVariant);
-
-        // Gửi thêm dữ liệu sản phẩm nếu cần
-        if (getArguments() != null) {
-            intent.putExtra("productName", getArguments().getString("productName"));
-            intent.putExtra("quantity", getArguments().getInt("quantity"));
-            intent.putExtra("price", getArguments().getLong("price"));
+            if ("buy_now".equals(actionType)) {
+                Intent intent = new Intent(requireContext(), CheckoutActivity.class);
+                intent.putExtra("productName", name);
+                intent.putExtra("variant", selectedVariant);
+                intent.putExtra("quantity", qty);
+                intent.putExtra("price", pricePerItem);
+                startActivity(intent);
+            } else {
+                CartManager.getInstance().addItem(name, qty, pricePerItem);
+                Toast.makeText(requireContext(), "Đã thêm vào giỏ hàng", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(requireContext(), CartActivity.class);
+                startActivity(intent);
+            }
+            dismiss();
         }
-
-        startActivity(intent);
-
-        dismiss();
     }
 }
