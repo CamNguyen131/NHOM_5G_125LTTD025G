@@ -3,142 +3,138 @@ package com.example.uyen_ck;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import com.example.uyen_ck.adapters.CartAdapter;
+import com.example.uyen_ck.models.*;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import java.util.ArrayList;
+import java.util.List;
 
-public class CartActivity extends AppCompatActivity {
-
-    private CheckBox cbSelectAll, cbSelectItem;
-    private TextView tvQuantity;
-    private ImageButton btnPlus, btnMinus, btnDelete;
+public class CartActivity extends AppCompatActivity implements CartAdapter.OnCartUpdateListener {
+    private RecyclerView rvCart;
+    private CartAdapter adapter;
+    private List<CartDetail> itemList = new ArrayList<>();
+    private TextView txtTongTien, txtTamTinh, tvHeaderTitle;
     private Button btnCheckout;
-
-    private int quantity = 1;
-    private final int productPrice = 850000;
+    private FirebaseFirestore db;
+    private String currentUserId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
+        db = FirebaseFirestore.getInstance();
+        // Lấy ID người dùng thực tế từ Auth hoặc mặc định user_03 để test
+        currentUserId = (FirebaseAuth.getInstance().getCurrentUser() != null)
+                ? FirebaseAuth.getInstance().getCurrentUser().getUid() : "user_03";
+
         initViews();
-        setupProductActions();
-        setupCheckoutButton();
-        setupBottomNavigationWithHighlight();
+        loadCartData();
+        setupBottomNavigation();
     }
 
     private void initViews() {
-        cbSelectAll   = findViewById(R.id.cbSelectAll);
-        cbSelectItem  = findViewById(R.id.cbSelectItem);
-        tvQuantity    = findViewById(R.id.tvQuantity);
-        btnPlus       = findViewById(R.id.btnPlus);
-        btnMinus      = findViewById(R.id.btnMinus);
-        btnDelete     = findViewById(R.id.btnDelete);
-        btnCheckout   = findViewById(R.id.btnCheckout);
+        rvCart = findViewById(R.id.rvCart);
+        txtTongTien = findViewById(R.id.txtTongTien);
+        txtTamTinh = findViewById(R.id.txtTamTinh);
+        btnCheckout = findViewById(R.id.btnCheckout);
+
+        rvCart.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new CartAdapter(itemList, this);
+        rvCart.setAdapter(adapter);
     }
 
-    private void setupProductActions() {
-        btnPlus.setOnClickListener(v -> {
-            quantity++;
-            tvQuantity.setText(String.valueOf(quantity));
-            updateCheckoutText();
-        });
+    private void loadCartData() {
+        db.collection("carts")
+                .document("cart_user_" + currentUserId)
+                .addSnapshotListener((value, error) -> {
 
-        btnMinus.setOnClickListener(v -> {
-            if (quantity > 1) {
-                quantity--;
-                tvQuantity.setText(String.valueOf(quantity));
-                updateCheckoutText();
-            }
-        });
+                    if (error != null) return;
 
-        btnDelete.setOnClickListener(v -> {
-            quantity = 0;
-            tvQuantity.setText("0");
-            cbSelectItem.setChecked(false);
-            cbSelectAll.setChecked(false);
-            updateCheckoutText();
-            Toast.makeText(this, "Đã xóa sản phẩm khỏi giỏ hàng", Toast.LENGTH_SHORT).show();
-        });
+                    if (value != null && value.exists()) {
+                        Cart cart = value.toObject(Cart.class);
 
-        cbSelectItem.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            cbSelectAll.setChecked(isChecked);
-            updateCheckoutText();
-        });
-        cbSelectAll.setOnCheckedChangeListener((buttonView, isChecked) ->
-                cbSelectItem.setChecked(isChecked));
+                        if (cart != null && cart.getItems() != null) {
+                            itemList.clear();
+                            itemList.addAll(cart.getItems());
+                            adapter.notifyDataSetChanged();
+                            calculateTotalPrice();
+                        }
+                    }
+                });
     }
 
-    private void setupCheckoutButton() {
-        btnCheckout.setOnClickListener(v -> {
-            if (quantity == 0 || !cbSelectItem.isChecked()) {
-                Toast.makeText(this, "Vui lòng chọn sản phẩm để thanh toán", Toast.LENGTH_SHORT).show();
-                return;
-            }
-            Intent intent = new Intent(CartActivity.this, CheckoutActivity.class);
-            intent.putExtra("total_amount", productPrice * quantity);
-            intent.putExtra("item_count", quantity);
-            startActivity(intent);
-            overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-        });
 
-        updateCheckoutText();
-    }
+    // Hàm tính tổng tiền cộng dồn của toàn bộ giỏ hàng
+    private void calculateTotalPrice() {
+        double grandTotal = 0;
+        int totalProducts = 0;
 
-    private void updateCheckoutText() {
-        if (quantity == 0 || !cbSelectItem.isChecked()) {
-            btnCheckout.setText("Thanh toán (0 sản phẩm)");
-            btnCheckout.setEnabled(false);
-        } else {
-            btnCheckout.setText(String.format("Thanh toán (%d sản phẩm)", quantity));
-            btnCheckout.setEnabled(true);
+        for (CartDetail item : itemList) {
+            grandTotal += item.getSubTotal(); // Cộng dồn: (Giá * Số lượng) của từng món
+            totalProducts += item.getQuantity();
         }
+
+        String formattedPrice = String.format("%,.0fđ", grandTotal);
+        txtTamTinh.setText(formattedPrice);
+        txtTongTien.setText(formattedPrice);
+
+        // Cập nhật số lượng hiển thị trên nút thanh toán và tiêu đề
+        btnCheckout.setText("Thanh toán (" + itemList.size() + " sản phẩm)");
     }
-    private void setupBottomNavigationWithHighlight() {
-        LinearLayout tabHome    = findViewById(R.id.tabHome);
-        LinearLayout tabCart    = findViewById(R.id.tabCart);
-        LinearLayout tabOrder   = findViewById(R.id.tabOrder);
+
+    @Override
+    public void onUpdate(List<CartDetail> newList) {
+        db.collection("carts")
+                .document("cart_user_" + currentUserId)
+                .update(
+                        "items", newList,
+                        "updatedAt", System.currentTimeMillis()
+                )
+                .addOnSuccessListener(aVoid -> calculateTotalPrice());
+    }
+    private void setupBottomNavigation() {
+        LinearLayout tabHome = findViewById(R.id.tabHome);
+        LinearLayout tabCart = findViewById(R.id.tabCart);
+        LinearLayout tabOrder = findViewById(R.id.tabOrder);
         LinearLayout tabAccount = findViewById(R.id.tabAccount);
 
-        int colorGray = ContextCompat.getColor(this, android.R.color.darker_gray);
-        int colorPink = ContextCompat.getColor(this, R.color.pink_primary); // hoặc #FF6B87
+        // Trang chủ
+        if (tabHome != null) {
+            tabHome.setOnClickListener(v -> {
+                startActivity(new Intent(this, HomeActivity.class));
+                finish();
+            });
+        }
 
-        setTabColor(tabHome, colorGray);
-        setTabColor(tabOrder, colorGray);
-        setTabColor(tabAccount, colorGray);
-        setTabColor(tabCart, colorPink);
+        // Giỏ hàng (đang ở đây → KHÔNG chuyển)
         if (tabCart != null) {
-            tabCart.setBackgroundResource(R.drawable.gb_pink_light);
+            tabCart.setOnClickListener(v -> {
+                // Không làm gì
+            });
         }
 
-        if (tabHome != null) tabHome.setOnClickListener(v -> startAndFinish(HomeActivity.class));
-        if (tabCart != null) tabCart.setOnClickListener(v -> { /* đang ở đây */ });
-        if (tabOrder != null) tabOrder.setOnClickListener(v -> startAndFinish(ListOrderActivity.class));
-        if (tabAccount != null) tabAccount.setOnClickListener(v -> startAndFinish(MainActivity.class));
+        // Đơn hàng
+        if (tabOrder != null) {
+            tabOrder.setOnClickListener(v -> {
+                startActivity(new Intent(this, ListOrderActivity.class));
+                finish();
+            });
+        }
 
-        overridePendingTransition(0, 0);
-    }
-
-    private void setTabColor(LinearLayout tab, int color) {
-        if (tab == null) return;
-        for (int i = 0; i < tab.getChildCount(); i++) {
-            var child = tab.getChildAt(i);
-            if (child instanceof ImageView) {
-                ((ImageView) child).setColorFilter(color);
-            } else if (child instanceof TextView) {
-                ((TextView) child).setTextColor(color);
-            }
+        // Tài khoản
+        if (tabAccount != null) {
+            tabAccount.setOnClickListener(v -> {
+                startActivity(new Intent(this, MainActivity.class));
+                finish();
+            });
         }
     }
 
-    private void startAndFinish(Class<?> cls) {
-        startActivity(new Intent(this, cls));
-        finish();
-    }
 }

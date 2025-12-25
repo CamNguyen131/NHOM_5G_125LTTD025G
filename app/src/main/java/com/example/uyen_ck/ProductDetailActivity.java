@@ -1,5 +1,5 @@
 package com.example.uyen_ck;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -11,9 +11,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.example.uyen_ck.models.Products;
 import com.google.firebase.firestore.FirebaseFirestore;
-
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.auth.FirebaseAuth;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Arrays;
 public class ProductDetailActivity extends AppCompatActivity {
-
     private ImageView imgProductLarge;
     private TextView tvProductName, tvProductPrice, tvOldPrice, tvProductDescription, tvQuantity;
     private ImageButton btnBack, btnMinus, btnPlus, btnChat, btnHeart;
@@ -22,12 +26,10 @@ public class ProductDetailActivity extends AppCompatActivity {
     private String productId;
     private Products currentProduct;
     private int quantity = 1;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_detail);
-
         initViews();
         db = FirebaseFirestore.getInstance();
 
@@ -78,28 +80,57 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         // Sự kiện Thêm vào giỏ (actionType = "add_to_cart")
         btnAddCart.setOnClickListener(v -> {
-            if (currentProduct != null) {
-                VariantBottomSheet variantSheet = VariantBottomSheet.newInstance(
-                        currentProduct.getName(),
-                        quantity,
-                        (long) currentProduct.getSalePrice(),
-                        "add_to_cart"
-                );
-                variantSheet.show(getSupportFragmentManager(), "VariantBottomSheet");
-            }
+            VariantBottomSheet sheet = VariantBottomSheet.newInstance(
+                    currentProduct.getName(),
+                    quantity,
+                    (long) currentProduct.getSalePrice(),
+                    "add_to_cart"
+            );
+
+            sheet.setOnVariantConfirmListener(new VariantBottomSheet.OnVariantConfirmListener() {
+                @Override
+                public void onAddToCart(String variant, int qty) {
+                    addToCart(
+                            currentProduct.getName(),
+                            qty,
+                            currentProduct.getSalePrice(),
+                            variant
+                    );
+                }
+
+                @Override
+                public void onBuyNow(String variant, int quantity) {}
+            });
+
+            sheet.show(getSupportFragmentManager(), "VariantBottomSheet");
         });
+
 
         // Trong hàm setupEvents() của ProductDetailActivity.java
         btnBuyNow.setOnClickListener(v -> {
-            if (currentProduct != null) {
-                VariantBottomSheet variantSheet = VariantBottomSheet.newInstance(
-                        currentProduct.getName(),
-                        quantity, // Số lượng hiện tại trên UI
-                        (long) currentProduct.getSalePrice(),
-                        "buy_now" // Chỉ định hành động là mua ngay
-                );
-                variantSheet.show(getSupportFragmentManager(), "VariantBottomSheet");
-            }
+            VariantBottomSheet sheet = VariantBottomSheet.newInstance(
+                    currentProduct.getName(),
+                    quantity,
+                    (long) currentProduct.getSalePrice(),
+                    "buy_now"
+            );
+
+            sheet.setOnVariantConfirmListener(new VariantBottomSheet.OnVariantConfirmListener() {
+                @Override
+                public void onAddToCart(String variant, int quantity) {}
+
+                @Override
+                public void onBuyNow(String variant, int qty) {
+                    Intent intent = new Intent(ProductDetailActivity.this, CheckoutActivity.class);
+                    intent.putExtra("productName", currentProduct.getName());
+                    intent.putExtra("variant", variant);
+                    intent.putExtra("quantity", qty);
+                    intent.putExtra("price", currentProduct.getSalePrice());
+                    startActivity(intent);
+                }
+            });
+
+            sheet.show(getSupportFragmentManager(), "VariantBottomSheet");
         });
     }
 
@@ -160,4 +191,45 @@ public class ProductDetailActivity extends AppCompatActivity {
                     .into(imgProductLarge);
         }
     }
+    public void addToCart(String name, int qty, double price, String variant) {
+        // Tự động lấy UID từ Firebase Auth để xác định giỏ hàng người dùng
+        String userId = (FirebaseAuth.getInstance().getCurrentUser() != null)
+                ? FirebaseAuth.getInstance().getCurrentUser().getUid() : "user_03";
+
+        DocumentReference cartRef = db.collection("carts").document("cart_user_" + userId);
+
+        // Tạo thông tin sản phẩm mới khớp với cấu trúc Map trong ảnh Firestore của bạn
+        Map<String, Object> item = new HashMap<>();
+        item.put("productId", productId);
+        item.put("productName", name);
+        item.put("productImage", currentProduct.getImageUrl());
+        item.put("quantity", qty);
+        item.put("price", price);
+        item.put("variant", variant);
+        item.put("subTotal", price * qty);
+
+        // Cập nhật mảng "items" và thời gian cập nhật
+        cartRef.update("items", FieldValue.arrayUnion(item),
+                        "updatedAt", System.currentTimeMillis(),
+                        "userId", userId,
+                        "cartId", "cart_user_" + userId)
+                .addOnSuccessListener(aVoid -> {
+                    Toast.makeText(this, "Đã thêm vào giỏ hàng thành công!", Toast.LENGTH_SHORT).show();
+                    // Sau khi thêm thành công, chuyển đến màn hình Giỏ hàng
+                    startActivity(new Intent(this, CartActivity.class));
+                })
+                .addOnFailureListener(e -> {
+                    // Nếu document giỏ hàng chưa tồn tại, tạo mới hoàn toàn
+                    Map<String, Object> newCart = new HashMap<>();
+                    newCart.put("cartId", "cart_user_" + userId);
+                    newCart.put("userId", userId);
+                    newCart.put("updatedAt", System.currentTimeMillis());
+                    newCart.put("items", Arrays.asList(item));
+
+                    cartRef.set(newCart).addOnSuccessListener(unused -> {
+                        startActivity(new Intent(this, CartActivity.class));
+                    });
+                });
+    }
+
 }

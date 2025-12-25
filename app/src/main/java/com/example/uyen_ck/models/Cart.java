@@ -3,13 +3,16 @@ package com.example.uyen_ck.models;
 import java.util.List;
 
 public class Cart {
-    private String cartId;          // thường = userId
-    private String userId;
-    private List<CartDetail> items;
-    private long updatedAt;
 
+    private String cartId;
+    private String userId;
+    private long updatedAt;
+    private List<CartDetail> items;
+
+    // BẮT BUỘC cho Firestore
     public Cart() {}
 
+    // ===== Getter & Setter =====
     public String getCartId() {
         return cartId;
     }
@@ -26,6 +29,14 @@ public class Cart {
         this.userId = userId;
     }
 
+    public long getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(long updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
     public List<CartDetail> getItems() {
         return items;
     }
@@ -34,11 +45,24 @@ public class Cart {
         this.items = items;
     }
 
-    public long getUpdatedAt() {
-        return updatedAt;
+    // ===== HỖ TRỢ TÍNH TOÁN (KHÔNG lưu Firebase) =====
+    public double getTotalPrice() {
+        double total = 0;
+        if (items != null) {
+            for (CartDetail item : items) {
+                total += item.getSubTotal();
+            }
+        }
+        return total;
     }
 
-    public void setUpdatedAt(long updatedAt) {
-        this.updatedAt = updatedAt;
+    public int getTotalQuantity() {
+        int count = 0;
+        if (items != null) {
+            for (CartDetail item : items) {
+                count += item.getQuantity();
+            }
+        }
+        return count;
     }
 }

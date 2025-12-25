@@ -4,59 +4,33 @@ public class CartDetail {
     private String productId;
     private String productName;
     private String productImage;
-    private double price;
+    private String variant;
     private int quantity;
-    private double subTotal;
+    private double price;
 
-    public CartDetail() {}
+    public CartDetail() {} // Firebase bắt buộc
 
-    public String getProductId() {
-        return productId;
-    }
+    // ===== Getter & Setter =====
+    public String getProductId() { return productId; }
+    public void setProductId(String productId) { this.productId = productId; }
 
-    public void setProductId(String productId) {
-        this.productId = productId;
-    }
+    public String getProductName() { return productName; }
+    public void setProductName(String productName) { this.productName = productName; }
 
-    public String getProductName() {
-        return productName;
-    }
+    public String getProductImage() { return productImage; }
+    public void setProductImage(String productImage) { this.productImage = productImage; }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
+    public String getVariant() { return variant; }
+    public void setVariant(String variant) { this.variant = variant; }
 
-    public String getProductImage() {
-        return productImage;
-    }
+    public int getQuantity() { return quantity; }
+    public void setQuantity(int quantity) { this.quantity = quantity; }
 
-    public void setProductImage(String productImage) {
-        this.productImage = productImage;
-    }
+    public double getPrice() { return price; }
+    public void setPrice(double price) { this.price = price; }
 
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-        calculateSubTotal();
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-        calculateSubTotal();
-    }
-
+    // ===== Tính tiền =====
     public double getSubTotal() {
-        return subTotal;
-    }
-
-    private void calculateSubTotal() {
-        this.subTotal = price * quantity;
+        return price * quantity;
     }
 }
