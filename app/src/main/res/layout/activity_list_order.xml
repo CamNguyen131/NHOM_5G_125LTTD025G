@@ -28,15 +28,35 @@
         app:layout_constraintTop_toBottomOf="@+id/tvHeader"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
+
     <LinearLayout
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:background="#FFFFFF"
         android:elevation="16dp"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:orientation="horizontal"
+        android:paddingVertical="8dp">
 
+        <LinearLayout android:id="@+id/tabHome" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center" android:padding="8dp" android:clickable="true">
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/home_icon" app:tint="#FF80AB" />
+            <TextView android:text="Trang chủ" android:textSize="10sp" android:textColor="#FF80AB" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/tabCart" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center" android:padding="8dp" android:clickable="true">
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/cart_icon" app:tint="#888888" />
+            <TextView android:text="Giỏ hàng" android:textSize="10sp" android:textColor="#888888" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/tabOrder" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center" android:padding="8dp" android:clickable="true">
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/order_icon" app:tint="#888888" />
+            <TextView android:text="Đơn hàng" android:textSize="10sp" android:textColor="#888888" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/tabAccount" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center" android:padding="8dp" android:clickable="true">
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/person_icon" app:tint="#888888" />
+            <TextView android:text="Tài khoản" android:textSize="10sp" android:textColor="#888888" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        </LinearLayout>
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
