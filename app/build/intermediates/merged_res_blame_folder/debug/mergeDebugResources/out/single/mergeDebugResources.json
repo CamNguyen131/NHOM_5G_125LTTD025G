@@ -1,0 +1,786 @@
+[
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_bg_white_card.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/bg_white_card.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_lo_roche_posay.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/lo_roche_posay.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.uyen_ck.app-main-54:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_badge_blue.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/badge_blue.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_body.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_body.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/layout_activity_product_detail.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/layout/activity_product_detail.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_bg_circle_red.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/bg_circle_red.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.example.uyen_ck.app-main-54:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_badge_pink.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/badge_pink.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.example.uyen_ck.app-main-54:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_dior_sauvage.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/dior_sauvage.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_white_card_rounded.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/white_card_rounded.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_profile.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_profile.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_notification.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_notification.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_bg_promo_gradient.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/bg_promo_gradient.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_splash_background_gradient.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/splash_background_gradient.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_chart.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_chart.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_truck_icon.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/truck_icon.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_bg_bottom_sheet.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/bg_bottom_sheet.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_payment_icon.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/payment_icon.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_bg_badge_success.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/bg_badge_success.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_tag.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_tag.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_noti_icon.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/noti_icon.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/layout_activity_splash.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/layout/activity_splash.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ircle_avatar_background.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ircle_avatar_background.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_calendar.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/calendar.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/layout_activity_edit_profile.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/layout/activity_edit_profile.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_placeholder_sale_image.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/placeholder_sale_image.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_question_icon.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/question_icon.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.uyen_ck.app-main-54:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/layout_activity_product_list.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/layout/activity_product_list.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_star.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_star.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_google.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_google.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/xml_backup_rules.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/layout_activity_home.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/layout/activity_home.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_box.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/box.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_messages.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_messages.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_avatar.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_avatar.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/layout_activity_chatbox.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/layout/activity_chatbox.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_placeholder_product.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/placeholder_product.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_bg_badge_warning.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/bg_badge_warning.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_m.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_m.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_gb_pink_light.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/gb_pink_light.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_bg_message_left.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/bg_message_left.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_header_background_gradient.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/header_background_gradient.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_bg_outline_pink.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/bg_outline_pink.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_phone.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_phone.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_bg_rounded_white.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/bg_rounded_white.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_flash_sale_gradient.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/flash_sale_gradient.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/xml_data_extraction_rules.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_edittext_border_bottom.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/edittext_border_bottom.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_bg_badge_shipping.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/bg_badge_shipping.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_m_pink.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_m_pink.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/layout_variant_color.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/layout/variant_color.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_bg_circle_gray.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/bg_circle_gray.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_input_background.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/input_background.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_search_bar_background.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/search_bar_background.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_arrow_back.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_arrow_back.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_users.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_users.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_bg_pink_light.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/bg_pink_light.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_trash_icon.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/trash_icon.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/layout_activity_login.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/layout/activity_login.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_globe_icon.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/globe_icon.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.uyen_ck.app-main-54:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/color_nav_item_color_selector.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/color/nav_item_color_selector.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_home.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_home.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_bg_button_pink.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/bg_button_pink.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/layout_activity_order_detail.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/layout/activity_order_detail.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_son.jpg.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/son.jpg"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_personal_icon.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/personal_icon.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_bg_header_gradient.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/bg_header_gradient.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_minus.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_minus.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_category_icon_background.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/category_icon_background.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_success_icon.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/success_icon.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_business.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_business.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/layout_activity_checkout.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/layout/activity_checkout.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/layout_activity_seller_registration_step2.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/layout/activity_seller_registration_step2.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_bubble_sent.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/bubble_sent.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_location_icon.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/location_icon.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_circle_pink.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/circle_pink.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_cart_icon.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/cart_icon.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/layout_activity_add_product.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/layout/activity_add_product.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_receipt.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_receipt.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_home_icon.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/home_icon.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_overview.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_overview.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_rounded_white_background.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/rounded_white_background.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_button_rounded_white_border.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/button_rounded_white_border.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_plus.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_plus.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_bg_category_selected.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/bg_category_selected.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_more_arrow_icon.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/more_arrow_icon.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_moroccanoil.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/moroccanoil.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_money.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_money.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_store.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_store.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_person.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_person.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_darrk_locate.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/darrk_locate.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_cart.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_cart.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/layout_activity_seller_registration.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/layout/activity_seller_registration.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/layout_item_product.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/layout/item_product.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_back_arrow.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_back_arrow.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_products.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_products.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_strike_through_text.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/strike_through_text.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_kemduong.jpg.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/kemduong.jpg"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_strike_through.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/strike_through.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_shopping_cart.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_shopping_cart.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_dowload_icon.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/dowload_icon.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/layout_activity_setting.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/layout/activity_setting.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_info.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_info.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_save.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_save.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_nuochoa.jpg.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/nuochoa.jpg"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_bg_available_tag.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/bg_available_tag.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.uyen_ck.app-main-54:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_sercurity_icon.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/sercurity_icon.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_bg_category_chip.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/bg_category_chip.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_info_box_background.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/info_box_background.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_shield_icon.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/shield_icon.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_info_icon.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/info_icon.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_bg_variant_selector.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/bg_variant_selector.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_bg_badge_failed.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/bg_badge_failed.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/layout_activity_register.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/layout/activity_register.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_bg_message_right.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/bg_message_right.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/menu_bottom_nav_menu.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/menu/bottom_nav_menu.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/layout_activity_chat_detail.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/layout/activity_chat_detail.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_arrow_icon.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/arrow_icon.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_coupon.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_coupon.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_button_outline_pink.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/button_outline_pink.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_pink_locate.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/pink_locate.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.uyen_ck.app-main-54:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_bg_circle_pink.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/bg_circle_pink.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_input_background_white.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/input_background_white.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_order_icon.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/order_icon.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_mac_matte.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/mac_matte.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_search.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_search.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.uyen_ck.app-main-54:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_white_fail.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/white_fail.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_category_sale.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_category_sale.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_button_rounded_pink.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/button_rounded_pink.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_clock.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/clock.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/layout_activity_sign_up.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/layout/activity_sign_up.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_box.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_box.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_bubble_received.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/bubble_received.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/layout_activity_main.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_bg_rounded_white_ver1.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/bg_rounded_white_ver1.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_category_new.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_category_new.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_facebook.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_facebook.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_rounded_pink_background.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/rounded_pink_background.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_setting_icon.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/setting_icon.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_send.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/send.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/layout_item_setting_with_switch.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/layout/item_setting_with_switch.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_location.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_location.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_tag.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/tag.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_info.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/info.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_header_gradient_pink.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/header_gradient_pink.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_eye.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_eye.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_circle_avatar_background.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/circle_avatar_background.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_refresh.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/refresh.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_button_pink_background.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/button_pink_background.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_back_arrow.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/back_arrow.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_default_avatar.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/default_avatar.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_bg_avatar_circle.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/bg_avatar_circle.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/layout_activity_seller_dashboard.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/layout/activity_seller_dashboard.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.uyen_ck.app-main-54:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_bg_button_pink_small.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/bg_button_pink_small.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_moon_icon.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/moon_icon.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_discount_tag_background.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/discount_tag_background.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_person_icon.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/person_icon.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_calendar.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_calendar.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_bg_gradient_header.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/bg_gradient_header.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_apps.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/apps.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_close.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/close.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_img_placeholder.jpg.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/img_placeholder.jpg"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_warning.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_warning.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/menu_bottom_nav_seller.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/menu/bottom_nav_seller.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_bg_coupon_border.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/bg_coupon_border.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.example.uyen_ck.app-main-54:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_cerave.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/cerave.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_splash_background.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/splash_background.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_chat.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_chat.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_check_circle.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_check_circle.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_sign_up_seller_icon.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/sign_up_seller_icon.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_phone.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/phone.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/layout_activity_message_list.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/layout/activity_message_list.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/layout_item_product_card.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/layout/item_product_card.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_heart.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_heart.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_circle_gray.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/circle_gray.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/layout_activity_cart.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/layout/activity_cart.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_camera.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_camera.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/layout_item_category.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/layout/item_category.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/layout_activity_list_order.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/layout/activity_list_order.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_bg_button_red.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/bg_button_red.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_failed_icon.png.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/failed_icon.png"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_ic_bell.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/ic_bell.xml"
+    },
+    {
+        "merged": "com.example.uyen_ck.app-debug-52:/drawable_bg_tab_selected.xml.flat",
+        "source": "com.example.uyen_ck.app-main-54:/drawable/bg_tab_selected.xml"
+    }
+]

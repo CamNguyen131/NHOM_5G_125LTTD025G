@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFF">
+
+    <TextView
+        android:text="Tin nhắn"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:hint="Tìm kiếm cuộc trò chuyện..."
+        android:background="@drawable/bg_rounded_white"
+        android:layout_margin="16dp"
+        android:padding="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:text="2 cuộc trò chuyện chưa đọc"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textColor="#757575"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMessages"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="10dp"/>
+
+    <!-- Updated bottom navigation with ImageView icons instead of emoji -->
+    <LinearLayout
+        android:id="@+id/bottom_nav_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="#FFFFFF"
+        android:elevation="8dp"
+        android:weightSum="4">
+
+        <!-- Tab Tổng quan -->
+        <LinearLayout
+            android:id="@+id/tab_overview"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground">
+
+            <ImageView
+                android:id="@+id/ic_overview"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_overview"
+                android:contentDescription="Tổng quan"
+                app:tint="#9E9E9E"/>
+
+            <TextView
+                android:id="@+id/tv_overview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tổng quan"
+                android:textSize="11sp"
+                android:textColor="#9E9E9E"
+                android:layout_marginTop="2dp"/>
+        </LinearLayout>
+
+        <!-- Tab Sản phẩm -->
+        <LinearLayout
+            android:id="@+id/tab_products"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground">
+
+            <ImageView
+                android:id="@+id/ic_products"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_products"
+                android:contentDescription="Sản phẩm"
+                app:tint="#9E9E9E"/>
+
+            <TextView
+                android:id="@+id/tv_products"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sản phẩm"
+                android:textSize="11sp"
+                android:textColor="#9E9E9E"
+                android:layout_marginTop="2dp"/>
+        </LinearLayout>
+
+        <!-- Tab Tin nhắn (đang chọn) -->
+        <LinearLayout
+            android:id="@+id/tab_messages"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/ic_messages"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_messages"
+                android:contentDescription="Tin nhắn"/>
+
+            <TextView
+                android:id="@+id/tv_messages"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tin nhắn"
+                android:textSize="11sp"
+                android:layout_marginTop="2dp"/>
+        </LinearLayout>
+
+        <!-- Tab Cá nhân -->
+        <LinearLayout
+            android:id="@+id/tab_profile"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground">
+
+            <ImageView
+                android:id="@+id/ic_profile"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_profile"
+                android:contentDescription="Cá nhân"
+                app:tint="#9E9E9E"/>
+
+            <TextView
+                android:id="@+id/tv_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cá nhân"
+                android:textSize="11sp"
+                android:textColor="#9E9E9E"
+                android:layout_marginTop="2dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
