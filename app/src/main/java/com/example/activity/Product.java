@@ -1,7 +1,5 @@
 package com.example.uyen_ck;
-/**
- * Lớp mô hình (Model) đại diện cho một sản phẩm trong cửa hàng.
- */
+
 public class Product {
     private String id;
     private String name;
