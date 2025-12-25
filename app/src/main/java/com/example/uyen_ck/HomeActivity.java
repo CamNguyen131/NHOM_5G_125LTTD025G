@@ -11,10 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.uyen_ck.adapters.CategoryAdapter;
-import com.example.uyen_ck.adapters.ProductAdapter;
-import com.example.uyen_ck.models.Cart;
 import com.example.uyen_ck.models.Category;
-import com.example.uyen_ck.models.Products;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
