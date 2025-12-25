@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.uyen_ck.models.User; // Import model User
@@ -41,18 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.et_password_login);
         btnLogin = findViewById(R.id.btn_login);
 
-        // Tìm TextView "Đăng ký ngay"
-        TextView tvRegisterLink = findViewById(R.id.tv_register_link);
-
         btnLogin.setOnClickListener(v -> handleLogin());
-
-        // Thiết lập sự kiện chuyển sang trang Đăng ký
-        if (tvRegisterLink != null) {
-            tvRegisterLink.setOnClickListener(v -> {
-                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
-                startActivity(intent);
-            });
-            }
     }
 
     private void handleLogin() {
@@ -84,7 +72,6 @@ public class LoginActivity extends AppCompatActivity {
                         if (document.exists()) {
                             // Map dữ liệu Firestore vào model User
                             User user = document.toObject(User.class);
-
                             if (user != null) {
                                 Log.d(TAG, "User Data: " + user.getDisplayName());
                                 // Bạn có thể lưu thông tin User vào Session/Global variable tại đây

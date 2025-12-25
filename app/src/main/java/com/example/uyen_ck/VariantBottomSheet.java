@@ -15,15 +15,10 @@ import androidx.annotation.Nullable;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 public class VariantBottomSheet extends BottomSheetDialogFragment {
-    public interface OnVariantConfirmListener {
-        void onAddToCart(String variant, int quantity);
-        void onBuyNow(String variant, int quantity);
-    }
-    private OnVariantConfirmListener listener;
-    public void setOnVariantConfirmListener(OnVariantConfirmListener listener) {
-        this.listener = listener;
-    }
+
     private TextView selectedView = null;
+
+    // Khởi tạo instance với dữ liệu sản phẩm
     public static VariantBottomSheet newInstance(String productName, int quantity, long price, String actionType) {
         VariantBottomSheet sheet = new VariantBottomSheet();
         Bundle args = new Bundle();
@@ -82,22 +77,29 @@ public class VariantBottomSheet extends BottomSheetDialogFragment {
             return;
         }
 
-        if (listener == null) return;
-
-        String variant = selectedView.getText().toString();
+        String selectedVariant = selectedView.getText().toString();
         Bundle args = getArguments();
-        if (args == null) return;
 
-        int quantity = args.getInt("quantity");
-        String actionType = args.getString("actionType");
+        if (args != null) {
+            String name = args.getString("productName");
+            int qty = args.getInt("quantity");
+            long pricePerItem = args.getLong("price");
+            String actionType = args.getString("actionType");
 
-        if ("buy_now".equals(actionType)) {
-            listener.onBuyNow(variant, quantity);
-        } else {
-            listener.onAddToCart(variant, quantity);
+            if ("buy_now".equals(actionType)) {
+                Intent intent = new Intent(requireContext(), CheckoutActivity.class);
+                intent.putExtra("productName", name);
+                intent.putExtra("variant", selectedVariant);
+                intent.putExtra("quantity", qty);
+                intent.putExtra("price", pricePerItem);
+                startActivity(intent);
+            } else {
+                CartManager.getInstance().addItem(name, qty, pricePerItem);
+                Toast.makeText(requireContext(), "Đã thêm vào giỏ hàng", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(requireContext(), CartActivity.class);
+                startActivity(intent);
+            }
+            dismiss();
         }
-
-        dismiss();
     }
-
 }

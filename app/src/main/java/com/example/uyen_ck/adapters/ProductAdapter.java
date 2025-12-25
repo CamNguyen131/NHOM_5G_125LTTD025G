@@ -1,3 +1,4 @@
+
 package com.example.uyen_ck.adapters;
 
 import android.content.Context;
@@ -36,6 +37,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         return new ProductViewHolder(v);
     }
 
+    // Cập nhật hàm onBindViewHolder trong ProductAdapter.java
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         Products p = list.get(position);
@@ -43,6 +45,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         // Hiển thị tên và giá sản phẩm
         holder.tvName.setText(p.getName());
         holder.tvPrice.setText(String.format("%,.0f đ", p.getSalePrice()));
+
 
         // Sử dụng Glide để tải hình ảnh từ URL
         if (p.getImageUrl() != null && !p.getImageUrl().isEmpty()) {
@@ -59,6 +62,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, ProductDetailActivity.class);
             // "product_id" phải khớp với Key nhận dữ liệu tại ProductDetailActivity
+
             intent.putExtra("product_id", p.getProductId());
             context.startActivity(intent);
         });
